@@ -1,7 +1,10 @@
+const mongoose = require("mongoose");
+const OrgUser = require("../../models/orgUser")
+
 describe("OrgUser model", () => {
-  beforeEach(async () => {
-    await mongoose.connection.collections.users.drop(() => {});
-  });
+  // beforeEach(async () => {
+  //   await mongoose.connection.collections.users.drop(() => {});
+  // });
 
   it("has an email address", () => {
     const orgUser = new OrgUser({
@@ -21,7 +24,7 @@ describe("OrgUser model", () => {
         charityNumber:"123456",
         password: "password",
     });
-    expect(OrgUser.password).toEqual("password");
+    expect(orgUser.password).toEqual("password");
   });
 
   it("has a organisation name", () => {
@@ -31,7 +34,7 @@ describe("OrgUser model", () => {
         charityNumber:"123456",
         password: "password",
     });
-    expect(OrgUser.organisationName).toEqual("Charity");
+    expect(orgUser.organisationName).toEqual("Charity");
   });
  
   it("accepts a charity number", () => {
@@ -41,7 +44,7 @@ describe("OrgUser model", () => {
         charityNumber: "123456",
         password: "password",
     });
-    expect(OrgUser.charityNumber).toEqual("123456");
+    expect(orgUser.charityNumber).toEqual("123456");
   });
 
   it("accepts a blank charity number", () => {
@@ -51,6 +54,6 @@ describe("OrgUser model", () => {
         charityNumber: "",
         password: "password",
     });
-    expect(OrgUser.charityNumber).toEqual("");
+    expect(orgUser.charityNumber).toEqual("");
   });
 });
