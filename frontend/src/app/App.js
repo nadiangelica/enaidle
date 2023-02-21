@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/signup" element={<OrgsSignUpForm navigate={useNavigate()} />} />
+        <Route path="/signup" element={<OrgsSignUpPage navigate={useNavigate()} />} />
       </Routes>
     </>
   )
