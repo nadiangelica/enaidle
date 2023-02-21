@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './OrgsSignUpForm.css';
 
 const OrgsSignUpForm = ({ navigate }) => {
 
@@ -57,25 +58,25 @@ const OrgsSignUpForm = ({ navigate }) => {
           <form className='signUpLoginForm' onSubmit={handleSubmit}>
             <div className="input-box">
               <input className='form_field' id="organisation-name" type='text' value={ organisationName } onChange={handleOrganisationNameChange} />
-              <label id='form_label' for='email'>Organisation Name</label >
+              <label id='form_label' htmlFor='email'>Organisation Name</label >
               <i></i>
             </div>
 
             <div className="input-box">
               <input className='form_field' id="email" type='text' value={ email } onChange={handleEmailChange} />
-              <label id='form_label' for='email'>Email</label >
+              <label id='form_label' htmlFor='email'>Email</label >
               <i></i>
             </div>
 
             <div className="input-box">
               <input className='form_field' id="charity-number" type='text' value={ charityNumber } onChange={handleCharityNumberChange} />
-              <label id='form_label' for='email'>Charity Number (if applicable)</label >
+              <label id='form_label' htmlFor='email'>Charity Number (if applicable)</label >
               <i></i>
             </div>
 
             <div className="input-box">
               <input className='form_field' id="password" type='password' value={ password } onChange={handlePasswordChange} />
-              <label id='form_label' for='password'>Password</label>
+              <label id='form_label' htmlFor='password'>Password</label>
               <i></i>
             </div> 
             <input id='submit' type="submit" value="Sign Up" />
