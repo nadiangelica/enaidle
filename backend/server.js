@@ -2,6 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
 const express = require('express');
+const listingRoutes = require('./routes/listings')
 
 // express app
 const app = express();
@@ -14,12 +15,10 @@ app.use((req, res, next) => {
     next();
 })
 
-// routes
-app.get('/', (req, res) => {
-    res.json({ message: 'Hello World' });
-});
-// listen for requests
+app.use('/api/listings', listingRoutes)
 
+
+// listen for requests
 mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         app.listen(process.env.PORT, () => {

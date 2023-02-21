@@ -18,11 +18,11 @@ const listingSchema = new Schema({
   location: {
     type: String,
     required:true
-  },
-  neededByDate: {
-    type: Date,
-    required:true
   }
+  // neededByDate: {
+  //   type: Date,
+  //   required:true
+  // }
 },{ timestamps: true}) 
 
  module.exports = mongoose.model('Listing', listingSchema)
