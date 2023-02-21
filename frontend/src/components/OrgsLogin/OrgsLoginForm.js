@@ -4,6 +4,7 @@ import React, { useState } from "react";
 const OrgsLoginForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
