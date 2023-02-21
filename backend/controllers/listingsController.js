@@ -26,7 +26,7 @@ const createListing = async (req, res) => {
   }
   try{
       const listing = await Listing.create({organisationName, title, description, location});
-      res.status(200).json(listings);
+      res.status(200).json(listing);
     } catch (error){
         res.status(400).json({error: error.message});
     }
