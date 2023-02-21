@@ -62,8 +62,14 @@ const OrgsSignUpForm = ({ navigate }) => {
             </div>
 
             <div className="input-box">
-              <input className='form_field' id="email" type='text' value={ organisationName } onChange={handleOrganisationNameChange} />
+              <input className='form_field' id="email" type='text' value={ email } onChange={handleEmailChange} />
               <label id='form_label' for='email'>Email</label >
+              <i></i>
+            </div>
+
+            <div className="input-box">
+              <input className='form_field' id="charity-number" type='text' value={ charityNumber } onChange={handleCharityNumberChange} />
+              <label id='form_label' for='email'>Charity Number (if applicable)</label >
               <i></i>
             </div>
 
