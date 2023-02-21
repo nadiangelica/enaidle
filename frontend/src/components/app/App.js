@@ -1,5 +1,5 @@
 
-import OrgsLoginPage from "../OrgsLogin/OrgsLoginForm";
+import OrgsLoginPage from "../orgsLogin/OrgsLoginForm";
 import React, { useState } from 'react';
 import {useNavigate, Routes, Route,} from "react-router-dom";
 
