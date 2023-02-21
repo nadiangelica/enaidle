@@ -1,1 +1,2 @@
-# Better-Help
+# Help Others
+
