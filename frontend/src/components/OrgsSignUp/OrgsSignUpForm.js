@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './OrgsSignUpForm.css';
+// import './OrgsSignUpForm.css';
 
 const OrgsSignUpForm = ({ navigate }) => {
 

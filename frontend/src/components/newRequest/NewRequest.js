@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import "./OrgsSignUpForm.css";
+// import "./OrgsSignUpForm.css";
 
 const NewRequestForm = ({ navigate }) => {
   const [organisationName, setorganisationName] = useState("");
   const [title, setTitle] = useState("");
-  const [requirement, setRequirement] = useState("");
+  // const [requirement, setRequirement] = useState("");
+  const [value, setValue] = useState("requirement");
   const [description, setDescription] = useState("");
   const [firstLine, setFirstLine] = useState("");
   const [city, setCity] = useState("");
@@ -55,8 +56,12 @@ const NewRequestForm = ({ navigate }) => {
     setTitle(event.target.value);
   };
 
-  const handleRequirementChange = (event) => {
-    setRequirement(event.target.value);
+  // const handleRequirementChange = (event) => {
+  //   setRequirement(event.target.value);
+  // };
+
+  const handleValueChange = (event) => {
+    setValue(event.target.value);
   };
 
   const handleDescriptionChange = (event) => {
@@ -76,7 +81,7 @@ const NewRequestForm = ({ navigate }) => {
   };
 
   const handleNeededByDateChange = (event) => {
-    setNeededByDate(event.target.value);
+    setneededByDate(event.target.value);
   };
 
   return (
@@ -85,6 +90,9 @@ const NewRequestForm = ({ navigate }) => {
       <div className="container">
         <form className="newRequestForm" onSubmit={handleSubmit}>
           <div className="input-box">
+            <label id="form_label" htmlFor="organisation-name">
+              Organisation Name
+            </label>
             <input
               className="form_field"
               id="organisation-name"
@@ -92,13 +100,13 @@ const NewRequestForm = ({ navigate }) => {
               value={organisationName}
               onChange={handleOrganisationNameChange}
             />
-            <label id="form_label" htmlFor="organisation-name">
-              Organisation Name
-            </label>
             <i></i>
           </div>
 
           <div className="input-box">
+            <label id="form_label" htmlFor="title">
+              Title
+            </label>
             <input
               className="form_field"
               id="title"
@@ -106,14 +114,14 @@ const NewRequestForm = ({ navigate }) => {
               value={title}
               onChange={handleTitleChange}
             />
-            <label id="form_label" htmlFor="title">
-              Title
-            </label>
             <i></i>
           </div>
 
           {/* Look into dropdown list format to hold Volunteering or Donate Resources */}
-          <div className="input-box">
+          {/* <div className="input-box">
+            <label id="form_label" htmlFor="requirement">
+              Requirement
+            </label>
             <input
               className="form_field"
               id="requirement"
@@ -121,13 +129,31 @@ const NewRequestForm = ({ navigate }) => {
               value={requirement}
               onChange={handleRequirementChange}
             />
+            <i></i>
+          </div> */}
+
+          <div className="input-box">
             <label id="form_label" htmlFor="requirement">
               Requirement
+              <select value={value} onChange={handleValueChange}>
+              <option value="volunteering">Volunteering</option>
+              <option value="resources">Resources</option>
+              </select>
             </label>
-            <i></i>
+            {/* <input
+              className="form_field"
+              id="requirement"
+              type="text"
+              value={requirement}
+              onChange={handleRequirementChange}
+            />
+            <i></i> */}
           </div>
 
           <div className="input-box">
+            <label id="form_label" htmlFor="description">
+              Description
+            </label>
             <input
               className="form_field"
               id="description"
@@ -135,15 +161,15 @@ const NewRequestForm = ({ navigate }) => {
               value={description}
               onChange={handleDescriptionChange}
             />
-            <label id="form_label" htmlFor="description">
-              Description
-            </label>
             <i></i>
           </div>
 
           {/* -----------------address------------------- */}
 
           <div className="input-box">
+            <label id="form_label" htmlFor="first-line">
+              First Line of Address
+            </label>
             <input
               className="form_field"
               id="first-line"
@@ -151,13 +177,13 @@ const NewRequestForm = ({ navigate }) => {
               value={firstLine}
               onChange={handleFirstLineChange}
             />
-            <label id="form_label" htmlFor="first-line">
-              First Line of Address
-            </label>
             <i></i>
           </div>
 
           <div className="input-box">
+            <label id="form_label" htmlFor="city">
+              City
+            </label>
             <input
               className="form_field"
               id="city"
@@ -165,13 +191,13 @@ const NewRequestForm = ({ navigate }) => {
               value={city}
               onChange={handleCityChange}
             />
-            <label id="form_label" htmlFor="city">
-              City
-            </label>
             <i></i>
           </div>
 
           <div className="input-box">
+            <label id="form_label" htmlFor="postcode">
+              Postcode
+            </label>
             <input
               className="form_field"
               id="postcode"
@@ -179,13 +205,13 @@ const NewRequestForm = ({ navigate }) => {
               value={postcode}
               onChange={handlePostcodeChange}
             />
-            <label id="form_label" htmlFor="postcode">
-              Postcode
-            </label>
             <i></i>
           </div>
 
           <div className="input-box">
+            <label id="form_label" htmlFor="neededByDate">
+              Date Needed By
+            </label>
             <input
               className="form_field"
               id="neededByDate"
@@ -193,9 +219,6 @@ const NewRequestForm = ({ navigate }) => {
               value={neededByDate}
               onChange={handleNeededByDateChange}
             />
-            <label id="form_label" htmlFor="neededByDate">
-              Date Needed By
-            </label>
             <i></i>
           </div>
 
@@ -207,4 +230,4 @@ const NewRequestForm = ({ navigate }) => {
   );
 };
 
-export default OrgsLoginForm;
+export default NewRequestForm;
