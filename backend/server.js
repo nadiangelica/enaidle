@@ -19,12 +19,18 @@ app.use((req, res, next) => {
 app.use('/api/orgUsers', orgUserRoutes);
 
 // listen for requests
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {
-        app.listen(process.env.PORT, () => {
-            console.log('connected to db & listening on port', process.env.PORT);
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV !== 'test') {
+    console.log("helooasfdasdfads");
+    mongoose.connect(process.env.MONGO_URI)
+        .then(() => {
+            app.listen(process.env.PORT, () => {
+                console.log('connected to db & listening on port', process.env.PORT);
+            })
         })
-    })
-    .catch((error) => {
-        console.log(error);
-});
+        .catch((error) => {
+            console.log(error);
+    });
+}
+
+module.exports = app;
