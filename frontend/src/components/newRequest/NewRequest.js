@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-// import "./OrgsSignUpForm.css";
 
 const NewRequestForm = ({ navigate }) => {
   const [organisationName, setorganisationName] = useState("");
   const [title, setTitle] = useState("");
-  // const [requirement, setRequirement] = useState("");
   const [requirement, setRequirement] = useState("requirement");
   const [description, setDescription] = useState("");
   const [firstLine, setFirstLine] = useState("");
@@ -44,6 +42,7 @@ const NewRequestForm = ({ navigate }) => {
       console.log(data);
       window.localStorage.setItem("token", data.token);
       window.localStorage.setItem("org_user_id", data.org_user_id);
+      //  navigate 
       navigate("/listings");
     }
   };
@@ -59,10 +58,6 @@ const NewRequestForm = ({ navigate }) => {
   const handleRequirementChange = (event) => {
     setRequirement(event.target.value);
   };
-
-  // const handleValueChange = (event) => {
-  //   setValue(event.target.value);
-  // };
 
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
@@ -99,6 +94,7 @@ const NewRequestForm = ({ navigate }) => {
               type="text"
               value={organisationName}
               onChange={handleOrganisationNameChange}
+              placeholder="Cancer Research"
             />
             <i></i>
           </div>
@@ -113,41 +109,20 @@ const NewRequestForm = ({ navigate }) => {
               type="text"
               value={title}
               onChange={handleTitleChange}
+              placeholder="What do you need?"
             />
             <i></i>
           </div>
 
-          {/* Look into dropdown list format to hold Volunteering or Donate Resources */}
-          {/* <div className="input-box">
-            <label id="form_label" htmlFor="requirement">
-              Requirement
-            </label>
-            <input
-              className="form_field"
-              id="requirement"
-              type="text"
-              value={requirement}
-              onChange={handleRequirementChange}
-            />
-            <i></i>
-          </div> */}
-
           <div className="input-box">
             <label id="form_label" htmlFor="requirement">
-              Requirement
+              Do you require volunteering or donation of goods?
               <select value={requirement} onChange={handleRequirementChange}>
               <option value="requirement">Volunteering</option>
-              <option value="resources">Resources</option>
+              <option value="resources">Donation of Goods</option>
               </select>
             </label>
-            {/* <input
-              className="form_field"
-              id="requirement"
-              type="text"
-              value={requirement}
-              onChange={handleRequirementChange}
-            />
-            <i></i> */}
+            <i></i>
           </div>
 
           <div className="input-box">
@@ -160,6 +135,7 @@ const NewRequestForm = ({ navigate }) => {
               type="text"
               value={description}
               onChange={handleDescriptionChange}
+              placeholder="E.g. 2 volunteers to help running of soup kitchen"
             />
             <i></i>
           </div>
@@ -176,6 +152,7 @@ const NewRequestForm = ({ navigate }) => {
               type="text"
               value={firstLine}
               onChange={handleFirstLineChange}
+              placeholder="2 Redman Place"
             />
             <i></i>
           </div>
@@ -190,6 +167,7 @@ const NewRequestForm = ({ navigate }) => {
               type="text"
               value={city}
               onChange={handleCityChange}
+              placeholder="London"
             />
             <i></i>
           </div>
@@ -204,6 +182,7 @@ const NewRequestForm = ({ navigate }) => {
               type="text"
               value={postcode}
               onChange={handlePostcodeChange}
+              placeholder="E20 1JQ"
             />
             <i></i>
           </div>
