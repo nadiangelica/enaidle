@@ -13,7 +13,6 @@ afterAll(async () => await db.close());
 describe("/orgUsers", () => {
   describe("POST, when company name, email and password are valid, and charity number is blank", () => {
     test("the response code is 201 and returns a message to say signup has been successful", async () => {
-      console.log(process.env.NODE_ENV);
       let response = await agent
         .post("/api/orgUsers")
         .send({ 
@@ -23,9 +22,9 @@ describe("/orgUsers", () => {
           password: "1234" 
         });
       expect(response.statusCode).toBe(201);
-      // expect(response.body).toEqual({
-      //   message: "Thanks! your account has been successfully created",
-      // });
+      expect(response.body).toEqual({
+        message: "Thanks! your account has been successfully created",
+      });
     });
   });
 });
