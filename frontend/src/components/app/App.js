@@ -1,4 +1,4 @@
-import OrgsSignupPage from "../orgsSignUp/OrgsSignUpForm";
+import OrgsSignupPage from "../OrgsSignUp/OrgsSignUpForm";
 import OrgsLoginPage from "../OrgsLogin/OrgsLoginForm";
 import React, { useState } from "react";
 import { useNavigate, Routes, Route } from "react-router-dom";
