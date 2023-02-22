@@ -12,7 +12,6 @@ const OrgSignUpForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // '/users' to be amended when we have clarity of route path for backend
     const response = await fetch("/api/orgUsers", {
       method: 'POST',
       body: JSON.stringify({organisationName: organisationName, email: email, charityNumber: charityNumber, password: password}),
