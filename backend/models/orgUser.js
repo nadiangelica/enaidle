@@ -11,6 +11,7 @@ const OrgUserSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, 'required'],
+    // unique: [true, 'This email is already in use'],
     validate: [validateEmail, "please use a valid email address"],
   },
   charityNumber: String,
