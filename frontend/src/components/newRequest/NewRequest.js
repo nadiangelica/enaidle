@@ -15,7 +15,7 @@ const NewRequestForm = ({ navigate }) => {
     event.preventDefault();
 
     // '/users' to be amended when we have clarity of route path for backend
-    const response = await fetch("/users", {
+    const response = await fetch("/api/listings", {
       method: "POST",
       body: JSON.stringify({
         organisationName: organisationName,
