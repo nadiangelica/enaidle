@@ -41,7 +41,10 @@ describe('createListing', () => {
         organisationName: 'Test Organisation',
         title: 'Test Listing',
         description: 'Test description',
-        address: 'Test address',
+        address: {
+          firstLine:"Test address",
+          city:"London",
+          postcode:"SW35SA"},
         neededByDate: new Date('2022-01-01'),
       },
     }
@@ -56,7 +59,10 @@ describe('createListing', () => {
       organisationName: 'Test Organisation',
       title: 'Test Listing',
       description: 'Test description',
-      address: 'Test address',
+      address: {
+        firstLine:"Test address",
+        city:"London",
+        postcode:"SW35SA"},
       neededByDate: new Date('2022-01-01'),
     })
 
@@ -66,7 +72,10 @@ describe('createListing', () => {
       organisationName: 'Test Organisation',
       title: 'Test Listing',
       description: 'Test description',
-      address: 'Test address',
+      address: {
+        firstLine:"Test address",
+        city:"London",
+        postcode:"SW35SA"},
       neededByDate: new Date('2022-01-01'),
     }))
   })
@@ -103,7 +112,7 @@ describe('createListing', () => {
         organisationName: 'Test Organisation',
         title: 'Test Listing',
         description: 'Test description',
-        address: 'Test address',
+        address:"",
         neededByDate: 'Invalid date format',
       },
     }
