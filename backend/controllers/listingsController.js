@@ -9,21 +9,21 @@ const getAllListings = async (req, res) => {
 
 const createListing = async (req, res) => {
   const {organisationName, title, description, address, neededByDate} = req.body;
-  let emptyFields = [];
-  if (!organisationName){
-    emptyFields.push('organisationName');
-  } else if (!title){
-    emptyFields.push('title');
-  }else if (!description){
-    emptyFields.push('description');
-  }else if (!address){
-    emptyFields.push('address');
-  }else if(!neededByDate){
-  emptyFields.push('neededByDate');
-   }
-  if (emptyFields.length>0){
-    return res.status(400).json({error: 'Please fill in all fields', emptyFields});
-  }
+  const requiredFields = {
+    organisationName: "organisationName",
+    title: "title",
+    description: "description",
+    address: "address",
+    neededByDate: "neededByDate"
+  };
+  const emptyFields = Object.entries(requiredFields)
+    .filter(([key, value]) => !req.body[key])
+    .map(([key, value]) => value);
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({error: "Please fill in all fields", emptyFields})
+  };
   try{
       const listing = await Listing.create({organisationName, title, description, address, neededByDate});
       res.status(200).json(listing);
