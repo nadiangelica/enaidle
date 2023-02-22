@@ -5,7 +5,7 @@ const NewRequestForm = ({ navigate }) => {
   const [organisationName, setorganisationName] = useState("");
   const [title, setTitle] = useState("");
   // const [requirement, setRequirement] = useState("");
-  const [value, setValue] = useState("requirement");
+  const [requirement, setRequirement] = useState("requirement");
   const [description, setDescription] = useState("");
   const [firstLine, setFirstLine] = useState("");
   const [city, setCity] = useState("");
@@ -56,13 +56,13 @@ const NewRequestForm = ({ navigate }) => {
     setTitle(event.target.value);
   };
 
-  // const handleRequirementChange = (event) => {
-  //   setRequirement(event.target.value);
-  // };
-
-  const handleValueChange = (event) => {
-    setValue(event.target.value);
+  const handleRequirementChange = (event) => {
+    setRequirement(event.target.value);
   };
+
+  // const handleValueChange = (event) => {
+  //   setValue(event.target.value);
+  // };
 
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
@@ -135,8 +135,8 @@ const NewRequestForm = ({ navigate }) => {
           <div className="input-box">
             <label id="form_label" htmlFor="requirement">
               Requirement
-              <select value={value} onChange={handleValueChange}>
-              <option value="volunteering">Volunteering</option>
+              <select value={requirement} onChange={handleRequirementChange}>
+              <option value="requirement">Volunteering</option>
               <option value="resources">Resources</option>
               </select>
             </label>
