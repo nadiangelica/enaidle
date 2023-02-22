@@ -30,8 +30,7 @@ const OrgsLoginForm = ({ navigate }) => {
       let data = await response.json();
       console.log(data);
       window.localStorage.setItem("token", data.token);
-      // check user_id name backend and ammend accordingly on line 33
-      window.localStorage.setItem("user_id", data.user_id);
+      window.localStorage.setItem("org_user_id", data.org_user_id);
       navigate("/listings");
     }
   };
