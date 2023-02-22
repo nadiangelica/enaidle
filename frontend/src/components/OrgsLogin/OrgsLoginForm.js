@@ -26,13 +26,13 @@ const OrgsLoginForm = ({ navigate }) => {
     if (!response.ok) {
       setError(json.message);
     } else {
-      console.log("yay")
-      let data = await response.json()
-      console.log(data)
-      window.localStorage.setItem("token", data.token)
+      console.log("yay");
+      let data = await response.json();
+      console.log(data);
+      window.localStorage.setItem("token", data.token);
       // check user_id name backend and ammend accordingly on line 33
-      window.localStorage.setItem("user_id", data.user_id)
-      navigate('/listings');
+      window.localStorage.setItem("user_id", data.user_id);
+      navigate("/listings");
     }
   };
 
@@ -46,7 +46,7 @@ const OrgsLoginForm = ({ navigate }) => {
 
   return (
     <main>
-      <h2 id="login-title">Login here!</h2>
+      <h2 id="login-title">LOGIN</h2>
       <div className="container">
         <form className="signUpLoginForm" onSubmit={handleSubmit}>
           <div className="input-box">
@@ -76,7 +76,7 @@ const OrgsLoginForm = ({ navigate }) => {
             </label>
             <i></i>
           </div>
-          <input id="submit" type="submit" value="Sign Up" />
+          <input id="submit" type="submit" value="LOGIN" />
         </form>
         {error && <div className="error">{error}</div>}
       </div>
