@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const {getAllOrgUsers, createOrgUser} = require("../controllers/orgUsers");
 
-const OrgUsersController = require("../controllers/orgUsers");
-
-router.post("/", OrgUsersController.Create);
-// router.get("/getPoster/:user_id", UsersController.FindUserById);
+router.get("/", getAllOrgUsers);
+router.post("/", createOrgUser);
 
 module.exports = router;

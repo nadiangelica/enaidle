@@ -12,7 +12,12 @@ describe("/orgUsers", () => {
     test("the response code is 201 and returns a message to say signup has been successful", async () => {
       let response = await request(server)
         .post("/orgUsers")
-        .send({ organisationName: "Puppies Trust", email: "poppy@email.com", charityNumber: "", password: "1234" });
+        .send({ 
+          organisationName: "Puppies Trust", 
+          email: "poppy@email.com", 
+          charityNumber: "", 
+          password: "1234" 
+        });
       expect(response.statusCode).toBe(201);
       expect(response.body).toEqual({
         message: "Thanks! your account has been successfully created",
