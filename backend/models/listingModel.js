@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
-  organisationName:{
+  organisationName: {
     type: String,
-    required:true
+    required: true
   },
   title: {
     type: String,
@@ -13,16 +13,27 @@ const listingSchema = new Schema({
   },
   description: {
     type: String,
-    required:true
+    required: true
   },
-  location: {
-    type: String,
-    required:true
-  }
-  // neededByDate: {
-  //   type: Date,
-  //   required:true
-  // }
-},{ timestamps: true}) 
+  address: {
+    firstLine: {
+      type: String,
+      required: true
+    },
+    city: {
+      type: String,
+      required: true
+    },
+    postcode: {
+      type: String,
+      uppercase: true,
+      required: true
+    },
+  },
+    neededByDate: {
+      type: Date,
+      required: true
+    }
+  }, { timestamps: true })
 
- module.exports = mongoose.model('Listing', listingSchema)
+module.exports = mongoose.model('Listing', listingSchema)
