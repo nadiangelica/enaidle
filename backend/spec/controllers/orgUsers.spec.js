@@ -1,7 +1,5 @@
 const server = require("../../server");
 const request = require("supertest");
-// require("../mongodb_helper");
-// const OrgUser = require("../../models/orgUser");
 const db = require('../db');
 
 const agent = request.agent(server);

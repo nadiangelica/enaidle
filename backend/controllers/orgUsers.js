@@ -7,9 +7,7 @@ const getAllOrgUsers = async (req, res) => {
 }
 
 const createOrgUser = async (req, res) => {
-  // const {organisationName, email, charityNumber, password} = req.body;
   try {
-    // const orgUser = await OrgUser.create({organisationName, email, charityNumber, password});
     const orgUser = await OrgUser.create(req.body);
     res.status(201).json({message: "Thanks! your account has been successfully created"});
   } catch (error){
