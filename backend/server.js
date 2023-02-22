@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
 const express = require('express');
 const listingRoutes = require('./routes/listings')
+const orgUserRoutes = require('./routes/orgUsers');
 
 // express app
 const app = express();
@@ -15,8 +16,9 @@ app.use((req, res, next) => {
     next();
 })
 
+// routes
+app.use('/api/orgUsers', orgUserRoutes);
 app.use('/api/listings', listingRoutes)
-
 
 // listen for requests
 mongoose.connect(process.env.MONGO_URI)
@@ -28,3 +30,5 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((error) => {
         console.log(error);
 });
+
+module.exports = app;
