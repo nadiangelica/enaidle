@@ -25,5 +25,3 @@ const OrgUserSchema = new mongoose.Schema({
 const OrgUser = mongoose.model("OrgUser", OrgUserSchema);
 
 module.exports = OrgUser;
-
-//keep
