@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import './OrgsSignUpForm.css';
+import "./OrgsSignUpForm.css";
 
 const NewRequestForm = ({ navigate }) => {
+  const [organisationName, setorganisationName] = useState("");
   const [title, setTitle] = useState("");
   const [requirement, setRequirement] = useState("");
   const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
+  const [firstLine, setFirstLine] = useState("");
+  const [city, setCity] = useState("");
+  const [postcode, setPostcode] = useState("");
+  const [neededByDate, setneededByDate] = useState("");
   const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
@@ -15,8 +19,14 @@ const NewRequestForm = ({ navigate }) => {
     const response = await fetch("/users", {
       method: "POST",
       body: JSON.stringify({
-        email: email,
-        password: password,
+        organisationName: organisationName,
+        title: title,
+        requirement: requirement,
+        description: description,
+        firstLine: firstLine,
+        city: city,
+        postcode: postcode,
+        neededByDate: neededByDate,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -37,29 +47,53 @@ const NewRequestForm = ({ navigate }) => {
     }
   };
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const handleOrganisationNameChange = (event) => {
+    setorganisationName(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleRequirementChange = (event) => {
+    setRequirement(event.target.value);
+  };
+
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
+
+  const handleFirstLineChange = (event) => {
+    setFirstLine(event.target.value);
+  };
+
+  const handleCityChange = (event) => {
+    setCity(event.target.value);
+  };
+
+  const handlePostcodeChange = (event) => {
+    setPostcode(event.target.value);
+  };
+
+  const handleNeededByDateChange = (event) => {
+    setNeededByDate(event.target.value);
   };
 
   return (
     <main>
-      <h2 id="login-title">LOGIN</h2>
+      <h2 id="new-request-title">Add A Request</h2>
       <div className="container">
-        <form className="signUpLoginForm" onSubmit={handleSubmit}>
+        <form className="newRequestForm" onSubmit={handleSubmit}>
           <div className="input-box">
             <input
               className="form_field"
-              id="email"
+              id="organisation-name"
               type="text"
-              value={email}
-              onChange={handleEmailChange}
+              value={organisationName}
+              onChange={handleOrganisationNameChange}
             />
-            <label id="form_label" htmlFor="email">
-              Email
+            <label id="form_label" htmlFor="organisation-name">
+              Organisation Name
             </label>
             <i></i>
           </div>
@@ -67,17 +101,105 @@ const NewRequestForm = ({ navigate }) => {
           <div className="input-box">
             <input
               className="form_field"
-              id="password"
-              type="password"
-              value={password}
-              onChange={handlePasswordChange}
+              id="title"
+              type="text"
+              value={title}
+              onChange={handleTitleChange}
             />
-            <label id="form_label" htmlFor="password">
-              Password
+            <label id="form_label" htmlFor="title">
+              Title
             </label>
             <i></i>
           </div>
-          <input id="submit" type="submit" value="LOGIN" />
+
+          {/* Look into dropdown list format to hold Volunteering or Donate Resources */}
+          <div className="input-box">
+            <input
+              className="form_field"
+              id="requirement"
+              type="text"
+              value={requirement}
+              onChange={handleRequirementChange}
+            />
+            <label id="form_label" htmlFor="requirement">
+              Requirement
+            </label>
+            <i></i>
+          </div>
+
+          <div className="input-box">
+            <input
+              className="form_field"
+              id="description"
+              type="text"
+              value={description}
+              onChange={handleDescriptionChange}
+            />
+            <label id="form_label" htmlFor="description">
+              Description
+            </label>
+            <i></i>
+          </div>
+
+          {/* -----------------address------------------- */}
+
+          <div className="input-box">
+            <input
+              className="form_field"
+              id="first-line"
+              type="text"
+              value={firstLine}
+              onChange={handleFirstLineChange}
+            />
+            <label id="form_label" htmlFor="first-line">
+              First Line of Address
+            </label>
+            <i></i>
+          </div>
+
+          <div className="input-box">
+            <input
+              className="form_field"
+              id="city"
+              type="text"
+              value={city}
+              onChange={handleCityChange}
+            />
+            <label id="form_label" htmlFor="city">
+              City
+            </label>
+            <i></i>
+          </div>
+
+          <div className="input-box">
+            <input
+              className="form_field"
+              id="postcode"
+              type="text"
+              value={postcode}
+              onChange={handlePostcodeChange}
+            />
+            <label id="form_label" htmlFor="postcode">
+              Postcode
+            </label>
+            <i></i>
+          </div>
+
+          <div className="input-box">
+            <input
+              className="form_field"
+              id="neededByDate"
+              type="date"
+              value={neededByDate}
+              onChange={handleNeededByDateChange}
+            />
+            <label id="form_label" htmlFor="neededByDate">
+              Date Needed By
+            </label>
+            <i></i>
+          </div>
+
+          <input id="submit" type="submit" value="Submit" />
         </form>
         {error && <div className="error">{error}</div>}
       </div>
