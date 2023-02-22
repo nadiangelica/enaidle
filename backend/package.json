@@ -17,11 +17,6 @@
     "mongoose": "^6.9.2"
   },
   "devDependencies": {
-    "jest": "^29.4.3"
-    "mongoose": "^6.9.2",
-    "supertest": "^6.3.3"
-  },
-  "devDependencies": {
     "@shelf/jest-mongodb": "^4.1.6",
     "jest": "^29.4.3"
   },
