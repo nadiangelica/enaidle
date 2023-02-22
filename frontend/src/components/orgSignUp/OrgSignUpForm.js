@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-// import './OrgsSignUpForm.css';
+// import './OrgSignUpForm.css';
 
-const OrgsSignUpForm = ({ navigate }) => {
+const OrgSignUpForm = ({ navigate }) => {
 
   const [organisationName, setOrganisationName] = useState("");
   const [email, setEmail] = useState("");
@@ -87,4 +87,4 @@ const OrgsSignUpForm = ({ navigate }) => {
     );
 }
 
-export default OrgsSignUpForm;
+export default OrgSignUpForm;

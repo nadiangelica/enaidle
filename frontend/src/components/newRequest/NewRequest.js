@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 const NewRequestForm = ({ navigate }) => {
-  const [organisationName, setorganisationName] = useState("");
+  const [organisationName, setOrganisationName] = useState("");
   const [title, setTitle] = useState("");
   const [requirement, setRequirement] = useState("requirement");
   const [description, setDescription] = useState("");
   const [firstLine, setFirstLine] = useState("");
   const [city, setCity] = useState("");
   const [postcode, setPostcode] = useState("");
-  const [neededByDate, setneededByDate] = useState("");
+  const [neededByDate, setNeededByDate] = useState("");
   const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
@@ -48,7 +48,7 @@ const NewRequestForm = ({ navigate }) => {
   };
 
   const handleOrganisationNameChange = (event) => {
-    setorganisationName(event.target.value);
+    setOrganisationName(event.target.value);
   };
 
   const handleTitleChange = (event) => {
@@ -75,8 +75,8 @@ const NewRequestForm = ({ navigate }) => {
     setPostcode(event.target.value);
   };
 
-  const handleNeededByDateChange = (event) => {
-    setneededByDate(event.target.value);
+  const handleNeededByDate = (event) => {
+    setNeededByDate(event.target.value);
   };
 
   return (
@@ -94,7 +94,7 @@ const NewRequestForm = ({ navigate }) => {
               type="text"
               value={organisationName}
               onChange={handleOrganisationNameChange}
-              placeholder="Cancer Research"
+              placeholder="E.g. Cancer Research"
             />
             <i></i>
           </div>
@@ -152,7 +152,7 @@ const NewRequestForm = ({ navigate }) => {
               type="text"
               value={firstLine}
               onChange={handleFirstLineChange}
-              placeholder="2 Redman Place"
+              placeholder="E.g. 2 Redman Place"
             />
             <i></i>
           </div>
@@ -196,7 +196,7 @@ const NewRequestForm = ({ navigate }) => {
               id="neededByDate"
               type="date"
               value={neededByDate}
-              onChange={handleNeededByDateChange}
+              onChange={handleNeededByDate}
             />
             <i></i>
           </div>
