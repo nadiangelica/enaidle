@@ -1,6 +1,8 @@
 require('dotenv').config();
+
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
+
 const express = require('express');
 const listingRoutes = require('./routes/listings')
 const orgUserRoutes = require('./routes/orgUsers');
@@ -11,10 +13,21 @@ const app = express();
 // middleware
 app.use(express.json());
 
+// Loggin middleware
 app.use((req, res, next) => {
     console.log(req.path, req.method);
     next();
 })
+
+// CORS
+const cors = require('cors');
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 // routes
 app.use('/api/orgUsers', orgUserRoutes);
@@ -32,5 +45,6 @@ if (process.env.NODE_ENV !== 'test') {
             console.log(error);
     });
 }
+
 
 module.exports = app;

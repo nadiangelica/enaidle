@@ -1,5 +1,5 @@
 const OrgUser = require("../models/orgUser");
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const getAllOrgUsers = async (req, res) => {
   const orgUsers = await OrgUser.find({});
