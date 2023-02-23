@@ -13,7 +13,7 @@ const OrgUserSchema = new mongoose.Schema({
     required: [true, 'required'],
     validate: [validateEmail, "please use a valid email address"],
   },
-  charityNumber: String,
+  charityNumber: Number,
   password: {
     type: String,
     required: [true, 'required'],
