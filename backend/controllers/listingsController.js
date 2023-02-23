@@ -8,10 +8,11 @@ const getAllListings = async (req, res) => {
 }
 
 const createListing = async (req, res) => {
-  const {organisationName, title, description, address, neededByDate} = req.body;
+  const {organisationName, title, requirement, description, address, neededByDate} = req.body;
   const requiredFields = {
     organisationName: "organisationName",
     title: "title",
+    requirement: 'requirement',
     description: "description",
     address: "address",
     neededByDate: "neededByDate"
@@ -25,7 +26,7 @@ const createListing = async (req, res) => {
       .json({error: "Please fill in all fields", emptyFields})
   };
   try{
-      const listing = await Listing.create({organisationName, title, description, address, neededByDate});
+      const listing = await Listing.create({organisationName, title, requirement, description, address, neededByDate});
       res.status(200).json(listing);
     } catch (error){
         res.status(400).json({error: error.message});

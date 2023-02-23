@@ -1,49 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // import './OrgSignUpForm.css';
 
 const OrgSignUpForm = ({ navigate }) => {
-
   const [organisationName, setOrganisationName] = useState("");
   const [email, setEmail] = useState("");
   const [charityNumber, setCharityNumber] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, PATCH, OPTIONS",
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch("/api/orgUsers", {
-      method: 'POST',
-      body: JSON.stringify({organisationName: organisationName, email: email, charityNumber: charityNumber, password: password}),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    const response = await fetch("http://localhost:4000/api/orgUsers", {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: headers,
+      body: JSON.stringify({
+        organisationName: organisationName,
+        email: email,
+        charityNumber: charityNumber,
+        password: password,
+      })
+    });
 
-    const json = await response.json()
+    const json = await response.json();
 
     if (!response.ok) {
-      setError(json.message)
+      setError(json.message);
     }
 
     if (response.ok) {
-      navigate('/login')
-      setError(null)
-      console.log('Request Submitted')
+      navigate("/login");
+      setError(null);
+      console.log("Request Submitted");
     }
-  }
+  };
 
   const handleOrganisationNameChange = (event) => {
-    setOrganisationName(event.target.value)
-  }
-  
+    setOrganisationName(event.target.value);
+  };
+
   const handleEmailChange = (event) => {
-    setEmail(event.target.value)
-  }
+    setEmail(event.target.value);
+  };
 
   const handleCharityNumberChange = (event) => {
-    setCharityNumber(event.target.value)
-  }
+    setCharityNumber(event.target.value);
+  };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value)
@@ -81,9 +91,15 @@ const OrgSignUpForm = ({ navigate }) => {
             <input id='submit' type="submit" value="Sign Up" />
           </form>
           {error && <div className="error">{error}</div>}
+
+    
           </div>
-      </main>
-    );
-}
+          <input id="submit" type="submit" value="Sign Up" />
+        </form>
+        {error && <div className="error">{error}</div>}
+      </div>
+    </main>
+  );
+};
 
 export default OrgSignUpForm;
