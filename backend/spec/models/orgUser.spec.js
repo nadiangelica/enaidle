@@ -44,7 +44,7 @@ describe("OrgUser model", () => {
         charityNumber: "123456",
         password: "password",
     });
-    expect(orgUser.charityNumber).toEqual("123456");
+    expect(orgUser.charityNumber).toEqual(123456);
   });
 
   it("accepts a blank charity number", () => {
@@ -54,6 +54,6 @@ describe("OrgUser model", () => {
         charityNumber: "",
         password: "password",
     });
-    expect(orgUser.charityNumber).toEqual("");
+    expect(orgUser.charityNumber).toEqual(null);
   });
 });
