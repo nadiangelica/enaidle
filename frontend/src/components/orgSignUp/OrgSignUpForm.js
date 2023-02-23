@@ -91,12 +91,6 @@ const OrgSignUpForm = ({ navigate }) => {
             <input id='submit' type="submit" value="Sign Up" />
           </form>
           {error && <div className="error">{error}</div>}
-
-    
-          </div>
-          <input id="submit" type="submit" value="Sign Up" />
-        </form>
-        {error && <div className="error">{error}</div>}
       </div>
     </main>
   );

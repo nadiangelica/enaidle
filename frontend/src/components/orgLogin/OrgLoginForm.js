@@ -9,7 +9,7 @@ const OrgsLoginForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch("/api/orgUsers", {
+    const response = await fetch("http://localhost:4000/api/orgUsers", {
       method: "POST",
       body: JSON.stringify({
         email: email,
@@ -32,7 +32,7 @@ const OrgsLoginForm = ({ navigate }) => {
       // not sure if it's org_user_id or is orgUser_id? 
       window.localStorage.setItem("org_user_id", data.org_user_id);
       // route path "/listing" needs to be ammend to the same path (which ever pair is working on creating this path)
-      navigate("/listings");
+      navigate("/request-feed");
     }
   };
 
