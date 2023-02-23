@@ -9,7 +9,7 @@ const getAllOrgUsers = async (req, res) => {
 const createOrgUser = async (req, res) => {
   try {
     const orgUser = await OrgUser.create(req.body);
-    res.status(200).json(orgUser);
+    res.status(201).json({message: "Thanks! your account has been successfully created"});
   } catch (error){
     res.status(400).json({error: error.message});
   }

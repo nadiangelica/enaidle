@@ -34,15 +34,17 @@ app.use('/api/orgUsers', orgUserRoutes);
 app.use('/api/listings', listingRoutes)
 
 // listen for requests
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {
-        app.listen(process.env.PORT, () => {
-            console.log('connected to db & listening on port', process.env.PORT);
+if (process.env.NODE_ENV !== 'test') {
+    mongoose.connect(process.env.MONGO_URI)
+        .then(() => {
+            app.listen(process.env.PORT, () => {
+                console.log('connected to db & listening on port', process.env.PORT);
+            })
         })
-    })
-    .catch((error) => {
-        console.log(error);
-});
+        .catch((error) => {
+            console.log(error);
+    });
+}
 
 
 module.exports = app;
