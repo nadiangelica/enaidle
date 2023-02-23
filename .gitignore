@@ -1,7 +1,27 @@
 # Dependency directories
 backend/node_modules
 backend/.env
+
+
+# from .gitignore frontend folder 
+frontend/.pnp
+frontend/.pnp.js
+
+# testing
+frontend/coverage
+
+# production
+frontend/build
+
+# misc
+frontend/.DS_Store
+
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
 backend/coverage
 backend/node_modules/.package-lock.json
 
 frontend/node_modules
+

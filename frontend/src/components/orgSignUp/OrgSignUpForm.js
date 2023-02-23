@@ -56,68 +56,43 @@ const OrgSignUpForm = ({ navigate }) => {
   };
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
+    setPassword(event.target.value)
+  }
 
-  return (
-    <main>
-      <h2 id="sign-up-title">Sign up now!</h2>
-      <div className="container">
-        <form className="signUpLoginForm" onSubmit={handleSubmit}>
-          <div className="input-box">
-            <input
-              className="form_field"
-              id="organisation-name"
-              type="text"
-              value={organisationName}
-              onChange={handleOrganisationNameChange}
-            />
-            <label id="form_label" htmlFor="email">
-              Organisation Name
-            </label>
-            <i></i>
-          </div>
 
-          <div className="input-box">
-            <input
-              className="form_field"
-              id="email"
-              type="text"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            <label id="form_label" htmlFor="email">
-              Email
-            </label>
-            <i></i>
-          </div>
+    return (
+      <main>
+        <h2 id='sign-up-title'>Sign up now!</h2>
+        <div className="container">
+          <form className='signUpLoginForm' onSubmit={handleSubmit}>
+            <div className="input-box">
+              <label id='form_label' htmlFor='email'>Organisation Name</label >
+              <input className='form_field' id="organisation-name" type='text' value={ organisationName } onChange={handleOrganisationNameChange} />
+              <i></i>
+            </div>
 
-          <div className="input-box">
-            <input
-              className="form_field"
-              id="charity-number"
-              type="text"
-              value={charityNumber}
-              onChange={handleCharityNumberChange}
-            />
-            <label id="form_label" htmlFor="email">
-              Charity Number (if applicable)
-            </label>
-            <i></i>
-          </div>
+            <div className="input-box">
+              <label id='form_label' htmlFor='email'>Email Address</label >
+              <input className='form_field' id="email" type='text' value={ email } onChange={handleEmailChange} />
+              <i></i>
+            </div>
 
-          <div className="input-box">
-            <input
-              className="form_field"
-              id="password"
-              type="password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            <label id="form_label" htmlFor="password">
-              Password
-            </label>
-            <i></i>
+            <div className="input-box">
+              <label id='form_label' htmlFor='email'>Charity Number (if applicable)</label >
+              <input className='form_field' id="charity-number" type='text' value={ charityNumber } onChange={handleCharityNumberChange} />
+              <i></i>
+
+            </div>
+            <div className="input-box">
+              <label id='form_label' htmlFor='password'>Password</label>
+              <input className='form_field' id="password" type='password' value={ password } onChange={handlePasswordChange} />
+              <i></i>
+            </div> 
+            <input id='submit' type="submit" value="Sign Up" />
+          </form>
+          {error && <div className="error">{error}</div>}
+
+    
           </div>
           <input id="submit" type="submit" value="Sign Up" />
         </form>

@@ -29,7 +29,9 @@ const OrgsLoginForm = ({ navigate }) => {
       let data = await response.json();
       console.log(data);
       window.localStorage.setItem("token", data.token);
+      // not sure if it's org_user_id or is orgUser_id? 
       window.localStorage.setItem("org_user_id", data.org_user_id);
+      // route path "/listing" needs to be ammend to the same path (which ever pair is working on creating this path)
       navigate("/listings");
     }
   };
@@ -48,6 +50,9 @@ const OrgsLoginForm = ({ navigate }) => {
       <div className="container">
         <form className="signUpLoginForm" onSubmit={handleSubmit}>
           <div className="input-box">
+            <label id="form_label" htmlFor="email">
+              Email Address
+            </label>
             <input
               className="form_field"
               id="email"
@@ -55,13 +60,13 @@ const OrgsLoginForm = ({ navigate }) => {
               value={email}
               onChange={handleEmailChange}
             />
-            <label id="form_label" htmlFor="email">
-              Email
-            </label>
             <i></i>
           </div>
 
           <div className="input-box">
+            <label id="form_label" htmlFor="password">
+              Password
+            </label>
             <input
               className="form_field"
               id="password"
@@ -69,9 +74,6 @@ const OrgsLoginForm = ({ navigate }) => {
               value={password}
               onChange={handlePasswordChange}
             />
-            <label id="form_label" htmlFor="password">
-              Password
-            </label>
             <i></i>
           </div>
           <input id="submit" type="submit" value="LOGIN" />
