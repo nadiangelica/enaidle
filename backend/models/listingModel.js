@@ -11,6 +11,10 @@ const listingSchema = new Schema({
     type: String,
     required: true
   },
+  requirement: {
+    type: String,
+    required: true
+  },
   description: {
     type: String,
     required: true
