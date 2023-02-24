@@ -1,9 +1,9 @@
 const IndUser = require('../models/indUserModel')
 
 //get all individual users
-const getIndUsers = async (req, res) => {
+const getAllIndUsers = async (req, res) => {
     const indUsers = await IndUser.find({}).sort({createdAt: -1})
-    response.status(200).json(indUsers)
+    res.status(200).json(indUsers)
 }
 
 //create a new individual user
@@ -20,5 +20,5 @@ const createIndUser = async (req,  res) => {
 
 module.exports = {
     createIndUser,
-    getIndUsers
+    getAllIndUsers
 }
