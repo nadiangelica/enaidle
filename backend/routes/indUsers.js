@@ -1,4 +1,5 @@
 const express = require('express')
+const IndUser = require('../models/indUser')
 
 const router = express.Router()
 
@@ -8,8 +9,15 @@ router.get('/', (req, res) => {
 })
 
 //POST a new individual user
-router.post('/', (req, res) => {
-    res.json({message: 'POST a new individual user'})
+router.post('/', async (req, res) => {
+    const {firstName, surname, email, password} = req.body
+
+    try {
+      const indUser = await IndUser.create({firstName, surname, email, password})
+      res.status(200).json(indUser)
+    } catch (error) {
+      res.status(400).json({error: error.message})
+    }
 })
 
 module.exports = router;
