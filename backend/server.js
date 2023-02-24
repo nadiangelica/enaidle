@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
 
 const express = require('express');
-const listingRoutes = require('./routes/listings')
+const listingRoutes = require('./routes/listings');
 const orgUserRoutes = require('./routes/orgUsers');
+const indUserRoutes = require('./routes/indUsers');
 
 // express app
 const app = express();
@@ -19,19 +20,20 @@ app.use((req, res, next) => {
     next();
 })
 
-// CORS
-const cors = require('cors');
-const corsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
-  optionSuccessStatus: 200,
-};
+// // CORS
+// const cors = require('cors');
+// const corsOptions = {
+//   origin: 'http://localhost:3000',
+//   credentials: true,
+//   optionSuccessStatus: 200,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // routes
 app.use('/api/orgUsers', orgUserRoutes);
-app.use('/api/listings', listingRoutes)
+app.use('/api/listings', listingRoutes);
+app.use('/api/indUsers', indUserRoutes);
 
 // listen for requests
 if (process.env.NODE_ENV !== 'test') {
