@@ -1,5 +1,5 @@
 const express = require('express')
-const IndUser = require('../models/indUser')
+const IndUser = require('../models/indUserModel')
 
 const router = express.Router()
 
