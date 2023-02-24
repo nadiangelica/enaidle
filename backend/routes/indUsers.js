@@ -2,7 +2,7 @@ const express = require('express')
 const {
     createIndUser,
     getAllIndUsers
-} = require('../controllers/indUserController')
+} = require('../controllers/indUsersController')
 
 const router = express.Router()
 
