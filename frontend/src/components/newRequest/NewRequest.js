@@ -14,7 +14,6 @@ const NewRequestForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // '/users' to be amended when we have clarity of route path for backend
     const response = await fetch("http://localhost:4000/api/listings", {
       method: "POST",
       body: JSON.stringify({
