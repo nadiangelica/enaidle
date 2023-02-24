@@ -22,16 +22,16 @@ app.use((req, res, next) => {
 // CORS
 const cors = require('cors');
 const corsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
-  optionSuccessStatus: 200,
+    origin: 'http://localhost:3000',
+    credentials: true,
+    optionSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
 
 // routes
 app.use('/api/orgUsers', orgUserRoutes);
-app.use('/api/listings', listingRoutes)
+app.use('/api/listings', listingRoutes);
 
 // listen for requests
 if (process.env.NODE_ENV !== 'test') {
@@ -39,12 +39,11 @@ if (process.env.NODE_ENV !== 'test') {
         .then(() => {
             app.listen(process.env.PORT, () => {
                 console.log('connected to db & listening on port', process.env.PORT);
-            })
+            });
         })
         .catch((error) => {
             console.log(error);
     });
-}
-
+};
 
 module.exports = app;

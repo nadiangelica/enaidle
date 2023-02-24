@@ -38,6 +38,6 @@ const listingSchema = new Schema({
       type: Date,
       required: true
     }
-  }, { timestamps: true })
+  }, { timestamps: true });
 
-module.exports = mongoose.model('Listing', listingSchema)
+module.exports = mongoose.model('Listing', listingSchema);
