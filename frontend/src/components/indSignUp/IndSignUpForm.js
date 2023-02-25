@@ -18,7 +18,6 @@ const IndSignUpForm = ({ navigate }) => {
 
     const response = await fetch("/api/indUsers", {
       method: "POST",
-      mode: "cors",
       credentials: "include",
       headers: headers,
       body: JSON.stringify({
