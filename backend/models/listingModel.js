@@ -37,6 +37,10 @@ const listingSchema = new Schema({
     neededByDate: {
       type: Date,
       required: true
+    },
+    comments: {
+      type: [OrgCommentSchema],
+      default: []
     }
   }, { timestamps: true });
 
