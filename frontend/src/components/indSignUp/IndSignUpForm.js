@@ -16,7 +16,7 @@ const IndSignUpForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:4000/api/indUsers", {
+    const response = await fetch("/api/indUsers", {
       method: "POST",
       mode: "cors",
       credentials: "include",
