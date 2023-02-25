@@ -56,9 +56,8 @@ const OrgSignUpForm = ({ navigate }) => {
   };
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value)
-  }
-
+    setPassword(event.target.value);
+  };
 
     return (
       <main>
