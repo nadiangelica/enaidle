@@ -18,16 +18,6 @@ const createListing = async (req, res) => {
     neededByDate: "neededByDate"
   };
 
-  // const emptyFields = Object.entries(requiredFields)
-  //   .filter(([key, value]) => !req.body[key])
-  //   .map(([key, value]) => value);
-
-  // if (emptyFields.length > 0) {
-  //   return res
-  //     .status(400)
-  //     .json({error: "Please fill in all fields", emptyFields})
-  // };
-
   try {
     const listing = await Listing.create({organisationName, title, requirement, description, address, neededByDate});
     res.status(200).json(listing);
