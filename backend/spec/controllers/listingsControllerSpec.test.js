@@ -2,8 +2,10 @@ const mongoose = require("mongoose");
 const {
   getAllListings,
   createListing,
+  getAllComments,
+  addCommentToAd
 } = require("../../controllers/listingsController");
-const ListingModel = require("../../models/listingModel");
+const Listing = require("../../models/listingModel");
 
 // Use jest.mock() to mock the Listing model, so we can test the controller functions in isolation
 jest.mock("../../models/listingModel");
@@ -16,7 +18,7 @@ describe("getAllListings", () => {
       { title: "Test Listing 2", createdAt: new Date("2022-01-02") },
       { title: "Test Listing 3", createdAt: new Date("2022-01-03") },
     ];
-    ListingModel.find.mockResolvedValue(listings);
+    Listing.find.mockResolvedValue(listings);
 
     // Call the getAllListings function
     const req = {};
@@ -35,7 +37,7 @@ describe("getAllListings", () => {
 describe("createListing", () => {
   beforeEach(() => {
     //  Reset the mock before each test
-    ListingModel.create.mockReset();
+    Listing.create.mockReset();
   });
 
   it("should create a new listing with valid input", async () => {
@@ -60,7 +62,7 @@ describe("createListing", () => {
     await createListing(req, res);
 
     // Check that the listing was created with the correct input
-    expect(ListingModel.create).toHaveBeenCalledWith({
+    expect(Listing.create).toHaveBeenCalledWith({
       organisationName: "Test Organisation",
       title: "Test Listing",
       description: "Test description",
