@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const OrgUser = require("../../models/orgUser")
+const OrgUser = require("../../models/orgUserModel")
 
 describe("OrgUser model", () => {
   // beforeEach(async () => {
