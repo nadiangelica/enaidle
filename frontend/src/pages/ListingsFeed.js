@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useListingsContext } from '../hooks/useListingsContext';
 import ListingsFeed from '../components/ListingsFeed';
+import CreateForm from '../components/CreateForm';
+
 
 
 const Listings = () => {
@@ -26,6 +28,7 @@ const Listings = () => {
             {listings && listings.map((listing) => (
                 <ListingsFeed key={listing._id} listing={listing} />
             ))}
+            <CreateForm />
         </div>
     )
 }

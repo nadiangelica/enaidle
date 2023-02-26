@@ -1,0 +1,64 @@
+import React from 'react';
+import { useListingsContext } from '../hooks/useListingsContext';
+
+const CreateForm = (props) => {
+    const { dispatch } = useListingsContext();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const { title, organisationName, description, requirement, firstLine, city, postcode, neededByDate } = e.target.elements;
+        const listing = {
+             title: title.value,
+            organisationName: organisationName.value,
+            description: description.value,
+            requirement: requirement.value,
+            address: {
+                firstLine: firstLine.value,
+                city: city.value,
+                postcode: postcode.value
+            },
+            neededByDate: neededByDate.value
+        }
+        const createListing = async () => {
+            const response = await fetch('/api/listings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(listing)
+            });
+            const json = await response.json();
+            if (response.ok) {
+                dispatch({ type: 'CREATE_LISTING', payload: json });
+            } else {
+                dispatch({ type: 'SET_ERROR', payload: json });
+            }
+        }
+        createListing();
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <label htmlFor="title">Title</label>
+            <input type="text" name="title" id="title" />
+            <label htmlFor="organisationName">Organisation Name</label>
+            <input type="text" name="organisationName" id="organisationName" />
+            <label htmlFor="description">Description</label>
+            <input type="text" name="description" id="description" />
+            <label htmlFor="requirement">Requirement</label>
+            <input type="text" name="requirement" id="requirement" />
+            <label htmlFor="firstLine">Address</label>
+            <input type="text" name="firstLine" id="firstLine" />
+            <label htmlFor="city">City</label>
+            <input type="text" name="city" id="city" />
+            <label htmlFor="postcode">Postcode</label>
+            <input type="text" name="postcode" id="postcode" />
+            <label htmlFor="neededByDate">Needed By Date</label>
+            <input type="date" name="neededByDate" id="neededByDate" />
+            <button type="submit">Create Listing</button>
+        </form>
+    )
+}
+
+
+export default CreateForm;
