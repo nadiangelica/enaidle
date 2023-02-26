@@ -55,6 +55,9 @@
 const mongoose = require('mongoose');
 
 const connect = async () => {
+  if (mongoose.connection.readyState == 1) {
+    await mongoose.connection.close()
+  }
   await mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -81,6 +84,7 @@ const close = async () => {
   for (const key in collections) {
     await collections[key].deleteMany();
   }
+ await mongoose.connection.close()
 };
 
 module.exports = { connect, clear, close };
