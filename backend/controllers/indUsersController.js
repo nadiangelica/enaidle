@@ -9,10 +9,10 @@ const getAllIndUsers = async (req, res) => {
 
 //create a new individual user
 const createIndUser = async (req,  res) => {
-    const {firstName, surname, email, password} = req.body
+    const {firstName, lastName, email, password} = req.body
 
     try {
-      const indUser = await IndUser.create({firstName, surname, email, password})
+      const indUser = await IndUser.create({firstName, lastName, email, password})
       res.status(201).json({message: "Thanks! your account has been successfully created"})
     } catch (error) {
       res.status(400).json({error: error.message})

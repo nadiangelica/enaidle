@@ -20,16 +20,6 @@ app.use((req, res, next) => {
     next();
 })
 
-// // CORS
-// const cors = require('cors');
-// const corsOptions = {
-//   origin: 'http://localhost:3000',
-//   credentials: true,
-//   optionSuccessStatus: 200,
-// };
-
-// app.use(cors(corsOptions));
-
 // routes
 app.use('/api/orgUsers', orgUserRoutes);
 app.use('/api/listings', listingRoutes);

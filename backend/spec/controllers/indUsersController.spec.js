@@ -26,7 +26,7 @@ describe("/indUsers", () => {
     });
   });
 
-    describe("POST, when user first name, surname, email or password are invalid", () => {
+  describe("POST, when user first name, surname, email or password are invalid", () => {
     test("the response code is 400 and returns an error stating first name is required", async () => {
       let response = await agent
         .post("/api/indUsers")
