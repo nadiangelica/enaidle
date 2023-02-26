@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const {getAllOrgUsers, createOrgUser} = require("../controllers/orgUsersController");
+const {loginOrgUser, createOrgUser} = require("../controllers/orgUsers");
 
-router.get("/", getAllOrgUsers);
-router.post("/", createOrgUser);
+router.post("/login", loginOrgUser);
+router.post("/signup", createOrgUser);
 
 module.exports = router;
