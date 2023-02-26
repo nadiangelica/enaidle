@@ -8,6 +8,3 @@ router.delete('/listings/:id' , deleteListing);
 
 
 module.exports = router;
-
-
-

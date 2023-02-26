@@ -1,5 +1,5 @@
-const Listing = require("../models/listingModel");
-const mongoose = require("mongoose");
+const Listing = require('../models/listingModel');
+const mongoose = require('mongoose');
 
 const getAllListings = async (req, res) => {
   const listings = await Listing.find({});
