@@ -5,9 +5,9 @@ const OrgUserModel = require("../../controllers/orgUsersController");
 
 const agent = request.agent(server);
 
-beforeAll(async () => await db.connect());
+// beforeAll(async () => await db.connect());
 beforeEach(async () => await db.clear());
-afterAll(async () => await db.close());
+// afterAll(async () => await db.close());
 
 describe("Given OrgUser", () => {
   describe("POST, organisation name; email; password are provided", () => {
