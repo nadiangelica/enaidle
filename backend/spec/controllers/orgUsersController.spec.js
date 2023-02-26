@@ -1,7 +1,7 @@
 const server = require("../../server");
 const request = require("supertest");
 const db = require("../../spec/mongoMemoryDB");
-const OrgUser = require("../../controllers/orgUsersController");
+const OrgUserModel = require("../../controllers/orgUsersController");
 
 const agent = request.agent(server);
 
