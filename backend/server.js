@@ -4,6 +4,8 @@ mongoose.set("strictQuery", true);
 const express = require("express");
 const listingRoutes = require("./routes/listings");
 const orgUserRoutes = require("./routes/orgUsers");
+const indUserRoutes = require('./routes/indUsers');
+
 
 // express app
 const app = express();
@@ -13,6 +15,7 @@ app.use(express.json());
 
 // Login middleware
 app.use((req, res, next) => {
+
   console.log(req.path, req.method);
   next();
 });
@@ -20,6 +23,7 @@ app.use((req, res, next) => {
 // routes
 app.use("/api/orgUsers", orgUserRoutes);
 app.use("/api/listings", listingRoutes);
+app.use('/api/indUsers', indUserRoutes);
 
 // listen for requests
 mongoose
