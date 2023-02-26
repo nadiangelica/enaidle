@@ -3,12 +3,13 @@ import { useListingsContext } from '../hooks/useListingsContext';
 
 const CreateForm = (props) => {
     const { dispatch } = useListingsContext();
+    const id = localStorage.getItem('id');
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const { title, organisationName, description, requirement, firstLine, city, postcode, neededByDate } = e.target.elements;
         const listing = {
-             title: title.value,
+            title: title.value,
             organisationName: organisationName.value,
             description: description.value,
             requirement: requirement.value,
@@ -19,22 +20,8 @@ const CreateForm = (props) => {
             },
             neededByDate: neededByDate.value
         }
-        const createListing = async () => {
-            const response = await fetch('/api/listings', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(listing)
-            });
-            const json = await response.json();
-            if (response.ok) {
-                dispatch({ type: 'CREATE_LISTING', payload: json });
-            } else {
-                dispatch({ type: 'SET_ERROR', payload: json });
-            }
-        }
-        createListing();
+        // props is passed in from ListingsFeed.js
+        props.createListing(listing);
     }
 
     return (
@@ -55,7 +42,7 @@ const CreateForm = (props) => {
             <input type="text" name="postcode" id="postcode" />
             <label htmlFor="neededByDate">Needed By Date</label>
             <input type="date" name="neededByDate" id="neededByDate" />
-            <button type="submit">Create Listing</button>
+            <button type="submit">{props.buttonTitle}</button>
         </form>
     )
 }

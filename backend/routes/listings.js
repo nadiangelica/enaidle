@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const {getAllListings, createListing, deleteListing} = require('../controllers/listingsController')
+const {getAllListings, createListing, deleteListing, updateListing} = require('../controllers/listingsController')
 
 router.get('/' , getAllListings);
 router.post('/' , createListing);
-router.delete('/:id' , deleteListing);
+// router.delete('/:id' , deleteListing);
+router.patch('/:id' , updateListing);
 
 
 module.exports = router;

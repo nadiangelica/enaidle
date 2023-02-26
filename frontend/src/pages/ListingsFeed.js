@@ -8,6 +8,23 @@ import CreateForm from '../components/CreateForm';
 const Listings = () => {
     const { listings,  dispatch } = useListingsContext();
 
+    // post request to create a new listing
+    const createListing = async (listing) => {
+        const response = await fetch('/api/listings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(listing)
+        });
+        const json = await response.json();
+        if (response.ok) {
+            dispatch({ type: 'CREATE_LISTING', payload: json });
+        } else {
+            dispatch({ type: 'SET_ERROR', payload: json });
+        }
+    }
+
     useEffect(() => {
         const fetchListings = async () => {
             const response = await fetch('/api/listings');
@@ -28,7 +45,10 @@ const Listings = () => {
             {listings && listings.map((listing) => (
                 <ListingsFeed key={listing._id} listing={listing} />
             ))}
-            <CreateForm />
+            <CreateForm 
+                createListing={createListing}
+                buttonTitle="Create Listing"
+            />
         </div>
     )
 }
