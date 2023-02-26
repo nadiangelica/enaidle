@@ -41,7 +41,7 @@ const getAllComments = async (req, res) => {
   res.status(200).json(listings);
 };
 
-const addCommentToRequest = async (req, res) => {
+const addCommentToAd = async (req, res) => {
   const listingId = req.params.id; // ID of the listing to add the comment to
   const comment = req.body.comment; // New comment to add
 
@@ -79,5 +79,5 @@ module.exports = {
   getAllListings,
   createListing,
   getAllComments,
-  addCommentToRequest
+  addCommentToAd
 };
