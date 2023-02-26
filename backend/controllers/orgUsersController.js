@@ -1,4 +1,4 @@
-const OrgUser = require("../models/orgUser");
+const OrgUser = require("../models/orgUserModel");
 const jwt = require("jsonwebtoken");
 
 
