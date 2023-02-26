@@ -9,13 +9,13 @@ beforeEach(async () => await db.clear());
 afterAll(async () => await db.close());
 
 describe("/indUsers", () => {
-  describe("POST, when user first name, surname, email and password are valid", () => {
+  describe("POST, when user first name, last name, email and password are valid", () => {
     test("the response code is 201 and returns a message to say signup has been successful", async () => {
       let response = await agent
         .post("/api/indUsers")
         .send({ 
           firstName: "John", 
-          surname: "Jason", 
+          lastName: "Jason", 
           email: "JohnJason@email.com", 
           password: "1234" 
         });
@@ -26,13 +26,13 @@ describe("/indUsers", () => {
     });
   });
 
-  describe("POST, when user first name, surname, email or password are invalid", () => {
+  describe("POST, when user first name, lastName, email or password are invalid", () => {
     test("the response code is 400 and returns an error stating first name is required", async () => {
       let response = await agent
         .post("/api/indUsers")
         .send({ 
           firstName: "", 
-          surname: "Jason", 
+          lastName: "Jason", 
           email: "JohnJason@email.com", 
           password: "1234" 
         });
@@ -42,18 +42,18 @@ describe("/indUsers", () => {
       });
     });
 
-    test("the response code is 400 and returns an error stating surname is required", async () => {
+    test("the response code is 400 and returns an error stating lastName is required", async () => {
       let response = await agent
         .post("/api/indUsers")
         .send({ 
           firstName: "John", 
-          surname: "", 
+          lastName: "", 
           email: "JohnJason@email.com", 
           password: "1234" 
         });
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
-        error: "IndUser validation failed: surname: required",
+        error: "IndUser validation failed: lastName: required",
       });
     });
 
@@ -62,7 +62,7 @@ describe("/indUsers", () => {
         .post("/api/indUsers")
         .send({ 
           firstName: "John", 
-          surname: "Jason", 
+          lastName: "Jason", 
           email: "", 
           password: "1234" 
         });
@@ -77,7 +77,7 @@ describe("/indUsers", () => {
         .post("/api/indUsers")
         .send({ 
           firstName: "John", 
-          surname: "Jason", 
+          lastName: "Jason", 
           email: "JohnJason@", 
           password: "1234" 
         });
@@ -92,7 +92,7 @@ describe("/indUsers", () => {
         .post("/api/indUsers")
         .send({ 
           firstName: "John", 
-          surname: "Jason", 
+          lastName: "Jason", 
           email: "JohnJason@mail.com", 
           password: "" 
         });
@@ -107,7 +107,7 @@ describe("/indUsers", () => {
         .post("/api/indUsers")
         .send({ 
           firstName: "John", 
-          surname: "Jason", 
+          lastName: "Jason", 
           email: "JohnJason@mail.com", 
           password: "123" 
         });
