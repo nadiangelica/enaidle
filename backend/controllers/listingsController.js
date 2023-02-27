@@ -26,10 +26,11 @@ const createListing = async (req, res) => {
       description,
       address,
       neededByDate,
+      comments: [],
     });
     res.status(200).json(listing);
-  } catch (error)  {
-    res.status(400).json({  error: error.message  });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -47,8 +48,34 @@ const deleteListing = async (req, res) => {
   }
 };
 
+const findAListingById = async (req, res) => {
+  // try {
+  //   const listing = await Listing.findById({ _id: req.params._id });
+  //   res.status(200).json(foundListing);
+  // } catch (error)  {
+  //   res.status(400).json({  error: error.message  });
+  // }
+
+  // const listingId = req.param.id;
+  console.log(req.params);
+  // console.log(listingId);
+  try {
+    const foundListing = await Listing.findById(req.params.id);
+    // const foundListing = await Listing.findById(new mongoose.Types.ObjectId(req.params.id));
+    console.log(foundListing);
+    if (foundListing) {
+      res.status(200).json(foundListing);
+    } else {
+      res.status(404).json({ error: "Listing not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ error: error.message });
+  }
+};
+
 const addCommentToAListing = async (req, res) => {
-  const listing = await Listing.find({ _id: req.params.listingId });
+  const listing = await Listing.findById({ _id: req.params.id });
 
   try {
     let comment;
@@ -57,14 +84,14 @@ const addCommentToAListing = async (req, res) => {
         orgUser_id: req.body.orgUserId,
         content: req.body.content,
       });
-    } else if (req.body.indUserId) {
+    } else {
       comment = new Comment({
         indUser_id: req.body.indUserId,
         content: req.body.content,
       });
     }
 
-    listing.Comments.push(comment);
+    listing.comments.push(comment);
 
     const updatedListing = await listing.save();
 
@@ -78,5 +105,6 @@ module.exports = {
   getAllListings,
   createListing,
   deleteListing,
+  findAListingById,
   addCommentToAListing,
 };
