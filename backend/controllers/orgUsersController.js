@@ -32,6 +32,25 @@ const createOrgUser = async (req, res) => {
   }
 }
 
+const findOrgUserById = async (req, res) => {
+  const orgUserId = req.params.org_user_id;
+console.log(orgUserId)
+  try {
+    const orgUser = await OrgUser.find({_id:orgUserId});
+    res.status(200).json(orgUser);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+const getAllOrgUsers= async (req, res) => {
+  try {
+    const orgUser = await OrgUser.find({});
+    res.status(200).json(orgUser);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+
 module.exports = {
-  loginOrgUser, createOrgUser
+  loginOrgUser, createOrgUser, findOrgUserById, getAllOrgUsers
 };
