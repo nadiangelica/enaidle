@@ -17,7 +17,7 @@
 3. Then cd into the frontend folder and run `npm start`
   ```
   ; cd frontend
-  ; npm run start
+  ; npm start
   ```
 ## Testing
 #### The Backend (API)
