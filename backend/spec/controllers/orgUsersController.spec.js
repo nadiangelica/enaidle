@@ -1,16 +1,16 @@
 const server = require("../../server");
 const request = require("supertest");
 const db = require("../../spec/mongoMemoryDB");
-const OrgUserModel = require("../../controllers/orgUsersController");
+const OrgUser = require("../../controllers/orgUsersController");
 
 const agent = request.agent(server);
-
+// Comment line 8 and line 10 as it's causing conflicts, saying we're trying to establish 2 database connections when it can only listen to one
 // beforeAll(async () => await db.connect());
 beforeEach(async () => await db.clear());
 // afterAll(async () => await db.close());
 
-describe("Given OrgUser", () => {
-  describe("POST, organisation name; email; password are provided", () => {
+describe("OrgUser Controller", () => {
+  describe("When a client signs up", () => {
     test("the response code is 201 and returns the orgUser details created", async () => {
       const orgUser = {
         organisationName: "Puppies Trust",
@@ -76,7 +76,7 @@ describe("Given OrgUser", () => {
     });
   });
 
-  describe("it display error messages accodingly when a client does not complete the signup form correctly", () => {
+  describe("It display error messages when a client signups with missing or invalid inputs", () => {
     test("response code is 400 when organisationName is missing", async () => {
       let response = await request(server).post(`/api/orgUsers/signup`).send({
         organisationName: "",
@@ -164,7 +164,7 @@ describe("Given OrgUser", () => {
     });
   });
 
-  describe("throws error meessages when the client already has an account", () => {
+  describe("Throws error meessages when the client already has an account", () => {
     test("should display 'User already exists' when a client trys to sign up the same email address", async() => {
       const orgUser1 = {
         organisationName: "Puppies Trust 1",
@@ -190,7 +190,7 @@ describe("Given OrgUser", () => {
     })
   })
 
-  describe("When the client trys logging in", () => {
+  describe("When the client logs in", () => {
     const orgUser = {
       organisationName: "Puppies Trust 1",
       email: "puppy@gmail.com",

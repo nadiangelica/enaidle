@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
-require("../models/mongodb_helper");
+// const request = require("supertest");
+const db = require("../../spec/mongoMemoryDB");
 
 const OrgUser = require("../../models/orgUserModel");
 
 describe("OrgUser model", () => {
-  beforeEach(async () => {
-    await mongoose.connection.collections.orgusers.drop(() => {});
-  });
+  beforeAll(async () => await db.connect());
+  beforeEach(async () => await db.clear());
+  afterAll(async () => await db.close());
 
   it("has the organisation name", () => {
     const orgUser = new OrgUser({
@@ -50,7 +51,7 @@ describe("OrgUser model", () => {
     expect(orgUser.password).toEqual("password");
   });
 
-  describe("returns error messages when input fields are not filled out correctly", () => {
+  describe("Returns error messages when input fields are not filled out correctly", () => {
     it("accepts a blank charity number", () => {
       const orgUser = new OrgUser({
         organisationName: "Organisation",
@@ -69,6 +70,6 @@ describe("OrgUser model", () => {
         password: "",
       });
       expect(orgUser.error).not.toEqual("");
-    })
+    });
   });
 });
