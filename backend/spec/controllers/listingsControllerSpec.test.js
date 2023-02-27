@@ -104,7 +104,7 @@ describe("Create a listing", () => {
   });
 
   describe("Create a Comment", () => {
-    it("when an org user adds a comment to a listing", async () => {
+    it("org user can add a comment to a listing", async () => {
       const listing = {
         title: "Test Listing 1",
         createdAt: new Date("2022-01-01"),
