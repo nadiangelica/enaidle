@@ -46,6 +46,7 @@ describe("Create a listing", () => {
       body: {
         organisationName: "Test Organisation",
         title: "Test Listing",
+        requirement: "Volunteering",
         description: "Test description",
         address: {
           firstLine: "Test address",
@@ -66,12 +67,14 @@ describe("Create a listing", () => {
       organisationName: "Test Organisation",
       title: "Test Listing",
       description: "Test description",
+      requirement: "Volunteering",
       address: {
         firstLine: "Test address",
         city: "London",
         postcode: "SW35SA",
       },
       neededByDate: new Date("2022-01-01"),
+      comments: []
     });
   });
 
@@ -106,17 +109,25 @@ describe("Create a listing", () => {
   describe("Create a Comment", () => {
     it("org user can add a comment to a listing", async () => {
       const listing = {
-        title: "Test Listing 1",
-        createdAt: new Date("2022-01-01"),
-        Comments: [],
+        organisationName: "Test Organisation",
+        title: "Test Listing",
+        description: "Test description",
+        requirement: "Volunteering",
+        address: {
+          firstLine: "Test address",
+          city: "London",
+          postcode: "SW35SA",
+       },
+        neededByDate: new Date("2022-01-01"),
+        comments: [],
         save: jest.fn(),
       };
-      Listing.find.mockResolvedValue(listing);
+      Listing.findById.mockResolvedValue(listing);
 
       // Call the getAllListings function
       const req = {
         params: {
-          listingId: "3468243",
+          id: "wef3few68243",
         },
         body: {
           orgUserId: "384t38423",
@@ -135,21 +146,29 @@ describe("Create a listing", () => {
 
     it("ind user can add a comment to a listing", async () => {
       const listing = {
-        title: "Test Listing 1",
-        createdAt: new Date("2022-01-01"),
-        Comments: [],
+        organisationName: "Test Organisation",
+        title: "Test Listing",
+        description: "Test description",
+        requirement: "Volunteering",
+        address: {
+          firstLine: "Test address",
+          city: "London",
+          postcode: "SW35SA",
+       },
+        neededByDate: new Date("2022-01-01"),
+        comments: [],
         save: jest.fn(),
       };
-      Listing.find.mockResolvedValue(listing);
+      Listing.findById.mockResolvedValue(listing);
 
       // Call the getAllListings function
       const req = {
         params: {
-          listingId: "14523723",
+          id: "wef3few68243",
         },
         body: {
-          orgUserId: "14523723",
-          content: "ind user making a comment",
+          indUserId: "384t38423",
+          content: "ind user making a comment too",
         },
       };
       const res = {
