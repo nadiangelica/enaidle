@@ -4,6 +4,7 @@ import Signup from "./pages/Signup";
 import Listings from "./pages/ListingsFeed";
 import Navbar from "./components/Navbar";
 import { useAuthContext } from "./hooks/useAuthContext";
+import Profile from "./pages/Profile";
 
 const App = () => {
   const {orgUser} = useAuthContext()
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/signup" element={!orgUser ? <Signup /> : <Navigate to="/listings" />} />
         <Route path="/login" element={!orgUser ? <Login /> : <Navigate to="/listings" /> } />
         <Route path="/listings" element={<Listings />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
