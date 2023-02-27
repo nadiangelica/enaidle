@@ -51,17 +51,17 @@ describe("OrgUser model", () => {
     expect(orgUser.password).toEqual("password");
   });
 
-  describe("Returns error messages when input fields are not filled out correctly", () => {
-    it("accepts a blank charity number", () => {
-      const orgUser = new OrgUser({
-        organisationName: "Organisation",
-        email: "someone@example.com",
-        charityNumber: "",
-        password: "password",
-      });
-      expect(orgUser.charityNumber).toEqual(null);
+  it("accepts a blank charity number", () => {
+    const orgUser = new OrgUser({
+      organisationName: "Organisation",
+      email: "someone@example.com",
+      charityNumber: "",
+      password: "password",
     });
-
+    expect(orgUser.charityNumber).toEqual(null);
+  });
+  
+  describe("Returns error messages when input fields are not filled out correctly", () => {
     it("returns error message when any of the fields that are 'required' is left blank", () => {
       const orgUser = new OrgUser({
         organisationName: "",
