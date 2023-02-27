@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
-mongoose.set("strictQuery", true);
-const bcrypt = require("bcrypt");
-const validator = require("validator");
+mongoose.set('strictQuery', true);
+const bcrypt = require('bcrypt');
+const validator = require('validator');
 
 const OrgUserSchema = new mongoose.Schema({
   organisationName: { type: String, required: true },
   email: {
     type: String,
     required: true,
-    unique: true,
+    unique: true
   },
   charityNumber: Number,
   password: {

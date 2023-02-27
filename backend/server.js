@@ -4,6 +4,7 @@ mongoose.set("strictQuery", true);
 const express = require("express");
 const listingRoutes = require("./routes/listings");
 const orgUserRoutes = require("./routes/orgUsers");
+const indUserRoutes = require('./routes/indUsers');
 const inMemoryDb = require("./spec/mongoMemoryDB");
 
 // express app
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 // routes
 app.use("/api/orgUsers", orgUserRoutes);
 app.use("/api/listings", listingRoutes);
+app.use('/api/indUsers', indUserRoutes);
 
 if (process.env.NODE_ENV !== "test") {
   mongoose

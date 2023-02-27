@@ -28,8 +28,8 @@ const createListing = async (req, res) => {
       neededByDate,
     });
     res.status(200).json(listing);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
+  } catch (error)  {
+    res.status(400).json({  error: error.message  });
   }
 };
 
@@ -45,8 +45,6 @@ const deleteListing = async (req, res) => {
   if (!listing) {
     return res.status(404).send(`No listing with id: ${id}`);
   }
-
-  res.json({ message: "Listing deleted successfully." });
 };
 
 const addCommentToAListing = async (req, res) => {
