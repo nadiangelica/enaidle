@@ -26,5 +26,5 @@
 4. To start the server in test mode (so that it connects to the test DB)
   ```
   ; cd backend
-  ; npm run test
+  ; npm test
   ```
