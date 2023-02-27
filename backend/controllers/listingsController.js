@@ -49,20 +49,8 @@ const deleteListing = async (req, res) => {
 };
 
 const findAListingById = async (req, res) => {
-  // try {
-  //   const listing = await Listing.findById({ _id: req.params._id });
-  //   res.status(200).json(foundListing);
-  // } catch (error)  {
-  //   res.status(400).json({  error: error.message  });
-  // }
-
-  // const listingId = req.param.id;
-  console.log(req.params);
-  // console.log(listingId);
   try {
     const foundListing = await Listing.findById(req.params.id);
-    // const foundListing = await Listing.findById(new mongoose.Types.ObjectId(req.params.id));
-    console.log(foundListing);
     if (foundListing) {
       res.status(200).json(foundListing);
     } else {
