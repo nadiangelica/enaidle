@@ -57,18 +57,11 @@ describe("OrgUser Controller", () => {
         password: "ABCabc123!",
       };
 
-      // console.log('-----------------1')
-      // setup use in database
       const signupResponse = await agent
         .post(`/api/orgUsers/signup`)
         .send(orgUser);
-      // console.log('-----------------2', signupResponse.body._id)
-
-      // // make sure we can find the user
-      const getOrgUserResponse = await agent.get(
-        `/api/orgUsers/${signupResponse.body._id}`
-      );
-      // console.log('-----------------3', getOrgUserResponse.body)
+      
+      const getOrgUserResponse = await agent.get(`/api/orgUsers/${signupResponse.body._id}`);
 
       expect(getOrgUserResponse.body).toEqual({
         organisationName: getOrgUserResponse.organisationName,
@@ -164,7 +157,7 @@ describe("OrgUser Controller", () => {
     });
   });
 
-  describe("Throws error meessages when the client already has an account", () => {
+  describe("Throw error meessages when the client already has an account", () => {
     test("should display 'User already exists' when a client trys to sign up the same email address", async() => {
       const orgUser1 = {
         organisationName: "Puppies Trust 1",
