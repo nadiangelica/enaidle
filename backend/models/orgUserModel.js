@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 mongoose.set('strictQuery', true);
 const bcrypt = require('bcrypt');
 const validator = require('validator');
+const {OrgInfoSchema} = require('./orgInfoModel');
 
 const OrgUserSchema = new mongoose.Schema({
   organisationName: String,
@@ -14,7 +15,8 @@ const OrgUserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  info: [{type: OrgInfoSchema}]
 })
 
 OrgUserSchema.statics.register = async function (organisationName, email, charityNumber, password) {
