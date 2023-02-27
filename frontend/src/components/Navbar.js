@@ -20,6 +20,7 @@ const Navbar = () => {
                 <nav>
                     {orgUser && (
                     <div>
+                        <Link to="/listings">Listings</Link>
                         <button onClick={handleClick}>Log Out</button>
                     </div>
                     )}
@@ -27,6 +28,7 @@ const Navbar = () => {
                     <div>
                         <Link to="/login">Login</Link>
                         <Link to="/signup">Signup</Link>
+                        <Link to="/listings">Listings</Link>
                     </div>
                     )}
                 </nav>
