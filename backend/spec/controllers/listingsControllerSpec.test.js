@@ -116,12 +116,12 @@ describe("Create a listing", () => {
       // Call the getAllListings function
       const req = {
         params: {
-          listingId: '3468243',
+          listingId: "3468243",
         },
         body: {
-          orgUserId: '384t38423',
-          content: 'org user making a comment',
-        }
+          orgUserId: "384t38423",
+          content: "org user making a comment",
+        },
       };
       const res = {
         status: jest.fn().mockReturnThis(),
@@ -130,6 +130,36 @@ describe("Create a listing", () => {
       await addCommentToAListing(req, res);
 
       expect(listing.save).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalledWith(200);
+    });
+
+    it("ind user can add a comment to a listing", async () => {
+      const listing = {
+        title: "Test Listing 1",
+        createdAt: new Date("2022-01-01"),
+        Comments: [],
+        save: jest.fn(),
+      };
+      Listing.find.mockResolvedValue(listing);
+
+      // Call the getAllListings function
+      const req = {
+        params: {
+          listingId: "14523723",
+        },
+        body: {
+          orgUserId: "14523723",
+          content: "ind user making a comment",
+        },
+      };
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      };
+      await addCommentToAListing(req, res);
+
+      expect(listing.save).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalledWith(200);
     });
   });
 });
