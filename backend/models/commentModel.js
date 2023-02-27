@@ -6,7 +6,6 @@ const OrgUser = require("../models/orgUserModel");
 
 const CommentSchema = new mongoose.Schema(
   {
-    // orgUser_id: { type: String },
     orgUser_id: { type: String, ref: "OrgUser" },
     indUser_id: { type: String, ref: "IndUser" },
     content: { type: String, required: true },
