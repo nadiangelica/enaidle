@@ -5,6 +5,7 @@ import Listings from "./pages/ListingsFeed";
 import Navbar from "./components/Navbar";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Profile from "./pages/Profile";
+import OrgProfile from "./pages/OrgProfile";
 
 const App = () => {
   const {orgUser} = useAuthContext()
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/login" element={!orgUser ? <Login /> : <Navigate to="/listings" /> } />
         <Route path="/listings" element={<Listings />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/organisations/:org_user_id" element={<OrgProfile />} />
       </Routes>
     </BrowserRouter>
   );

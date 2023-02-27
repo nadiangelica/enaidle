@@ -34,7 +34,6 @@ const createOrgUser = async (req, res) => {
 
 const findOrgUserById = async (req, res) => {
   const orgUserId = req.params.org_user_id;
-console.log(orgUserId)
   try {
     const orgUser = await OrgUser.find({_id:orgUserId});
     res.status(200).json(orgUser);
