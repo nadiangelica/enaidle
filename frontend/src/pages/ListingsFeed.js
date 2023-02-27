@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useListingsContext } from '../hooks/useListingsContext';
 import ListingsFeed from '../components/ListingsFeed';
-
+import "./ListingsFeed.css";
 
 const Listings = () => {
     const { listings,  dispatch } = useListingsContext();
