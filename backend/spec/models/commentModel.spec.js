@@ -1,33 +1,42 @@
-// const mongoose = require("mongoose");
-// require("./mongodb_helper");
+const mongoose = require("mongoose");
+const db = require("../../spec/mongoMemoryDB");
 
-// const { ObjectId } = mongoose.Types;
+const { Comment } = require("../../models/commentModel");
+const { ObjectId } = mongoose.Types;
 
-// const { Comment } = require("../../models/commentModel");
 
-// describe("Comment model", () => {
-//   beforeEach((done) => {
-//     mongoose.connection.collections.comments.drop(() => {
-//       done();
-//     });
-//   });
+describe("Comment model", () => {
+  beforeAll(async () => await db.connect());
+  beforeEach(async () => await db.clear());
+  afterAll(async () => await db.close());
 
-//   const myComment = new Comment({
-//     orgUser_id: "someFakeId",
-//     indUser_id: "",
-//     listing_id: "someFakeListingId",
-//     content: "Hello World!",
-//   });
+  test('has an orgUser', () => {
+    const myComment = new Comment({
+      orgUser_id: "12334693",
+      indUser_id: "",
+      content: "Hello World!",
+    });
 
-//   test("has a user_id, can be 'orgUser' or 'IndUser'", () => {
-//     expect(myComment.orgUser_id).toEqual("someFakeId");
-//   });
+    expect(myComment.orgUser_id).toEqual("12334693");
+  })
 
-//   // test("has the id of the listing ad", () => {
-//   //   expect(myComment.listing_id).toEqual("someFakeListingId");
-//   // });
+  test('has a indUser', () => {
+    const myComment = new Comment({
+      orgUser_id: "",
+      indUser_id: "32764837",
+      content: "Hello World!",
+    });
 
-//   // test("has a comment", () => {
-//   //   expect(myComment.content).toEqual("Hello World!");
-//   // });
-// });
+    expect(myComment.indUser_id).toEqual("32764837");
+  })
+
+  test('has a content', () => {
+    const myComment = new Comment({
+      orgUser_id: "",
+      indUser_id: "32764837",
+      content: "Hello World!",
+    });
+
+    expect(myComment.content).toEqual("Hello World!");
+  })
+});

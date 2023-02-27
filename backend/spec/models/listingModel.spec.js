@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
-require("../models/mongodb_helper");
+const db = require("../../spec/mongoMemoryDB");
 
-const ListingModel = require("../../models/listingModel");
+const Listing= require("../../models/listingModel");
 
-describe("ListingModel", () => {
-  beforeEach(async () => {
-    await mongoose.connection.collections.listings.drop(() => {});
-  });
+describe("Listing model", () => {
+  beforeAll(async () => await db.connect());
+  beforeEach(async () => await db.clear());
+  afterAll(async () => await db.close());
 
-  const newAd = new ListingModel({
+  const newAd = new Listing({
     organisationName: "Charity X",
     title: "Volunteers needed",
     requirement: "Volunteering",
@@ -50,7 +50,7 @@ describe("ListingModel", () => {
   });
 
   test("display error message when the client does not submit a 'title'", () => {
-    const adMissingTitle = new ListingModel({
+    const adMissingTitle = new Listing({
       organisationName: "Charity X",
       title: "",
       requirement: "Volunteering",
@@ -67,7 +67,7 @@ describe("ListingModel", () => {
   });
 
   test("display error messages when the client does not submit all the required fields'", () => {
-    const incompleteForm = new ListingModel({
+    const incompleteForm = new Listing({
       organisationName: "",
       title: "",
       requirement: "",

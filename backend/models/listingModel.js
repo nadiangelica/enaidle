@@ -50,30 +50,7 @@ const ListingSchema = new Schema(
   { timestamps: true }
 );
 
-ListingSchema.statics.save = async function (
-  organisationName,
-  title,
-  requirement,
-  description,
-  address,
-  neededByDate
-) {
-  if (!organisationName) {
-    throw Error("Please provide an organisation name");
-  } else if (!title) {
-    throw Error("Please provide a title");
-  } else if (!requirement) {
-    throw Error("Please select from dropdown list");
-  } else if (!description) {
-    throw Error("Please provide a description");
-  } else if (!address) {
-    throw Error("Please provide an address");
-  } else if (!neededByDate) {
-    throw Error("Please provide a date");
-  }
-};
-
 // module.exports = mongoose.model("Listing", listingSchema);
-const Listing = mongoose.model("Listing", ListingSchema)
+const Listing = mongoose.model("Listing", ListingSchema);
 
 module.exports = Listing;
