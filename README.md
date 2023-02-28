@@ -20,11 +20,22 @@
   ; npm start
   ```
 ## Testing
-#### The Backend (API)
+#### The Backend
 **Note Environment variables (e.g. JWT secret) are set in the .env. file**
 
 4. To start the server in test mode (so that it connects to the test DB)
   ```
   ; cd backend
   ; npm test
+  ```
+
+#### The Frontend Cyprus Testing
+5. Start the backend server, in another terminal start the frontend server and again in another terminal cd frontend and `npm run cypress`
+  ```
+  ; cd backend
+  ; npm run dev
+  ; cd frontend
+  ; npm start
+  ; cd frontend
+  ; npm run cypress
   ```
