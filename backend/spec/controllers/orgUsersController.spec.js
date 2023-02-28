@@ -4,10 +4,9 @@ const db = require("../../spec/mongoMemoryDB");
 const OrgUser = require("../../controllers/orgUsersController");
 
 const agent = request.agent(server);
-// Comment line 8 and line 10 as it's causing conflicts, saying we're trying to establish 2 database connections when it can only listen to one
-// beforeAll(async () => await db.connect());
+beforeAll(async () => await db.connect());
 beforeEach(async () => await db.clear());
-// afterAll(async () => await db.close());
+afterAll(async () => await db.close());
 
 describe("OrgUser Controller", () => {
   describe("When a client signs up", () => {
@@ -22,7 +21,7 @@ describe("OrgUser Controller", () => {
       const response = await agent.post(`/api/org-users/signup`).send(orgUser);
 
       expect(response.statusCode).toBe(201);
-      expect(response.body).toEqual(
+      expect(response.body.orgUser).toEqual(
         expect.objectContaining({
           organisationName: orgUser.organisationName,
           email: orgUser.email,
@@ -61,11 +60,9 @@ describe("OrgUser Controller", () => {
         .post(`/api/org-users/signup`)
         .send(orgUser);
       
-      const getOrgUserResponse = await agent.get(`/api/org-users/${signupResponse.body._id}`);
+      const getOrgUserResponse = await agent.get(`/api/org-users/${signupResponse.body.orgUser._id}`);
 
-      expect(getOrgUserResponse.body).toEqual({
-        organisationName: getOrgUserResponse.organisationName,
-      });
+      expect(getOrgUserResponse.body.organisationName).toEqual(orgUser.organisationName);
     });
   });
 
@@ -247,6 +244,7 @@ describe("OrgUser Controller", () => {
       expect(loginResponse.statusCode).toBe(200)
       expect(loginResponse.body).toEqual({
         email: "puppy@gmail.com",
+        id: expect.any(String),
         token: expect.any(String)
       });
     })

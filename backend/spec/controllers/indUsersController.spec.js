@@ -1,6 +1,6 @@
 const server = require("../../server");
 const request = require("supertest");
-const db = require('../db');
+const db = require("../../spec/mongoMemoryDB");
 
 const agent = request.agent(server);
 
