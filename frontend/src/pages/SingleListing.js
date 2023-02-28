@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useListingsContext } from "../hooks/useListingsContext";
-import ListingCard from "../components/SingleListingCard";
+import SingleListingCard from "../components/SingleListingCard";
 import "./ListingsFeed.css";
 
 const SingleListing = () => {
@@ -28,7 +28,7 @@ const SingleListing = () => {
       {listing ? (
         <div>
           <h2>{listing.organisationName}</h2>
-          <ListingCard listing={listing} />
+          <SingleListingCard listing={listing} />
         </div>
       ) : (
         <p>Loading...</p>
