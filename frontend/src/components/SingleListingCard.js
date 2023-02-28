@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import moment from "moment";
 import CommentForm from "../pages/CommentForm";
 
-const SingleListingCard = ({ listing }) => {
+const SingleListingCard = ({ listing, isLoggedIn }) => {
   const createdDate = moment(listing.createdAt).fromNow();
 
   const comments = listing.comments.map((comment) => {
     return <p>{comment.content}</p>;
   });
+
 
   return (
     <article className="listing" data-cy="listing" key={listing._id}>
@@ -20,7 +21,8 @@ const SingleListingCard = ({ listing }) => {
       <p>Created {createdDate}</p>
 
       <hr />
-      {<CommentForm />}
+
+      {isLoggedIn && <CommentForm />}
       {comments}
     </article>
   );

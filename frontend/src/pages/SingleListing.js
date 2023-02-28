@@ -8,6 +8,8 @@ const SingleListing = () => {
   const { listing_id } = useParams();
   const { listing, dispatch } = useListingsContext();
 
+  const isLoggedIn = localStorage.getItem("orgUser");
+
   useEffect(() => {
     const fetchListing = async () => {
       const response = await fetch(`/api/listings/${listing_id}`);
@@ -28,7 +30,7 @@ const SingleListing = () => {
       {listing ? (
         <div>
           <h2>{listing.organisationName}</h2>
-          <SingleListingCard listing={listing} />
+          <SingleListingCard listing={listing} isLoggedIn={isLoggedIn} />
         </div>
       ) : (
         <p>Loading...</p>

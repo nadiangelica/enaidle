@@ -6,7 +6,6 @@ const CommentForm = () => {
   const { addComment, error, loading } = useComment();
 
   const handleSubmit = async (e) => {
-    debugger;
     e.preventDefault();
     await addComment("", content);
   };
