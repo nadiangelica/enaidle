@@ -21,6 +21,7 @@ const Navbar = () => {
                     {orgUser && (
                     <div>
                         <Link to="/listings">Listings</Link>
+                        <Link to="/profile">Profile</Link>
                         <button onClick={handleClick}>Log Out</button>
                     </div>
                     )}
