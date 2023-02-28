@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+
 const {loginOrgUser, createOrgUser, findOrgUserById, getAllOrgUsers} = require("../controllers/orgUsersController");
 
 router.post("/login", loginOrgUser);
