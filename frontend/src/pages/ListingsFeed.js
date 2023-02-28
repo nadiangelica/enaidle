@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useListingsContext } from '../hooks/useListingsContext';
 import ListingsFeed from '../components/ListingsFeed';
 import "./ListingsFeed.css";
 
+
 const Listings = () => {
     const { listings, dispatch } = useListingsContext();
-
+    const [listingRequirement, setListingRequirement] = useState("all");
     useEffect(() => {
         const fetchListings = async () => {
             const response = await fetch('/api/listings');
@@ -20,17 +21,31 @@ const Listings = () => {
         fetchListings();
     }, [dispatch]);
 
+    let listingsToShow;
+    switch (listingRequirement) {
+        case 'volunteering':
+            listingsToShow = listings.filter(listing => listing.requirement === 'Volunteering')
+            break;
+        case 'donation':
+            listingsToShow = listings.filter(listing => listing.requirement === 'Donation of Goods')
+            break;
+        default:
+            listingsToShow = listings;
+            break;
+    }
+
     return (
         <div class="dropdown">
-            <div id="myDropdown" class="dropdown-content">
+            <div id="myDropdown" className="dropdown-content">
                 <strong>What are you interested in?</strong>
-                <select>
-                    <option value="requirement">Volunteering</option>
-                    <option value="resources">Donation of Goods</option>
+                <select onChange={e => setListingRequirement(e.target.value)}>
+                    <option value="all">All</option>
+                    <option value="volunteering">Volunteering</option>
+                    <option value="donation">Donation of Goods</option>
                 </select>
                 <div className="listings">
                     <h2>LISTINGS</h2>
-                    {listings && listings.map((listing) => (
+                    {listingsToShow && listingsToShow.map((listing) => (
                         <ListingsFeed key={listing._id} listing={listing} />
                     ))}
                 </div>
