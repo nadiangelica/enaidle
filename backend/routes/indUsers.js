@@ -4,6 +4,6 @@ const { loginIndUser, createIndUser, findIndUserById } = require("../controllers
 
 router.post("/login", loginIndUser);
 router.post("/signup", createIndUser);
-router.get("/:user_id", findIndUserById);
+router.get("/:ind-user-id", findIndUserById);
 
 module.exports = router;

@@ -44,7 +44,7 @@ const createIndUser = async (req, res) => {
 
 const findIndUserById = async (req, res) => {
   try {
-    let indUser = req.params.indUser_id;
+    let indUser = req.params.ind_user_id;
     res.status(200).json({ indUser });
   } catch (error) {
     res.status(400).json({ error: error.message });

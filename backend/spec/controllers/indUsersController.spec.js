@@ -19,7 +19,7 @@ describe("IndUser Controller", () => {
         password: "ABCabc123!",
       };
 
-      const response = await agent.post(`/api/indUsers/signup`).send(indUser);
+      const response = await agent.post(`/api/ind-users/signup`).send(indUser);
 
       expect(response.statusCode).toBe(201);
       expect(response.body).toEqual(
@@ -39,7 +39,7 @@ describe("IndUser Controller", () => {
         password: "ABCabc123!",
       };
 
-      const response = await agent.post(`/api/indUsers/signup`).send(indUser);
+      const response = await agent.post(`/api/ind-users/signup`).send(indUser);
 
       expect(response.statusCode).toBe(201);
       expect(response.body).toEqual(
@@ -58,10 +58,10 @@ describe("IndUser Controller", () => {
       };
 
       const signupResponse = await agent
-        .post(`/api/indUsers/signup`)
+        .post(`/api/ind-users/signup`)
         .send(indUser);
       
-      const getIndUserResponse = await agent.get(`/api/indUsers/${signupResponse.body._id}`);
+      const getIndUserResponse = await agent.get(`/api/ind-users/${signupResponse.body._id}`);
 
       expect(getIndUserResponse.body).toEqual({
         firstName: getIndUserResponse.firstName,
@@ -72,7 +72,7 @@ describe("IndUser Controller", () => {
 
   describe("It displays error messages when an individual signs up with missing or invalid inputs", () => {
     test("response code is 400 when firstName is missing", async () => {
-      let response = await request(server).post(`/api/indUsers/signup`).send({
+      let response = await request(server).post(`/api/ind-users/signup`).send({
           firstName: "",
           lastName: "Smith",
           email: "annas@gmail.com",
@@ -85,7 +85,7 @@ describe("IndUser Controller", () => {
     });
 
     test("response code is 400 when lastName is missing", async () => {
-      let response = await request(server).post(`/api/indUsers/signup`).send({
+      let response = await request(server).post(`/api/ind-users/signup`).send({
           firstName: "Anna",
           lastName: "",
           email: "annas@gmail.com",
@@ -98,7 +98,7 @@ describe("IndUser Controller", () => {
     });
 
     test("response code is 400 when email address is missing", async () => {
-      let response = await request(server).post(`/api/indUsers/signup`).send({
+      let response = await request(server).post(`/api/ind-users/signup`).send({
         firstName: "Anna",
         lastName: "Smith",
         email: "",
@@ -111,7 +111,7 @@ describe("IndUser Controller", () => {
     });
 
     test("response code is 400 when password is missing", async () => {
-      let response = await request(server).post(`/api/indUsers/signup`).send({
+      let response = await request(server).post(`/api/ind-users/signup`).send({
         firstName: "Anna",
         lastName: "Smith",
         email: "annas@gmail.com",
@@ -124,7 +124,7 @@ describe("IndUser Controller", () => {
     });
 
     test("response code is 400 when password is weak and does not meet the minimum requirement", async () => {
-      let response = await request(server).post(`/api/indUsers/signup`).send({
+      let response = await request(server).post(`/api/ind-users/signup`).send({
         firstName: "Anna",
         lastName: "Smith",
         email: "annas@gmail.com",
@@ -138,7 +138,7 @@ describe("IndUser Controller", () => {
     });
 
     test("response code is 201 when password meets all the requirement of a password", async () => {
-      let response = await request(server).post(`/api/indUsers/signup`).send({
+      let response = await request(server).post(`/api/ind-users/signup`).send({
         firstName: "Anna",
         lastName: "Smith",
         email: "annas@gmail.com",
@@ -148,7 +148,7 @@ describe("IndUser Controller", () => {
     });
 
     test("response code is 400 when email address is not valid", async () => {
-      let response = await request(server).post(`/api/indUsers/signup`).send({
+      let response = await request(server).post(`/api/ind-users/signup`).send({
         firstName: "Anna",
         lastName: "Smith",
         email: "annas@gmail",
@@ -161,7 +161,7 @@ describe("IndUser Controller", () => {
     });
 
     test("response code is 201 when email address is valid", async () => {
-      let response = await request(server).post(`/api/indUsers/signup`).send({
+      let response = await request(server).post(`/api/ind-users/signup`).send({
         firstName: "Anna",
         lastName: "Smith",
         email: "annas@gmail.com",
@@ -180,7 +180,7 @@ describe("IndUser Controller", () => {
         password: "ThisIsAStrongPassword123!",
       };
 
-      const indSignsUp1 = await agent.post(`/api/indUsers/signup`).send(indUser1);
+      const indSignsUp1 = await agent.post(`/api/ind-users/signup`).send(indUser1);
 
       const indUser2 = {
         firstName: "Ana",
@@ -189,7 +189,7 @@ describe("IndUser Controller", () => {
         password: "ThisIsAStrongPassword1@",
       };
 
-      const indSignsUpAgain = await agent.post(`/api/indUsers/signup`).send(indUser2);
+      const indSignsUpAgain = await agent.post(`/api/ind-users/signup`).send(indUser2);
       expect(indSignsUpAgain.statusCode).toBe(400);
       expect(indSignsUpAgain.body).toEqual({
         error: "User already exists"
@@ -206,13 +206,13 @@ describe("IndUser Controller", () => {
     };
     
     test("displays an error message if the email address is incorrect", async() => {
-      const signupResponse = await agent.post(`/api/indUsers/signup`).send(indUser);
+      const signupResponse = await agent.post(`/api/ind-users/signup`).send(indUser);
       const indUserHasAccount = {
         email: "incorrectemail@gmail.com",
         password: "ThisIsAStrongPassword123!"
       };
 
-      const loginResponse = await agent.post(`/api/indUsers/login`).send(indUserHasAccount);
+      const loginResponse = await agent.post(`/api/ind-users/login`).send(indUserHasAccount);
       expect(loginResponse.statusCode).toBe(400)
       expect(loginResponse.body).toEqual({
         error: "Incorrect email"
@@ -220,13 +220,13 @@ describe("IndUser Controller", () => {
     })
 
     test("displays an error message if the password is incorrect", async() => {
-      const signupResponse = await agent.post(`/api/indUsers/signup`).send(indUser);
+      const signupResponse = await agent.post(`/api/ind-users/signup`).send(indUser);
       const indUserHasAccount = {
         email: "annas@gmail.com",
         password: "incorrectPassword"
       };
 
-      const loginResponse = await agent.post(`/api/indUsers/login`).send(indUserHasAccount);
+      const loginResponse = await agent.post(`/api/ind-users/login`).send(indUserHasAccount);
 
       expect(loginResponse.statusCode).toBe(400)
       expect(loginResponse.body).toEqual({
@@ -235,13 +235,13 @@ describe("IndUser Controller", () => {
     })
 
     test("displays an error message when email address and password have not been submitted", async() => {
-      const signupResponse = await agent.post(`/api/indUsers/signup`).send(indUser);
+      const signupResponse = await agent.post(`/api/ind-users/signup`).send(indUser);
       const indUserHasAccount = {
         email: "",
         password: ""
       };
 
-      const loginResponse = await agent.post(`/api/indUsers/login`).send(indUserHasAccount);
+      const loginResponse = await agent.post(`/api/ind-users/login`).send(indUserHasAccount);
 
       expect(loginResponse.statusCode).toBe(400)
       expect(loginResponse.body).toEqual({
@@ -250,13 +250,13 @@ describe("IndUser Controller", () => {
     })
 
     test("response code is 200 when email and password match record", async() => {
-      const signupResponse = await agent.post(`/api/indUsers/signup`).send(indUser);
+      const signupResponse = await agent.post(`/api/ind-users/signup`).send(indUser);
       const indUserHasAccount = {
         email: "annas@gmail.com",
         password: "ThisIsAStrongPassword123!"
       };
 
-      const loginResponse = await agent.post(`/api/indUsers/login`).send(indUserHasAccount);
+      const loginResponse = await agent.post(`/api/ind-users/login`).send(indUserHasAccount);
 
       expect(loginResponse.statusCode).toBe(200)
       expect(loginResponse.body).toEqual({
