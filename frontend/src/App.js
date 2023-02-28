@@ -9,6 +9,7 @@ import Listings from "./pages/ListingsFeed";
 import AccountProfile from "./pages/AccountProfile";
 import OrgProfile from "./pages/OrgProfile";
 import UpdateProfile from "./pages/UpdateProfile";
+import OrgList from "./pages/OrgList";
 
 const App = () => {
     const {orgUser} = useAuthContext()
@@ -23,7 +24,8 @@ const App = () => {
                 <Route path="/listings" element={<Listings />} />
                 <Route path="/profile" element={orgUser ? <AccountProfile /> : <Navigate to="/login" />} />
                 <Route path="/profile/update" element={orgUser ? <UpdateProfile /> : <Navigate to="/login" />} />
-                <Route path="/organisations/:org-user-id" element={<OrgProfile />} />
+                <Route path="/organisations/" element={<OrgList />} />
+                <Route path="/organisations/:org_user_id" element={<OrgProfile />} />
             </Routes>
         </BrowserRouter>
     );

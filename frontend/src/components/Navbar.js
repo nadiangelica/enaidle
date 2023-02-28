@@ -22,6 +22,7 @@ const Navbar = () => {
                     <div>
                         <Link to="/listings">Listings</Link>
                         <Link to="/profile">Profile</Link>
+                        <Link to="/organisations">Organisations List</Link>
                         <button onClick={handleClick}>Log Out</button>
                     </div>
                     )}
@@ -30,6 +31,7 @@ const Navbar = () => {
                         <Link to="/login">Login</Link>
                         <Link to="/signup">Signup</Link>
                         <Link to="/listings">Listings</Link>
+                        <Link to="/organisations">Organisations List</Link>
                     </div>
                     )}
                 </nav>
