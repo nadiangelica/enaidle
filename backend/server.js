@@ -22,9 +22,9 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use("/api/orgUsers", orgUserRoutes);
+app.use("/api/org-users", orgUserRoutes);
 app.use("/api/listings", listingRoutes);
-app.use('/api/indUsers', indUserRoutes);
+app.use('/api/ind-users', indUserRoutes);
 
 if (process.env.NODE_ENV !== "test") {
   mongoose

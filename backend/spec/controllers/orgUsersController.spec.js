@@ -19,7 +19,7 @@ describe("OrgUser Controller", () => {
         password: "ABCabc123!",
       };
 
-      const response = await agent.post(`/api/orgUsers/signup`).send(orgUser);
+      const response = await agent.post(`/api/org-users/signup`).send(orgUser);
 
       expect(response.statusCode).toBe(201);
       expect(response.body).toEqual(
@@ -39,7 +39,7 @@ describe("OrgUser Controller", () => {
         password: "ABCabc123!",
       };
 
-      const response = await agent.post(`/api/orgUsers/signup`).send(orgUser);
+      const response = await agent.post(`/api/org-users/signup`).send(orgUser);
 
       expect(response.statusCode).toBe(201);
       expect(response.body).toEqual(
@@ -58,10 +58,10 @@ describe("OrgUser Controller", () => {
       };
 
       const signupResponse = await agent
-        .post(`/api/orgUsers/signup`)
+        .post(`/api/org-users/signup`)
         .send(orgUser);
       
-      const getOrgUserResponse = await agent.get(`/api/orgUsers/${signupResponse.body._id}`);
+      const getOrgUserResponse = await agent.get(`/api/org-users/${signupResponse.body._id}`);
 
       expect(getOrgUserResponse.body).toEqual({
         organisationName: getOrgUserResponse.organisationName,
@@ -71,7 +71,7 @@ describe("OrgUser Controller", () => {
 
   describe("It display error messages when a client signups with missing or invalid inputs", () => {
     test("response code is 400 when organisationName is missing", async () => {
-      let response = await request(server).post(`/api/orgUsers/signup`).send({
+      let response = await request(server).post(`/api/org-users/signup`).send({
         organisationName: "",
         email: "puppy@gmail.com",
         charityNumber: 123456,
@@ -84,7 +84,7 @@ describe("OrgUser Controller", () => {
     });
 
     test("response code is 400 when email address is missing", async () => {
-      let response = await request(server).post(`/api/orgUsers/signup`).send({
+      let response = await request(server).post(`/api/org-users/signup`).send({
         organisationName: "Puppies Trust",
         email: "",
         charityNumber: 123456,
@@ -97,7 +97,7 @@ describe("OrgUser Controller", () => {
     });
 
     test("response code is 400 when password is missing", async () => {
-      let response = await request(server).post(`/api/orgUsers/signup`).send({
+      let response = await request(server).post(`/api/org-users/signup`).send({
         organisationName: "Puppies Trust",
         email: "puppy@gmail.com",
         charityNumber: 123456,
@@ -110,7 +110,7 @@ describe("OrgUser Controller", () => {
     });
 
     test("response code is 400 when password is weak and does not meet the minimum requirement", async () => {
-      let response = await request(server).post(`/api/orgUsers/signup`).send({
+      let response = await request(server).post(`/api/org-users/signup`).send({
         organisationName: "Puppies Trust",
         email: "puppy@gmail.com",
         charityNumber: 123456,
@@ -124,7 +124,7 @@ describe("OrgUser Controller", () => {
     });
 
     test("response code is 201 when password meets all the requirement of a password", async () => {
-      let response = await request(server).post(`/api/orgUsers/signup`).send({
+      let response = await request(server).post(`/api/org-users/signup`).send({
         organisationName: "Puppies Trust",
         email: "puppy@gmail.com",
         charityNumber: 123456,
@@ -134,7 +134,7 @@ describe("OrgUser Controller", () => {
     });
 
     test("response code is 400 when email address is not valid", async () => {
-      let response = await request(server).post(`/api/orgUsers/signup`).send({
+      let response = await request(server).post(`/api/org-users/signup`).send({
         organisationName: "Puppies Trust",
         email: "incorrectemail@",
         charityNumber: 123456,
@@ -147,7 +147,7 @@ describe("OrgUser Controller", () => {
     });
 
     test("response code is 201 when email address is valid", async () => {
-      let response = await request(server).post(`/api/orgUsers/signup`).send({
+      let response = await request(server).post(`/api/org-users/signup`).send({
         organisationName: "Puppies Trust",
         email: "puppy@gmail.com",
         charityNumber: 123456,
@@ -166,7 +166,7 @@ describe("OrgUser Controller", () => {
         password: "ABCabc123!",
       };
 
-      const orgSignsUp1 = await agent.post(`/api/orgUsers/signup`).send(orgUser1);
+      const orgSignsUp1 = await agent.post(`/api/org-users/signup`).send(orgUser1);
 
       const orgUser2 = {
         organisationName: "Puppies Trust 2",
@@ -175,7 +175,7 @@ describe("OrgUser Controller", () => {
         password: "ABCabc123!",
       };
 
-      const orgSignsUpAgain = await agent.post(`/api/orgUsers/signup`).send(orgUser2);
+      const orgSignsUpAgain = await agent.post(`/api/org-users/signup`).send(orgUser2);
       expect(orgSignsUpAgain.statusCode).toBe(400);
       expect(orgSignsUpAgain.body).toEqual({
         error: "User already exists"
@@ -192,13 +192,13 @@ describe("OrgUser Controller", () => {
     };
     
     test("displays an error message if the email address is incorrect", async() => {
-      const signupResponse = await agent.post(`/api/orgUsers/signup`).send(orgUser);
+      const signupResponse = await agent.post(`/api/org-users/signup`).send(orgUser);
       const orgUserHasAccount = {
         email: "incorrectemail@gmail.com",
         password: "ABCabc123!"
       };
 
-      const loginResponse = await agent.post(`/api/orgUsers/login`).send(orgUserHasAccount);
+      const loginResponse = await agent.post(`/api/org-users/login`).send(orgUserHasAccount);
       expect(loginResponse.statusCode).toBe(400)
       expect(loginResponse.body).toEqual({
         error: "Incorrect email"
@@ -206,13 +206,13 @@ describe("OrgUser Controller", () => {
     })
 
     test("displays an error message if the password is incorrect", async() => {
-      const signupResponse = await agent.post(`/api/orgUsers/signup`).send(orgUser);
+      const signupResponse = await agent.post(`/api/org-users/signup`).send(orgUser);
       const orgUserHasAccount = {
         email: "puppy@gmail.com",
         password: "incorrectPassword"
       };
 
-      const loginResponse = await agent.post(`/api/orgUsers/login`).send(orgUserHasAccount);
+      const loginResponse = await agent.post(`/api/org-users/login`).send(orgUserHasAccount);
 
       expect(loginResponse.statusCode).toBe(400)
       expect(loginResponse.body).toEqual({
@@ -221,13 +221,13 @@ describe("OrgUser Controller", () => {
     })
 
     test("displays an error message when email address and password have not been submitted", async() => {
-      const signupResponse = await agent.post(`/api/orgUsers/signup`).send(orgUser);
+      const signupResponse = await agent.post(`/api/org-users/signup`).send(orgUser);
       const orgUserHasAccount = {
         email: "",
         password: ""
       };
 
-      const loginResponse = await agent.post(`/api/orgUsers/login`).send(orgUserHasAccount);
+      const loginResponse = await agent.post(`/api/org-users/login`).send(orgUserHasAccount);
 
       expect(loginResponse.statusCode).toBe(400)
       expect(loginResponse.body).toEqual({
@@ -236,13 +236,13 @@ describe("OrgUser Controller", () => {
     })
 
     test("response code is 200 when email and password matches record", async() => {
-      const signupResponse = await agent.post(`/api/orgUsers/signup`).send(orgUser);
+      const signupResponse = await agent.post(`/api/org-users/signup`).send(orgUser);
       const orgUserHasAccount = {
         email: "puppy@gmail.com",
         password: "ABCabc123!"
       };
 
-      const loginResponse = await agent.post(`/api/orgUsers/login`).send(orgUserHasAccount);
+      const loginResponse = await agent.post(`/api/org-users/login`).send(orgUserHasAccount);
 
       expect(loginResponse.statusCode).toBe(200)
       expect(loginResponse.body).toEqual({

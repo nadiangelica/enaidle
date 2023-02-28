@@ -19,7 +19,7 @@ const App = () => {
         <Route path="/login" element={!orgUser ? <Login /> : <Navigate to="/listings" /> } />
         <Route path="/listings" element={<Listings />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/organisations/:org_user_id" element={<OrgProfile />} />
+        <Route path="/organisations/:org-user-id" element={<OrgProfile />} />
       </Routes>
     </BrowserRouter>
   );

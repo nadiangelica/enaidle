@@ -43,7 +43,7 @@ const createOrgUser = async (req, res) => {
 };
 
 const findOrgUserById = async (req, res) => {
-  const orgUserId = req.params.org_user_id;
+  const orgUserId = req.params;
   try {
     const orgUser = await OrgUser.find({_id:orgUserId});
     res.status(200).json(orgUser);
