@@ -78,6 +78,7 @@ describe("IndUser Controller", () => {
           email: "annas@gmail.com",
           password: "ABCabc123!",
       });
+
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
         error: "Please provide a first name",
@@ -91,6 +92,7 @@ describe("IndUser Controller", () => {
           email: "annas@gmail.com",
           password: "ABCabc123!",
       });
+
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
         error: "Please provide a last name",
@@ -104,6 +106,7 @@ describe("IndUser Controller", () => {
         email: "",
         password: "ABCabc123!",
       });
+
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
         error: "Please provide an email address",
@@ -117,6 +120,7 @@ describe("IndUser Controller", () => {
         email: "annas@gmail.com",
         password: "",
       });
+
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
         error: "Please provide a password",
@@ -130,6 +134,7 @@ describe("IndUser Controller", () => {
         email: "annas@gmail.com",
         password: "password",
       });
+
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
         error:
@@ -154,6 +159,7 @@ describe("IndUser Controller", () => {
         email: "annas@gmail",
         password: "ThisIsAStrongPassword123!",
       });
+
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
         error: "Please provide a valid email address"
