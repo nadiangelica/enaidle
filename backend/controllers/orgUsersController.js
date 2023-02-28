@@ -12,7 +12,8 @@ const loginOrgUser = async (req, res) => {
     try {
         const orgUser = await OrgUser.login(email, password);
         const token = createToken(orgUser._id);
-        res.status(200).json({ email, token});
+        const id = orgUser._id
+        res.status(200).json({ email, token, id});
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
