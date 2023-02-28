@@ -1,19 +1,16 @@
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
-import { useNavigate } from "react-router";
 
 const Signup = () => {
     const [organisationName, setOrganisationName] = useState("");
     const [email, setEmail] = useState("");
     const [charityNumber, setCharityNumber] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate();
     const { signup, error, loading } = useSignup();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         await signup(organisationName, email, charityNumber, password);
-        navigate('/login');
     }
     return (
         <main>
