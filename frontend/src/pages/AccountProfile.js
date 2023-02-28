@@ -1,4 +1,4 @@
-const Profile = () => {
+const AccountProfile = () => {
     const userData = JSON.parse(localStorage.getItem('orgUser')).orgUser;
     
     return (
@@ -10,4 +10,4 @@ const Profile = () => {
     )       
 }
  
-export default Profile;
+export default AccountProfile;
