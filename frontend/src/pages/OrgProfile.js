@@ -8,7 +8,7 @@ const OrgProfile = () => {
     useEffect(() => {
         const fetchOrg = async () => {
             const orgId = window.location.pathname.split('/')[2];
-            const response = await fetch('/api/orgUsers/' + orgId);
+            const response = await fetch('/api/org-users/' + orgId);
             const json = await response.json();
             setOrg(json);
 

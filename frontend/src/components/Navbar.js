@@ -15,7 +15,7 @@ const Navbar = () => {
         <header>
             <div className="container">
                 <Link to="/">
-                    <h1>Help Others</h1>
+                    <h1>enaidle</h1>
                 </Link>
                 <nav>
                     {orgUser && (

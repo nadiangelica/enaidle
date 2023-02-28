@@ -12,7 +12,7 @@ describe("/orgUsers", () => {
   describe("POST, when company name, email and password are valid, and charity number is blank", () => {
     test("the response code is 201 and returns a message to say signup has been successful", async () => {
       let response = await agent
-        .post("/api/orgUsers")
+        .post("/api/org-users")
         .send({ 
           organisationName: "Puppies Trust", 
           email: "poppy@email.com", 

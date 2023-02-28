@@ -9,7 +9,7 @@ const OrgsLoginForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:4000/api/orgUsers", {
+    const response = await fetch("http://localhost:4000/api/org-users", {
       method: "POST",
       body: JSON.stringify({
         email: email,

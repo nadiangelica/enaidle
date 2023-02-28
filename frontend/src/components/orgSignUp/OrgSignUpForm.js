@@ -17,7 +17,7 @@ const OrgSignUpForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:4000/api/orgUsers", {
+    const response = await fetch("http://localhost:4000/api/org-users", {
       method: "POST",
       mode: "cors",
       credentials: "include",

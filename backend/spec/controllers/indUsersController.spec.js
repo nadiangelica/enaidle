@@ -12,7 +12,7 @@ describe("/indUsers", () => {
   describe("POST, when user first name, surname, email and password are valid", () => {
     test("the response code is 201 and returns a message to say signup has been successful", async () => {
       let response = await agent
-        .post("/api/indUsers")
+        .post("/api/ind-users")
         .send({ 
           firstName: "John", 
           surname: "Jason", 
@@ -29,7 +29,7 @@ describe("/indUsers", () => {
     describe("POST, when user first name, surname, email or password are invalid", () => {
     test("the response code is 400 and returns an error stating first name is required", async () => {
       let response = await agent
-        .post("/api/indUsers")
+        .post("/api/ind-users")
         .send({ 
           firstName: "", 
           surname: "Jason", 
@@ -44,7 +44,7 @@ describe("/indUsers", () => {
 
     test("the response code is 400 and returns an error stating surname is required", async () => {
       let response = await agent
-        .post("/api/indUsers")
+        .post("/api/ind-users")
         .send({ 
           firstName: "John", 
           surname: "", 
@@ -59,7 +59,7 @@ describe("/indUsers", () => {
 
     test("the response code is 400 and returns an error stating an email address is required", async () => {
       let response = await agent
-        .post("/api/indUsers")
+        .post("/api/ind-users")
         .send({ 
           firstName: "John", 
           surname: "Jason", 
@@ -74,7 +74,7 @@ describe("/indUsers", () => {
 
      test("the response code is 400 and returns an error stating a valid email address is required", async () => {
       let response = await agent
-        .post("/api/indUsers")
+        .post("/api/ind-users")
         .send({ 
           firstName: "John", 
           surname: "Jason", 
@@ -89,7 +89,7 @@ describe("/indUsers", () => {
 
     test("the response code is 400 and returns an error stating a password is required", async () => {
       let response = await agent
-        .post("/api/indUsers")
+        .post("/api/ind-users")
         .send({ 
           firstName: "John", 
           surname: "Jason", 
@@ -104,7 +104,7 @@ describe("/indUsers", () => {
 
     test("the response code is 400 and returns an error stating a valid password is required", async () => {
       let response = await agent
-        .post("/api/indUsers")
+        .post("/api/ind-users")
         .send({ 
           firstName: "John", 
           surname: "Jason", 

@@ -18,8 +18,8 @@ const App = () => {
         <Route path="/signup" element={!orgUser ? <Signup /> : <Navigate to="/listings" />} />
         <Route path="/login" element={!orgUser ? <Login /> : <Navigate to="/listings" /> } />
         <Route path="/listings" element={<Listings />} />
-        <Route path="/profile" element={!orgUser ? <Navigate to="/login" /> : <AccountProfile /> } />
-        <Route path="/organisations/:org_user_id" element={<OrgProfile />} />
+        <Route path="/profile" element={orgUser ? <AccountProfile /> : <Navigate to="/login" />} />
+        <Route path="/organisations/:org-user-id" element={<OrgProfile />} />
       </Routes>
     </BrowserRouter>
   );
