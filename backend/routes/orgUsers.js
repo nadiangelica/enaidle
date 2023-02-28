@@ -5,7 +5,7 @@ const {loginOrgUser, createOrgUser, findOrgUserById, getAllOrgUsers} = require("
 
 router.post("/login", loginOrgUser);
 router.post("/signup", createOrgUser);
-router.get("/:org_user_id", findOrgUserById);
+router.get("/:org-user-id", findOrgUserById);
 router.get("/", getAllOrgUsers)
 
 module.exports = router;
