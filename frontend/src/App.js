@@ -2,6 +2,7 @@ import { Navigate, BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Listings from "./pages/ListingsFeed";
+import SingleListing from "./pages/SingleListing";
 import Navbar from "./components/Navbar";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Profile from "./pages/Profile";
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/signup" element={!orgUser ? <Signup /> : <Navigate to="/listings" />} />
         <Route path="/login" element={!orgUser ? <Login /> : <Navigate to="/listings" /> } />
         <Route path="/listings" element={<Listings />} />
+        <Route path="/listings/:listing_id" element={<SingleListing />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/organisations/:org_user_id" element={<OrgProfile />} />
       </Routes>
