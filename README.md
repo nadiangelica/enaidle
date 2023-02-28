@@ -29,7 +29,7 @@
   ; npm test
   ```
 
-#### The Frontend Cyprus Testing
+#### The Frontend - Cyprus Testing
 5. Start the backend server, in another terminal start the frontend server and again in another terminal cd frontend and `npm run cypress`
   ```
   ; cd backend
