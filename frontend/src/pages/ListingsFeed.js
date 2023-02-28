@@ -27,7 +27,15 @@ const Listings = () => {
                 <ListingsFeed key={listing._id} listing={listing} />
             ))}
         </div>
-    )
-}
+    )}
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+                <input type="text" placeholder="Filter" id="myInput" onkeyup="filterFunction()" />
+                <a href="#volunteer">Volunteer</a>
+                <a href="#donate">Donate</a>
+            </div>
+        </div>
+
 
 export default Listings;
