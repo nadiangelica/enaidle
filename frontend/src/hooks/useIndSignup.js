@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
-export const useSignup = () => {
+export const useIndSignup = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { dispatch } = useAuthContext();
 
-  const signup = async (organisationName, email, charityNumber, password) => {
+  const indSignup = async (firstName, lastName, email, password) => {
     setLoading(true);
     setError(null);
 
-    const response = await fetch("./api/org-users/signup", {
+    const response = await fetch("./api/ind-users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        organisationName,
+        firstName,
+        lastName,
         email,
-        charityNumber,
         password,
       }),
     });
@@ -27,7 +27,7 @@ export const useSignup = () => {
       setError(json.error);
     }
     if (response.ok) {
-      localStorage.setItem("orgUser", JSON.stringify(json));
+      localStorage.setItem("indUser", JSON.stringify(json));
 
       dispatch({ type: "LOGIN", payload: json });
 
@@ -35,5 +35,5 @@ export const useSignup = () => {
     }
   };
 
-  return { signup, error, loading };
+  return { indSignup, error, loading };
 };
