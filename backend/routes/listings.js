@@ -4,8 +4,7 @@ const {getAllListings, createListing, deleteListing, updateListing} = require('.
 
 router.get('/' , getAllListings);
 router.post('/' , createListing);
-// router.delete('/:id' , deleteListing);
-router.patch('/:id' , updateListing);
+router.delete('/:id' , deleteListing);
 
 
 module.exports = router;

@@ -10,27 +10,6 @@ const ListingsFeed = ({ listing }) => {
     let day = date.slice(8, 10);
     let formattedDate = `${day}/${month}/${year}`;
 
-    // to have a patch request to update the listing
-     const { dispatch } = useListingsContext();
-
-
-    const handleEdit = async (listing) => {
-        const response = await fetch(`/api/listings/${listing._id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(listing)
-        });
-        const json = await response.json();
-        if (response.ok) {
-            dispatch({ type: 'UPDATE_LISTING', payload: json });
-        } else {
-            dispatch({ type: 'SET_ERROR', payload: json });
-        }
-    }
-
-
     return (
         <div className="listing">
             <h3>{listing.title}</h3>
