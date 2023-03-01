@@ -14,7 +14,7 @@ import OrgList from "./pages/OrgList";
 
 
 const App = () => {
-    const {orgUser} = useAuthContext()
+    const {user} = useAuthContext()
 
     return (
         <BrowserRouter>
@@ -25,8 +25,8 @@ const App = () => {
                 <Route path="/individual-signup" element={!user ? <IndSignup /> : <Navigate to="/listings" />} />
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/listings" /> } />
                 <Route path="/listings" element={<Listings />} />
-                <Route path="/profile" element={orgUser ? <AccountProfile /> : <Navigate to="/login" />} />
-                <Route path="/profile/update" element={orgUser ? <UpdateProfile /> : <Navigate to="/login" />} />
+                <Route path="/profile" element={user ? <AccountProfile /> : <Navigate to="/login" />} />
+                <Route path="/profile/update" element={user ? <UpdateProfile /> : <Navigate to="/login" />} />
                 <Route path="/organisations/" element={<OrgList />} />
                 <Route path="/organisations/:org_user_id" element={<OrgProfile />} />
             </Routes>

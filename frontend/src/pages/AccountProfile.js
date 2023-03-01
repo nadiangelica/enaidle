@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 const AccountProfile = () => {
     const navigate = useNavigate();
     const userId = JSON.parse(localStorage.getItem('orgUser')).id;
+    if (!userId) {
+        userId = JSON.parse(localStorage.getItem('orgUser')).orgUser._id;
+    }
 
     const [profile, setProfile] = useState("");
     const [newestInfo, setNewestInfo] = useState("");
