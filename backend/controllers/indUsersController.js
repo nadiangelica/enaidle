@@ -44,9 +44,10 @@ const createIndUser = async (req, res) => {
 
 
 const findIndUserById = async (req, res) => {
+  const indUserId = req.params.ind_user_id;
   try {
-    let indUser = req.params.ind_user_id;
-    res.status(200).json({ indUser });
+    const indUser = await IndUser.findById({ _id: indUserId });
+    res.status(200).json(indUser);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
