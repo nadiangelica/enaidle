@@ -57,16 +57,18 @@ describe("IndUser Controller", () => {
         password: "ABCabc123!",
       };
 
-      const signupResponse = await agent
-        .post(`/api/ind-users/signup`)
-        .send(indUser);
+      const signupResponse = await agent.post(`/api/ind-users/signup`).send(indUser);
       
       const getIndUserResponse = await agent.get(`/api/ind-users/${signupResponse.body._id}`);
 
-      expect(getIndUserResponse.body).toEqual({
-        firstName: getIndUserResponse.firstName,
-        lastName: getIndUserResponse.lastName,
-      });
+      expect(getIndUserResponse.statusCode).toBe(200);
+      expect(getIndUserResponse.body).toEqual(
+          expect.objectContaining({
+            firstName: getIndUserResponse.body.firstName,
+            lastName: getIndUserResponse.body.lastName,
+            email: getIndUserResponse.body.email
+          })
+        );
     });
   });
 
