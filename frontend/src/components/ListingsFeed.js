@@ -16,7 +16,7 @@ const ListingsFeed = ({ listing }) => {
         <article className="listing" data-cy="listing" key={ listing._id }>
             <hr />
             <h4>{listing.title}</h4>
-            <p>listinged by: {listing.organisationName}</p>
+            <p>listed by: {listing.organisationName}</p>
             <p>What's needed: {listing.requirement}</p>
             {/* <p>Needed by: {listing.neededByDate.slice(0, 10)}</p> */}
             <p>Description: {listing.description}</p>

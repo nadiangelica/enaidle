@@ -10,6 +10,10 @@ const ListingSchema = new Schema(
       type: String,
       required: true,
     },
+    organisation_id: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
