@@ -4,10 +4,9 @@ const db = require("../../spec/mongoMemoryDB");
 const OrgUser = require("../../controllers/orgUsersController");
 
 const agent = request.agent(server);
-// Comment line 8 and line 10 as it's causing conflicts, saying we're trying to establish 2 database connections when it can only listen to one
-// beforeAll(async () => await db.connect());
+beforeAll(async () => await db.connect());
 beforeEach(async () => await db.clear());
-// afterAll(async () => await db.close());
+afterAll(async () => await db.close());
 
 describe("OrgUser Controller", () => {
   describe("When a client signs up", () => {
