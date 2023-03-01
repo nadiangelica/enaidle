@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useListingsContext } from '../hooks/useListingsContext';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import NewRequestForm from './newRequest/NewRequest';
 
 const ListingsFeed = ({ listing }) => {
     // formatting the date for neededByDate
