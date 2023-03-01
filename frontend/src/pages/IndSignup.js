@@ -1,19 +1,16 @@
 import { useState } from "react";
 import { useIndSignup } from "../hooks/useIndSignup";
-import { useNavigate } from "react-router";
 
 const IndSignup = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate();
     const { indSignup, error, loading } = useIndSignup();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         await indSignup(firstName, lastName, email, password);
-        navigate('/login');
     }
     return (
         <main>

@@ -6,14 +6,14 @@ export const useOrgLogin = () => {
     const [loading, setLoading] = useState(false);
     const { dispatch } = useAuthContext();
 
-    const login = async (email, password) => {
+    const login = async (email, password, userType) => {
         setLoading(true);
         setError(null);
 
-    const response = await fetch('./api/org-users/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        const response = await fetch(`./api/${userType}-users/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
         })
         const json = await response.json();
 
@@ -21,6 +21,7 @@ export const useOrgLogin = () => {
             setLoading(false);
             setError(json.error);
         }
+        
         if (response.ok) {
             localStorage.setItem('orgUser', JSON.stringify(json));
 
@@ -29,6 +30,6 @@ export const useOrgLogin = () => {
             setLoading(false);
         }
     }
-
+    
     return { login, error, loading };
 }
