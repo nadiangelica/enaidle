@@ -228,7 +228,7 @@ describe("OrgUser Controller", () => {
 
             expect(loginResponse.statusCode).toBe(400)
             expect(loginResponse.body).toEqual({
-                error: "Please provide an email and password"
+                error: "Please complete all required fields"
             });
         })
 
