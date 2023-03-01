@@ -1,43 +1,56 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", true);
 
 const Schema = mongoose.Schema;
+const { CommentSchema } = require("../models/commentModel");
 
-const listingSchema = new Schema({
-  organisationName: {
-    type: String,
-    required: true
-  },
-  title: {
-    type: String,
-    required: true
-  },
-  requirement: {
-    type: String,
-    required: true
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  address: {
-    firstLine: {
+const ListingSchema = new Schema(
+  {
+    organisationName: {
       type: String,
-      required: true
+      required: true,
     },
-    city: {
+    title: {
       type: String,
-      required: true
+      required: true,
     },
-    postcode: {
+    requirement: {
       type: String,
-      uppercase: true,
-      required: true
+      required: true,
     },
-  },
+    description: {
+      type: String,
+      required: true,
+    },
+    address: {
+      firstLine: {
+        type: String,
+        required: true,
+      },
+      city: {
+        type: String,
+        required: true,
+      },
+      postcode: {
+        type: String,
+        uppercase: true,
+        required: true,
+      },
+    },
     neededByDate: {
       type: Date,
-      required: true
-    }
-  }, { timestamps: true });
+      required: true,
+    },
+    comments: [
+      {
+        type: CommentSchema,
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model('Listing', listingSchema);
+// module.exports = mongoose.model("Listing", listingSchema);
+const Listing = mongoose.model("Listing", ListingSchema);
+
+module.exports = Listing;
