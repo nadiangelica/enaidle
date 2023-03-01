@@ -12,16 +12,11 @@ export const useSignup = () => {
     setLoading(true);
     setError(null);
 
-    const response = await fetch("./api/org-users/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        organisationName,
-        email,
-        charityNumber,
-        password,
-      }),
-    });
+    const response = await fetch('./api/org-users/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ organisationName, email, charityNumber, password })
+    })
     const json = await response.json();
 
     if (!response.ok) {
