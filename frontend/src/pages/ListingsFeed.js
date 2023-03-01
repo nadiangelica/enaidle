@@ -35,7 +35,7 @@ const Listings = () => {
     }
 
     return (
-        <div class="dropdown">
+        <div className="dropdown">
             <div id="myDropdown" className="dropdown-content">
                 <strong>What are you interested in?</strong>
                 <select onChange={e => setListingRequirement(e.target.value)}>
