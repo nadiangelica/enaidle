@@ -26,7 +26,7 @@ const createOrgUser = async (req, res) => {
 
         const token = createToken(orgUser._id);
 
-        res.status(201).json({ orgUser, token});
+        res.status(201).json({ orgUser, token });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
