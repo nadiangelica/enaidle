@@ -10,7 +10,7 @@ const ListingSchema = new Schema(
       type: String,
       required: true,
     },
-    organisation_id: {
+    organisationId: {
       type: String,
       required: true,
     },

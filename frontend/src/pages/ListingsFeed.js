@@ -31,6 +31,16 @@ import "./ListingsFeed.css";
         const fetchListings = async () => {
             const response = await fetch('/api/listings');
             const json = await response.json();
+            const orgIds = json.map(e => e.organisationId).filter(e => e);
+            const uniqueOrgIds = [...new Set(orgIds)];
+            if (uniqueOrgIds) {
+                uniqueOrgIds.map(async (id) => {
+                    const response = await fetch('/api/org-users/' + id);
+                    const json = await response.json();
+                    const profilePic = json.info[json.info.length - 1].logoUrl;
+                    return profilePic;
+                })
+            }
 
             if (response.ok) {
                 dispatch({ type: 'SET_LISTINGS', payload: json });

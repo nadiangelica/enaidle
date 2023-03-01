@@ -32,11 +32,21 @@ const CreateForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const { title, organisationName, description, requirement, firstLine, city, postcode, neededByDate } = e.target.elements;
+        const { 
+            title, 
+            organisationName,
+            description, 
+            requirement, 
+            firstLine, 
+            city, 
+            postcode, 
+            neededByDate 
+        } = e.target.elements;
         const listing = {
             title: title.value,
             description: description.value,
             organisationName: orgName,
+            organisationId: id,
             requirement: requirement.value,
             address: {
                 firstLine: firstLine.value,

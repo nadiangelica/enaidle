@@ -15,6 +15,7 @@ const ListingsFeed = ({ listing }) => {
     return (
         <article className="listing" data-cy="listing" key={ listing._id }>
             <hr />
+            
             <h4>{listing.title}</h4>
             <p>listed by: {listing.organisationName}</p>
             <p>What's needed: {listing.requirement}</p>

@@ -2,6 +2,7 @@ const Listing = require("../models/listingModel");
 const mongoose = require("mongoose");
 const OrgUser = require("../models/orgUserModel");
 const { Comment } = require("../models/commentModel");
+const { findOrgUserById } = require('../controllers/orgUsersController');
 
 const getAllListings = async (req, res) => {
   const listings = await Listing.find({});
@@ -11,7 +12,7 @@ const getAllListings = async (req, res) => {
 const createListing = async (req, res) => {
   const {
     organisationName,
-    organisation_id,
+    organisationId,
     title,
     requirement,
     description,
@@ -22,7 +23,7 @@ const createListing = async (req, res) => {
   try {
     const listing = await Listing.create({
       organisationName,
-      organisation_id,
+      organisationId,
       title,
       requirement,
       description,
