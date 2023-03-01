@@ -10,30 +10,18 @@ describe("Comment model", () => {
   beforeEach(async () => await db.clear());
   afterAll(async () => await db.close());
 
-  test('has an orgUser', () => {
+  test('has a user name', () => {
     const myComment = new Comment({
-      orgUser_id: "12334693",
-      indUser_id: "",
+      userName: "Bob",
       content: "Hello World!",
     });
 
-    expect(myComment.orgUser_id).toEqual("12334693");
-  })
-
-  test('has a indUser', () => {
-    const myComment = new Comment({
-      orgUser_id: "",
-      indUser_id: "32764837",
-      content: "Hello World!",
-    });
-
-    expect(myComment.indUser_id).toEqual("32764837");
+    expect(myComment.userName).toEqual("Bob");
   })
 
   test('has a content', () => {
     const myComment = new Comment({
-      orgUser_id: "",
-      indUser_id: "32764837",
+      userName: "Bob",
       content: "Hello World!",
     });
 
