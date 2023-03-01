@@ -41,7 +41,7 @@ const updateOrgInfo = async (req, res) => {
         await orgUser.save();
         
         const token = createToken(orgUser._id);
-        res.status(200).json({orgUser, token});
+        res.status(201).json({orgUser, token});
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -51,22 +51,23 @@ const findOrgUserById = async (req, res) => {
     const orgUserId = req.params.org_user_id;
 
     try {
-        const orgUser = await OrgUser.findById({_id:orgUserId});
+        const orgUser = await OrgUser.findById({_id:orgUserId}, '-password');
         res.status(200).json(orgUser);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 }
 
-const getAllOrgUsers= async (req, res) => {
+const getAllOrgNames= async (req, res) => {
     try {
-        const orgUser = await OrgUser.find({});
-        res.status(200).json(orgUser);
+        const orgUser = await OrgUser.find({}, 'organisationName charityNumber');
+        const sortedList = orgUser.sort((a, b) => a.organisationName.localeCompare(b.organisationName));
+        res.status(200).json(sortedList);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 }
 
 module.exports = {
-    loginOrgUser, createOrgUser, findOrgUserById, getAllOrgUsers, updateOrgInfo
+    loginOrgUser, createOrgUser, findOrgUserById, getAllOrgNames, updateOrgInfo
 };
