@@ -7,7 +7,11 @@ const CreateForm = (props) => {
     const { dispatch } = useListingsContext();
     const { user } = useAuthContext();
     // const id = localStorage.getItem('id');
-    const id = user.id;
+    let id;
+    if (user) {
+        id = user.id;
+    };
+    
     // call the id from the useAuthContext hook by destructuring i
 
 

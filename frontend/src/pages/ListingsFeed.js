@@ -1,33 +1,35 @@
 import { useEffect, useState } from 'react';
 import { useListingsContext } from '../hooks/useListingsContext';
+import { useAuthContext } from "../hooks/useAuthContext";
 import ListingsFeed from '../components/ListingsFeed';
 import CreateForm from '../components/CreateForm';
 import "./ListingsFeed.css";
 
-
-    // post request to create a new listing
+// post request to create a new listing
     
-    const Listings = () => {
-        const { listings, dispatch } = useListingsContext();
-        const [listingRequirement, setListingRequirement] = useState("all");
+const Listings = () => {
+    const {user} = useAuthContext();
 
-        const createListing = async (listing) => {
-            const response = await fetch('/api/listings', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(listing)
-            });
-            const json = await response.json();
-            if (response.ok) {
-                dispatch({ type: 'CREATE_LISTING', payload: json });
-            } else {
-                dispatch({ type: 'SET_ERROR', payload: json });
-            }
+    const { listings, dispatch } = useListingsContext();
+    const [listingRequirement, setListingRequirement] = useState("all");
+
+    const createListing = async (listing) => {
+        const response = await fetch('/api/listings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(listing)
+        });
+        const json = await response.json();
+        if (response.ok) {
+            dispatch({ type: 'CREATE_LISTING', payload: json });
+        } else {
+            dispatch({ type: 'SET_ERROR', payload: json });
         }
+    }
         
-        useEffect(() => {
+    useEffect(() => {
         const fetchListings = async () => {
             const response = await fetch('/api/listings');
             const json = await response.json();
@@ -75,10 +77,10 @@ import "./ListingsFeed.css";
                 </select>
                 <div className="listings">
                     <h2>LISTINGS</h2>
-                    <CreateForm 
+                    {(user && (user.type === "org") && (<CreateForm 
                         createListing={createListing}
                         buttonTitle="Create Listing"
-                    />
+                    />))}
                     {listings && listings.map((listing) => (
                         <ListingsFeed key={listing._id} listing={listing} />
                     ))}
