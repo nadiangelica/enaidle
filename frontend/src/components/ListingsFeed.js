@@ -43,7 +43,6 @@ const ListingsFeed = ({ listing }) => {
             <p>{formattedDate}</p>
             <p>{formatDistanceToNow(new Date(listing.createdAt), { addSuffix: true})}</p>
             <Link to={`/listings/${listing._id}`}>View Listing</Link>
-            <button onClick={() => handleEdit(listing)}>Edit</button>
         </div>
     )
 };
