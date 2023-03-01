@@ -5,11 +5,13 @@ import Navbar from "./components/Navbar";
 
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import IndSignup from "./pages/IndSignup";
 import Listings from "./pages/ListingsFeed";
 import AccountProfile from "./pages/AccountProfile";
 import OrgProfile from "./pages/OrgProfile";
 import UpdateProfile from "./pages/UpdateProfile";
 import OrgList from "./pages/OrgList";
+
 
 const App = () => {
     const {orgUser} = useAuthContext()
@@ -19,8 +21,9 @@ const App = () => {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Navigate to="/signup" />} />
-                <Route path="/signup" element={!orgUser ? <Signup /> : <Navigate to="/listings" />} />
-                <Route path="/login" element={!orgUser ? <Login /> : <Navigate to="/listings" /> } />
+                <Route path="/organisation-signup" element={!user ? <Signup /> : <Navigate to="/listings" />} />
+                <Route path="/individual-signup" element={!user ? <IndSignup /> : <Navigate to="/listings" />} />
+                <Route path="/login" element={!user ? <Login /> : <Navigate to="/listings" /> } />
                 <Route path="/listings" element={<Listings />} />
                 <Route path="/profile" element={orgUser ? <AccountProfile /> : <Navigate to="/login" />} />
                 <Route path="/profile/update" element={orgUser ? <UpdateProfile /> : <Navigate to="/login" />} />

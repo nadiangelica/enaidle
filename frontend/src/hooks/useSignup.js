@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
+import { useNavigate } from "react-router";
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { dispatch } = useAuthContext();
+  const navigate = useNavigate();
 
   const signup = async (organisationName, email, charityNumber, password) => {
     setLoading(true);
@@ -23,10 +25,9 @@ export const useSignup = () => {
     }
     if (response.ok) {
       localStorage.setItem("orgUser", JSON.stringify(json));
-
       dispatch({ type: "LOGIN", payload: json });
-
       setLoading(false);
+      navigate('/login');
     }
   };
 

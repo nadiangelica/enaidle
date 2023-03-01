@@ -1,25 +1,58 @@
-const IndUser = require('../models/indUserModel');
-const mongoose = require('mongoose');
+const IndUser = require("../models/indUserModel");
+const jwt = require("jsonwebtoken");
 
-//get all individual users
-const getAllIndUsers = async (req, res) => {
-    const indUsers = await IndUser.find({}).sort({createdAt: -1})
-    res.status(200).json(indUsers)
-}
+const createToken = (_id) => {
+  return jwt.sign({ _id }, process.env.JWT_SECRET, { expiresIn: "30m" });
+};
 
-//create a new individual user
-const createIndUser = async (req,  res) => {
-    const {firstName, surname, email, password} = req.body
+const loginIndUser = async (req, res) => {
+  const { email, password } = req.body;
 
-    try {
-      const indUser = await IndUser.create({firstName, surname, email, password})
-      res.status(201).json({message: "Thanks! your account has been successfully created"})
-    } catch (error) {
-      res.status(400).json({error: error.message})
-    }
-}
+  try {
+    const indUser = await IndUser.login(email, password);
+    const token = createToken(indUser._id);
+    res.status(200).json({ email, token });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const createIndUser = async (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
+
+  try {
+    const indUser = await IndUser.register(
+      firstName,
+      lastName,
+      email,
+      password
+    );
+
+    const token = createToken(indUser._id);
+
+    res.status(201).json({
+      _id: indUser._id,
+      firstName: indUser.firstName,
+      lastName: indUser.lastName,
+      email: indUser.email,
+      token,
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const findIndUserById = async (req, res) => {
+  try {
+    let indUser = req.params.ind_user_id;
+    res.status(200).json({ indUser });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 module.exports = {
-    createIndUser,
-    getAllIndUsers
-}
+  loginIndUser,
+  createIndUser,
+  findIndUserById,
+};
