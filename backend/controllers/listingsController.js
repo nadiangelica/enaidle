@@ -58,5 +58,4 @@ module.exports = {
   getAllListings,
   createListing,
   deleteListing,
-  updateListing,
 };
