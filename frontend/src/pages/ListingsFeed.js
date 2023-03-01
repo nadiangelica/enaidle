@@ -42,14 +42,13 @@ const Listings = () => {
     return (
         <div className="listings">
             <h2>LISTINGS</h2>
-            {/* should be able to filter the list of listings via the requirement from the drop down */}
-            {listings && listings.map((listing) => (
-                <ListingsFeed key={listing._id} listing={listing} />
-            ))}
             <CreateForm 
                 createListing={createListing}
                 buttonTitle="Create Listing"
             />
+            {listings && listings.map((listing) => (
+                <ListingsFeed key={listing._id} listing={listing} />
+            ))}
         </div>
     )
 }
