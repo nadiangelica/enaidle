@@ -42,6 +42,7 @@ const createIndUser = async (req, res) => {
   }
 };
 
+
 const findIndUserById = async (req, res) => {
   try {
     let indUser = req.params.ind_user_id;
