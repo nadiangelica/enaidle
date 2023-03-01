@@ -1,16 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useListingsContext } from '../hooks/useListingsContext';
 import ListingsFeed from '../components/ListingsFeed';
 import "./ListingsFeed.css";
 
-const Listings = () => {
-    const { listings,  dispatch } = useListingsContext();
 
+const Listings = () => {
+    const { listings, dispatch } = useListingsContext();
+    const [listingRequirement, setListingRequirement] = useState("all");
     useEffect(() => {
         const fetchListings = async () => {
             const response = await fetch('/api/listings');
             const json = await response.json();
-            
+
             if (response.ok) {
                 dispatch({ type: 'SET_LISTINGS', payload: json });
             } else {
@@ -20,14 +21,37 @@ const Listings = () => {
         fetchListings();
     }, [dispatch]);
 
+    let listingsToShow;
+    switch (listingRequirement) {
+        case 'volunteering':
+            listingsToShow = listings.filter(listing => listing.requirement === 'Volunteering')
+            break;
+        case 'donation':
+            listingsToShow = listings.filter(listing => listing.requirement === 'Donation of Goods')
+            break;
+        default:
+            listingsToShow = listings;
+            break;
+    }
+
     return (
-        <div className="listings">
-            <h2>LISTINGS</h2>
-            {listings && listings.map((listing) => (
-                <ListingsFeed key={listing._id} listing={listing} />
-            ))}
-        </div>
-    )
+        <div className="dropdown">
+            <div id="myDropdown" className="dropdown-content">
+                <strong>What are you interested in?</strong>
+                <select onChange={e => setListingRequirement(e.target.value)}>
+                    <option value="all">All</option>
+                    <option value="volunteering">Volunteering</option>
+                    <option value="donation">Donation of Goods</option>
+                </select>
+                <div className="listings">
+                    <h2>LISTINGS</h2>
+                    {listingsToShow && listingsToShow.map((listing) => (
+                        <ListingsFeed key={listing._id} listing={listing} />
+                    ))}
+                </div>
+            </div>
+        </div>)
 }
+
 
 export default Listings;
