@@ -10,7 +10,7 @@ export const useOrgLogin = () => {
         setLoading(true);
         setError(null);
 
-    const response = await fetch('./api/orgUsers/login', {
+    const response = await fetch('./api/org-users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })

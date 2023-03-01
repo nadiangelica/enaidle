@@ -22,9 +22,9 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use("/api/orgUsers", orgUserRoutes);
+app.use("/api/org-users", orgUserRoutes);
 app.use("/api/listings", listingRoutes);
-app.use('/api/indUsers', indUserRoutes);
+app.use('/api/ind-users', indUserRoutes);
 
 if (process.env.NODE_ENV !== "test") {
   mongoose
@@ -37,22 +37,23 @@ if (process.env.NODE_ENV !== "test") {
     .catch((error) => {
       console.log(error);
     });
-} else {
-  // mock mongo db
-  inMemoryDb
-    .connect()
-    .then(() => {
-      app.listen(process.env.PORT, () => {
-        console.log(
-          "connected to test db & listening on port",
-          process.env.PORT
-        );
-      });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
+} 
+// else {
+//   // mock mongo db
+//   inMemoryDb
+//     .connect()
+//     .then(() => {
+//       app.listen(process.env.PORT, () => {
+//         console.log(
+//           "connected to test db & listening on port",
+//           process.env.PORT
+//         );
+//       });
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// }
 
 // listen for requests
 module.exports = app;
