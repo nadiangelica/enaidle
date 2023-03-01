@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
-mongoose.set('strictQuery', true);
-const bcrypt = require('bcrypt');
-const validator = require('validator');
+mongoose.set("strictQuery", true);
+const bcrypt = require("bcrypt");
+const validator = require("validator");
 
 const OrgUserSchema = new mongoose.Schema({
   organisationName: { type: String, required: true },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   charityNumber: Number,
   password: {
@@ -23,17 +23,19 @@ OrgUserSchema.statics.register = async function (
   charityNumber,
   password
 ) {
-  if (!organisationName) {
-    throw Error("Please provide an organisation name");
+  if (!organisationName && !email && !password) {
+    throw new Error("Please complete all required fields");
   } else if (!email) {
-    throw Error("Please provide an email address");
+    throw new Error("Please provide an email address");
+  } else if (!organisationName) {
+    throw new Error("Please provide an organisation name");
   } else if (!password) {
-    throw Error("Please provide a password");
+    throw new Error("Please provide a password");
   } else if (!validator.isEmail(email)) {
-    throw Error("Please provide a valid email address");
+    throw new Error("Please provide a valid email address");
   } else if (!validator.isStrongPassword(password)) {
-    throw Error(
-      "Password must be 8 characters or longer \nPassword must have at least one digit (0-9) \nPassword must have at least one uppercase ('A'-'Z') \nPassword must have at least one special character ('!\"#$%&'()*+,‑./&')"
+    throw new Error(
+      `Password must be 8 characters or longer. \nPassword must have at least one digit (0-9) \nPassword must have at least one uppercase ('A'-'Z') \nPassword must have at least one special character ('!\"#$%&'()*+,‑./&')`
     );
   }
 
@@ -56,9 +58,13 @@ OrgUserSchema.statics.register = async function (
 };
 
 OrgUserSchema.statics.login = async function (email, password) {
-  if (!email || !password) {
-    throw new Error("Please provide an email and password");
-  }
+  if (!email && !password) {
+    throw new Error("Please complete all required fields");
+  } else if (!email) {
+    throw new Error("Please provide an email address");
+  } else if (!password) {
+    throw new Error("Please provide a password");
+  } 
   const orgUser = await this.findOne({ email });
 
   if (!orgUser) {
