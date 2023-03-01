@@ -7,7 +7,7 @@
     "testEnvironment": "node"
   },
   "scripts": {
-    "test": " NODE_ENV=test jest --verbose --runInBand --detectOpenHandles --forceExit",
+    "test": " NODE_ENV=test jest --verbose --runInBand",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
