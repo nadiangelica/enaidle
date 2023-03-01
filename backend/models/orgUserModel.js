@@ -38,7 +38,7 @@ OrgUserSchema.statics.register = async function (
     throw new Error("Please provide a valid email address");
   } else if (!validator.isStrongPassword(password)) {
     throw new Error(
-      `Password must be 8 characters or longer. \nPassword must have at least one digit (0-9) \nPassword must have at least one uppercase ('A'-'Z') \nPassword must have at least one special character ('!\"#$%&'()*+,‑./&')`
+      "Password must be 8 characters or longer \nPassword must have at least one digit (0-9) \nPassword must have at least one uppercase ('A'-'Z') \nPassword must have at least one special character ('!\"#$%&'()*+,‑./&')"
     );
   }
 

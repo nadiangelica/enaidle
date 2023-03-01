@@ -5,10 +5,9 @@ const db = require("../../spec/mongoMemoryDB");
 const IndUser = require("../../controllers/indUsersController");
 
 const agent = request.agent(server);
-// Comment line 8 and line 10 as it's causing conflicts, saying we're trying to establish 2 database connections when it can only listen to one
-// beforeAll(async () => await db.connect());
+beforeAll(async () => await db.connect());
 beforeEach(async () => await db.clear());
-// afterAll(async () => await db.close());
+afterAll(async () => await db.close());
 
 describe("IndUser Controller", () => {
   describe("When an individual signs up", () => {
@@ -58,16 +57,18 @@ describe("IndUser Controller", () => {
         password: "ABCabc123!",
       };
 
-      const signupResponse = await agent
-        .post(`/api/ind-users/signup`)
-        .send(indUser);
+      const signupResponse = await agent.post(`/api/ind-users/signup`).send(indUser);
       
       const getIndUserResponse = await agent.get(`/api/ind-users/${signupResponse.body._id}`);
 
-      expect(getIndUserResponse.body).toEqual({
-        firstName: getIndUserResponse.firstName,
-        lastName: getIndUserResponse.lastName,
-      });
+      expect(getIndUserResponse.statusCode).toBe(200);
+      expect(getIndUserResponse.body).toEqual(
+          expect.objectContaining({
+            firstName: getIndUserResponse.body.firstName,
+            lastName: getIndUserResponse.body.lastName,
+            email: getIndUserResponse.body.email
+          })
+        );
     });
   });
 
