@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const ListingsFeed = ({ listing }) => {
     // formatting the date for neededByDate
@@ -8,6 +9,8 @@ const ListingsFeed = ({ listing }) => {
     let month = date.slice(5, 7);
     let day = date.slice(8, 10);
     let formattedDate = `${day}/${month}/${year}`;
+
+    const { user } = useAuthContext();
 
     return (
         <article className="listing" data-cy="listing" key={ listing._id }>
