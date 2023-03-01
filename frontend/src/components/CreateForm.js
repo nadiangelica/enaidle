@@ -33,7 +33,10 @@ const CreateForm = (props) => {
             <label htmlFor="description">Description</label>
             <input type="text" name="description" id="description" />
             <label htmlFor="requirement">Requirement</label>
-            <input type="text" name="requirement" id="requirement" />
+            <select>Requirement
+            <option value="volunteering">Volunteering</option>
+            <option value="donation">Donation of goods</option>
+            </select>
             <label htmlFor="firstLine">Address</label>
             <input type="text" name="firstLine" id="firstLine" />
             <label htmlFor="city">City</label>
