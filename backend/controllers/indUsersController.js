@@ -12,7 +12,7 @@ const loginIndUser = async (req, res) => {
     const indUser = await IndUser.login(email, password);
     const token = createToken(indUser._id);
     const id = indUser._id
-    res.status(200).json({ email, token });
+    res.status(200).json({ email, token, id, type:"ind" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -25,8 +25,8 @@ const createIndUser = async (req, res) => {
     const indUser = await IndUser.register(firstName, lastName, email, password);
 
     const token = createToken(indUser._id);
-
-    res.status(201).json({ indUser, token });
+    const id = indUser._id
+    res.status(201).json({ indUser, token, id, type:"ind" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

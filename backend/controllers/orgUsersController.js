@@ -12,7 +12,7 @@ const loginOrgUser = async (req, res) => {
         const orgUser = await OrgUser.login(email, password);
         const token = createToken(orgUser._id);
         const id = orgUser._id
-        res.status(200).json({ email, token, id});
+        res.status(200).json({ email, token, id, type:"org"});
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -25,8 +25,8 @@ const createOrgUser = async (req, res) => {
         const orgUser = await OrgUser.register(organisationName, email, charityNumber, password);
 
         const token = createToken(orgUser._id);
-
-        res.status(201).json({ orgUser, token });
+        const id = orgUser._id
+        res.status(201).json({ orgUser, token, id, type:"org" });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
