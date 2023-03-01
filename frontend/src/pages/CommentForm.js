@@ -1,32 +1,52 @@
-import { useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import { useComment } from "../hooks/useComment";
+import { useAuthContext } from "../hooks/useAuthContext";
 
-const CommentForm = () => {
-  const [content, setContent] = useState("");
+const CommentForm = (props) => {
+  const { dispatch } = useComment();
+  const { user } = useAuthContext();
+
+  const id = user.id;
+
+  const [userName, setUserName] = useState("");
   const { addComment, error, loading } = useComment();
+
+  useEffect(() => {
+    getUserName();
+  }, []);
+
+  const getUserName = async () => {
+    const response = await fetch(`/api/org-users/${id}`);
+    const json = await response.json();
+    if (response.ok) {
+      if (json.organisationName) {
+        setUserName(json.organisationName);
+      } else {
+        const response = await fetch(`/api/ind-users/${id}`);
+        const json = await response.json();
+        if (response.ok) {
+          setUserName(json.firstName);
+        }
+      }
+    } else {
+      dispatch({ type: "SET_ERROR", payload: json });
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addComment("", content);
+    const { content } = e.target.elements;
+
+    await addComment(userName, content.value);
   };
-  const updateComment = async (e) => {
-    setContent(e.target.value);
-    // await addComment(content);
-  };
+
   return (
     <main>
       <div className="container">
         <form className="addCommentForm" onSubmit={handleSubmit}>
           <div className="input-box">
-            {/* <label id='form_label' htmlFor='add-comment'>Comment</label > */}
-            <input
-              className="form_field"
-              placeholder="Add a comment..."
-              id="add-comment"
-              type="text"
-              value={content}
-              onChange={updateComment}
-            />
+            <input className="form_field" placeholder="Add a comment..." id="content" type="text"/>
             <i></i>
           </div>
 

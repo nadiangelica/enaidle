@@ -6,9 +6,16 @@ const SingleListingCard = ({ listing, isLoggedIn }) => {
   const createdDate = moment(listing.createdAt).fromNow();
 
   const comments = listing.comments.map((comment) => {
-    return <p>{comment.content}</p>;
+    const commentCreatedDate = moment(comment.createdAt).fromNow();
+    return (
+      <>
+        <p>
+          {comment.userName}: {comment.content}
+        </p>
+        <p>{commentCreatedDate}</p>
+      </>
+    );
   });
-
 
   return (
     <article className="listing" data-cy="listing" key={listing._id}>
