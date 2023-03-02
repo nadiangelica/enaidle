@@ -82,9 +82,13 @@ const Listings = () => {
                         createListing={createListing}
                         buttonTitle="Create Listing"
                     />))}
-                    {listingsToShow && listingsToShow.map((listing) => (
-                        <ListingsFeed key={listing._id} listing={listing} />
-                    ))}
+
+                    {!listings
+                        ? <p>Nothing to see here, yet.</p>
+                        : listingsToShow.length = 0
+                            ? <p>No listings matching your choice, please select another option.</p>
+                            : listingsToShow.map(listing => <ListingsFeed key={listing._id} listing={listing}/>)
+                    } 
                 </div>
             </div>
         </div>
