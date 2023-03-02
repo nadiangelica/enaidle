@@ -60,8 +60,8 @@ IndUserSchema.statics.register = async function (
 };
 
 IndUserSchema.statics.login = async function (email, password) {
-  if (!email || !password) {
-    throw new Error("Please provide an email and password");
+  if (!email && !password) {
+    throw new Error("Please complete all required fields");
   } else if (!email) {
     throw new Error("Please provide an email address");
   } else if (!password) {

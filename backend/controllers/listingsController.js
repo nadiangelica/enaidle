@@ -11,6 +11,7 @@ const getAllListings = async (req, res) => {
 const createListing = async (req, res) => {
   const {
     organisationName,
+    organisationId,
     title,
     requirement,
     description,
@@ -21,6 +22,7 @@ const createListing = async (req, res) => {
   try {
     const listing = await Listing.create({
       organisationName,
+      organisationId,
       title,
       requirement,
       description,

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
+import './Navbar.css';
 
 const Navbar = () => {
 
@@ -29,7 +30,8 @@ const Navbar = () => {
                     { !user && (
                     <div>
                         <Link to="/login">Login</Link>
-                        <Link to="/signup">Signup</Link>
+                        <Link to="/organisation-signup">Organisation Signup</Link>
+                        <Link to="/individual-signup">Individual Signup</Link>
                         <Link to="/listings">Listings</Link>
                         <Link to="/organisations">Organisations List</Link>
                     </div>
