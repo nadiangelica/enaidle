@@ -12,6 +12,7 @@ const Listings = () => {
 
     const { listings, dispatch } = useListingsContext();
     const [listingRequirement, setListingRequirement] = useState("all");
+    // const [logos, setLogos] = useState([]);
 
     const createListing = async (listing) => {
         const response = await fetch('/api/listings', {
@@ -37,21 +38,36 @@ const Listings = () => {
             // code below is for getting the profile pic url
             const orgIds = json.map(e => e.organisationId).filter(e => e);
             const uniqueOrgIds = [...new Set(orgIds)];
+
             console.log(uniqueOrgIds);
+            const orgLogos = [];
+
             if (uniqueOrgIds) {
                 uniqueOrgIds.map(async (id) => {
                     const response = await fetch('/api/org-users/' + id);
                     const json = await response.json();
-                    console.log();
+
                     const info = json.info.reverse()[0];
                     let profilePic;
-                    if (info) {
-                        profilePic = info.logoUrl;
-                    }
-                    console.log(profilePic);
-                    return profilePic;
+                    
+                    if (json.charityNumber) profilePic = "charity";
+                    else profilePic = "org";
+                    
+                    if (info && info.logoUrl !== "") profilePic = info.logoUrl;
+
+                    orgLogos.push({id, profilePic});
                 })
             }
+
+            // setLogos(orgLogos);
+
+            console.log(orgLogos);
+
+            json.map(obj => (
+                console.log(obj)
+            ))
+
+            // console.log(payload);
 
             if (response.ok) {
                 dispatch({ type: 'SET_LISTINGS', payload: json });
