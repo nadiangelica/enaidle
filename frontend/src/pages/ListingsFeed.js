@@ -14,7 +14,6 @@ const Listings = () => {
 
     const { listings, dispatch } = useListingsContext();
     const [listingRequirement, setListingRequirement] = useState("all");
-    // const [logos, setLogos] = useState([]);
 
     const createListing = async (listing) => {
         const response = await fetch('/api/listings', {
@@ -82,7 +81,7 @@ const Listings = () => {
             listingsToShow = listings.filter(listing => listing.requirement === 'Volunteering')
             break;
         case 'donation':
-            listingsToShow = listings.filter(listing => listing.requirement === 'Donation of Goods')
+            listingsToShow = listings.filter(listing => listing.requirement === 'Donation of goods')
             break;
         default:
             listingsToShow = listings;

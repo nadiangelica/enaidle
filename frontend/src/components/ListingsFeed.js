@@ -19,7 +19,6 @@ const ListingsFeed = ({ listing }) => {
             <h4>{listing.title}</h4>
             <p><a href={`/organisations/${listing.organisationId}`}>{listing.organisationName}</a></p>
             <p>What's needed: {listing.requirement}</p>
-            {/* <p>Needed by: {listing.neededByDate.slice(0, 10)}</p> */}
             <p>Description: {listing.description}</p>
             <p>Area: {listing.address.city}</p>
             <p>Needed for when: {formattedDate}</p>
