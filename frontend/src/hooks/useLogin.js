@@ -23,7 +23,7 @@ export const useOrgLogin = () => {
         }
         
         if (response.ok) {
-            localStorage.setItem('orgUser', JSON.stringify(json));
+            localStorage.setItem('user', JSON.stringify(json));
 
             dispatch({ type: 'LOGIN', payload: json });
 
