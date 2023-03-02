@@ -62,6 +62,7 @@ const SingleListingCard = ({ listing, isLoggedIn }) => {
       </button>
       {isExpanded && isLoggedIn && <CommentForm />}
       {isExpanded && comments}
+      {isExpanded && !isLoggedIn && <div className="info">Sign in now to post a comment!</div>}
     </article>
   );
 };
