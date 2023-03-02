@@ -6,8 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(241, 246, 246);
-  /* background-color: rgb(255, 210, 0); */
+  /* background-color: rgb(241, 246, 246); */
+  background-color: rgb(255, 210, 0);
 }
 
 code {
@@ -19,11 +19,18 @@ p {
   color:black;
 }
 
+a:link {
+  color: #02047a;
+}
+a:visited {
+  color: #027A79;
+}
+
 .small-paragraph {
   font-size: 13px;
 }
 
-.organisation-button{
+.user-type-redirect-button{
   background-color: #027A79;
   border: none;
   border-radius: 8px;
@@ -35,18 +42,18 @@ p {
   display: inline-block;
   font-size: 16px;
 }
-
-.individual-button{
+.login-redirect-button{
   background-color: #02047a;
   border: none;
   border-radius: 6px;
-  margin: 10px;
+  margin: auto;
+  margin-top: 10px;
   color: white;
-  padding: 32px 32px;
-  text-align: center;
+  padding: 10px 10px;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 12px;
+  width: 10vw;
 }
 
 /* form input boxes */
