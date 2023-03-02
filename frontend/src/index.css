@@ -6,8 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: rgb(241, 246, 246); */
-  background-color: rgb(255, 210, 0);
+  background-color: rgb(241, 246, 246);
+  /* background-color: rgb(255, 210, 0); */
 }
 
 code {
@@ -17,6 +17,10 @@ code {
 
 p {
   color:black;
+}
+
+.small-paragraph {
+  font-size: 13px;
 }
 
 .organisation-button{
@@ -47,17 +51,21 @@ p {
 
 /* form input boxes */
 
+/* wider div */
 .container {
-  background-color: #027A79;
+  background-color: rgb(255, 210, 0);
   border-radius: 6px;
   padding: 10px 10px
 
 }
+
+/* submit button */
 #submit {
   background-color: #02047a;
   border: none;
   border-radius: 6px;
   margin: auto;
+  margin-top: 10px;
   color: white;
   padding: 10px 10px;
   text-decoration: none;
@@ -65,10 +73,17 @@ p {
   font-size: 12px;
   width: 10vw;
 }
+
+/* forms */
 .form_field {
   display: flex;
   flex-direction: column;
   margin: 5px;
+  width: 30vw;
+  background: #fff;
+  border-radius: 10px;
+  flex-grow: 1;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 main {
@@ -79,19 +94,6 @@ main {
     justify-content: center;
     flex-direction: column;
 }
-.signUpLoginForm {
-    overflow: hidden;
-    transition: height 0.2s ease;
-    display: flex;
-    flex-direction: column;
-}
-.signUpLoginForm input {
-    width: 30vw;
-    background: #fff;
-    border-radius: 10px;
-    flex-grow: 1;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-}
 
 /* .post-btn:active {
     background-color: #2E6FBD;
@@ -100,7 +102,12 @@ main {
     background-color: #1C84FF;
 } */
 
-
+/* .signUpLoginForm {
+    overflow: hidden;
+    transition: height 0.2s ease;
+    display: flex;
+    flex-direction: column;
+} */
 
 
 

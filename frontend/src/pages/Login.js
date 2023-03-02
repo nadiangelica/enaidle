@@ -43,7 +43,7 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <p>Are you logging in as an: </p>
+                        <p className="small-paragraph">Are you logging in as an: </p>
                         <input 
                             type="radio" 
                             id="ind" 
