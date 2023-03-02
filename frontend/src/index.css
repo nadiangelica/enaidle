@@ -6,9 +6,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: lightcyan;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* #efddfd - Foam (light background)
+#fdd142 - Sunshine yellow
+#027a79  - Pine/teal
+#e5015c / #e65f59 - Raspberry
+#374e86 / #1a3685 / #12296c - Navy */

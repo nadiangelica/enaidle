@@ -11,6 +11,7 @@ import AccountProfile from "./pages/AccountProfile";
 import OrgProfile from "./pages/OrgProfile";
 import UpdateProfile from "./pages/UpdateProfile";
 import OrgList from "./pages/OrgList";
+import Home from "./pages/Home";
 
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
         <BrowserRouter>
             <Navbar />
             <Routes>
-                <Route path="/" element={<Navigate to="/signup" />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/organisation-signup" element={!user ? <Signup /> : <Navigate to="/listings" />} />
                 <Route path="/individual-signup" element={!user ? <IndSignup /> : <Navigate to="/listings" />} />
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/listings" /> } />
