@@ -35,16 +35,23 @@ const Listings = () => {
             const json = await response.json();
 
             // code below is for getting the profile pic url
-            // const orgIds = json.map(e => e.organisationId).filter(e => e);
-            // const uniqueOrgIds = [...new Set(orgIds)];
-            // if (uniqueOrgIds) {
-            //     uniqueOrgIds.map(async (id) => {
-            //         const response = await fetch('/api/org-users/' + id);
-            //         const json = await response.json();
-            //         const profilePic = json.info[json.info.length - 1].logoUrl;
-            //         return profilePic;
-            //     })
-            // }
+            const orgIds = json.map(e => e.organisationId).filter(e => e);
+            const uniqueOrgIds = [...new Set(orgIds)];
+            console.log(uniqueOrgIds);
+            if (uniqueOrgIds) {
+                uniqueOrgIds.map(async (id) => {
+                    const response = await fetch('/api/org-users/' + id);
+                    const json = await response.json();
+                    console.log();
+                    const info = json.info.reverse()[0];
+                    let profilePic;
+                    if (info) {
+                        profilePic = info.logoUrl;
+                    }
+                    console.log(profilePic);
+                    return profilePic;
+                })
+            }
 
             if (response.ok) {
                 dispatch({ type: 'SET_LISTINGS', payload: json });
