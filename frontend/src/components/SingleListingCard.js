@@ -60,7 +60,7 @@ const SingleListingCard = ({ listing, isLoggedIn }) => {
       <button onClick={toggleExpanded}>
         {isExpanded ? "Hide Comments" : "Comments"}
       </button>
-      {isExpanded && isLoggedIn && <CommentForm/>}
+      {isExpanded && isLoggedIn && <CommentForm />}
       {isExpanded && comments}
     </article>
   );

@@ -29,7 +29,7 @@ const SingleListing = () => {
     <div className="listings">
       {listing ? (
         <div>
-          <SingleListingCard listing={listing} isLoggedIn={isLoggedIn}/>
+          <SingleListingCard listing={listing} isLoggedIn={isLoggedIn} />
         </div>
       ) : (
         <p>Loading...</p>
