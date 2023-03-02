@@ -29,7 +29,6 @@ const SingleListing = () => {
     <div className="listings">
       {listing ? (
         <div>
-          {/* <h2>{listing.organisationName}</h2> */}
           <SingleListingCard listing={listing} isLoggedIn={isLoggedIn} />
         </div>
       ) : (
