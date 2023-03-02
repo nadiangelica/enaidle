@@ -69,14 +69,9 @@ const addCommentToAListing = async (req, res) => {
 
   try {
     let comment;
-    if (req.body.orgUserId) {
+    if (req.body.userName) {
       comment = new Comment({
-        orgUser_id: req.body.orgUserId,
-        content: req.body.content,
-      });
-    } else {
-      comment = new Comment({
-        indUser_id: req.body.indUserId,
+        userName: req.body.userName,
         content: req.body.content,
       });
     }
