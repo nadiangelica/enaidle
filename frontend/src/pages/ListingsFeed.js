@@ -4,6 +4,8 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import ListingsFeed from '../components/ListingsFeed';
 import CreateForm from '../components/CreateForm';
 import "./ListingsFeed.css";
+import charityLogo from '../assets/images/charity_logo.png';
+import orgLogo from '../assets/images/organisation_logo.png';
 
 // post request to create a new listing
     
@@ -12,6 +14,7 @@ const Listings = () => {
 
     const { listings, dispatch } = useListingsContext();
     const [listingRequirement, setListingRequirement] = useState("all");
+    const [isUpdated, setIsUpdated] = useState(false);
 
     const createListing = async (listing) => {
         const response = await fetch('/api/listings', {
@@ -27,32 +30,53 @@ const Listings = () => {
         } else {
             dispatch({ type: 'SET_ERROR', payload: json });
         }
+        setIsUpdated(false);
     }
-        
+ 
     useEffect(() => {
         const fetchListings = async () => {
             const response = await fetch('/api/listings');
             const json = await response.json();
-            // commented code below is for getting the profile pic url
-            // const orgIds = json.map(e => e.organisationId).filter(e => e);
-            // const uniqueOrgIds = [...new Set(orgIds)];
-            // if (uniqueOrgIds) {
-            //     uniqueOrgIds.map(async (id) => {
-            //         const response = await fetch('/api/org-users/' + id);
-            //         const json = await response.json();
-            //         const profilePic = json.info[json.info.length - 1].logoUrl;
-            //         return profilePic;
-            //     })
-            // }
+            let listingsWithLogos = [];
 
-            if (response.ok) {
-                dispatch({ type: 'SET_LISTINGS', payload: json });
-            } else {
-                dispatch({ type: 'SET_ERROR', payload: json });
+            const reloadListings = () => {
+                if (response.ok) {
+                    dispatch({ type: 'SET_LISTINGS', payload: listingsWithLogos });
+                } else {
+                    dispatch({ type: 'SET_ERROR', payload: json });
+                }
             }
+
+            const placeholderLogo = (obj) => {
+                if (obj.charityNumber) {
+                    return charityLogo;
+                } else {
+                    return orgLogo;
+                }
+            }
+            
+            json.map(async obj => {
+                if (obj.organisationId) {
+                    const res = await fetch('/api/org-users/' + obj.organisationId);
+                    const data = await res.json();
+                    const info = data.info.reverse()[0];
+
+                    let profilePic = placeholderLogo(data);
+
+                    if (info && info.logoUrl !== "") profilePic = info.logoUrl;
+                    listingsWithLogos.push({...obj, logo: profilePic});
+                    reloadListings();
+                } else {
+                    let profilePic = placeholderLogo(obj);
+                    listingsWithLogos.push({...obj, logo: profilePic});
+                    reloadListings();
+                }
+            })
         }
+
         fetchListings();
-    }, [dispatch]);
+        setIsUpdated(true);
+    }, [dispatch, isUpdated]);
 
     let listingsToShow;
     switch (listingRequirement) {
@@ -60,7 +84,7 @@ const Listings = () => {
             listingsToShow = listings.filter(listing => listing.requirement === 'Volunteering')
             break;
         case 'donation':
-            listingsToShow = listings.filter(listing => listing.requirement === 'Donation of Goods')
+            listingsToShow = listings.filter(listing => listing.requirement === 'Donation of goods')
             break;
         default:
             listingsToShow = listings;
@@ -82,9 +106,12 @@ const Listings = () => {
                         createListing={createListing}
                         buttonTitle="Create Listing"
                     />))}
-                    {listingsToShow && listingsToShow.map((listing) => (
-                        <ListingsFeed key={listing._id} listing={listing} />
-                    ))}
+                    {!listings
+                        ? <p>Nothing to see here, yet.</p>
+                        : listingsToShow.length === 0
+                            ? <p>No listings matching your choice, please select another option.</p>
+                            : listingsToShow.map(listing => <ListingsFeed key={listing._id} listing={listing}/>)
+                    } 
                 </div>
             </div>
         </div>
