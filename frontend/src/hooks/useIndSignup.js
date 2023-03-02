@@ -2,21 +2,26 @@ import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import { useNavigate } from "react-router";
 
-export const useSignup = () => {
+export const useIndSignup = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { dispatch } = useAuthContext();
   const navigate = useNavigate();
 
-  const signup = async (organisationName, email, charityNumber, password) => {
+  const indSignup = async (firstName, lastName, email, password) => {
     setLoading(true);
     setError(null);
 
-    const response = await fetch('./api/org-users/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ organisationName, email, charityNumber, password })
-    })
+    const response = await fetch("./api/ind-users/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        email,
+        password,
+      }),
+    });
     const json = await response.json();
 
     if (!response.ok) {
@@ -24,12 +29,12 @@ export const useSignup = () => {
       setError(json.error);
     }
     if (response.ok) {
-      localStorage.setItem("orgUser", JSON.stringify(json));
+      localStorage.setItem("indUser", JSON.stringify(json));
       dispatch({ type: "LOGIN", payload: json });
       setLoading(false);
       navigate('/login');
     }
   };
 
-  return { signup, error, loading };
+  return { indSignup, error, loading };
 };

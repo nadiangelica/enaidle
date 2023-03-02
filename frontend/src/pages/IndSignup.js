@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { useSignup } from "../hooks/useSignup";
+import { useIndSignup } from "../hooks/useIndSignup";
 
-const Signup = () => {
-    const [organisationName, setOrganisationName] = useState("");
+const IndSignup = () => {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
-    const [charityNumber, setCharityNumber] = useState("");
     const [password, setPassword] = useState("");
-    const { signup, error, loading } = useSignup();
+    const { indSignup, error, loading } = useIndSignup();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await signup(organisationName, email, charityNumber, password);
+        await indSignup(firstName, lastName, email, password);
     }
     return (
         <main>
@@ -18,8 +18,14 @@ const Signup = () => {
         <div className="container">
             <form className='signUpLoginForm' onSubmit={handleSubmit}>
                 <div className="input-box">
-                <label id='form_label' htmlFor='email'>Organisation Name</label >
-                <input className='form_field' id="organisation-name" type='text' value={ organisationName } onChange={(e) => setOrganisationName(e.target.value)} />
+                <label id='form_label' htmlFor='email'>First Name</label >
+                <input className='form_field' id="first-name" type='text' value={ firstName } onChange={(e) => setFirstName(e.target.value)} />
+                <i></i>
+                </div>
+
+                <div className="input-box">
+                <label id='form_label' htmlFor='email'>Last Name</label >
+                <input className='form_field' id="last-name" type='text' value={ lastName } onChange={(e) => setLastName(e.target.value)} />
                 <i></i>
                 </div>
 
@@ -29,12 +35,6 @@ const Signup = () => {
                 <i></i>
                 </div>
 
-                <div className="input-box">
-                <label id='form_label' htmlFor='email'>Charity Number (if applicable)</label >
-                <input className='form_field' id="charity-number" type='text' value={ charityNumber } onChange={(e) => setCharityNumber(e.target.value)} />
-                <i></i>
-
-                </div>
                 <div className="input-box">
                 <label id='form_label' htmlFor='password'>Password</label>
                 <input className='form_field' id="password" type='password' value={ password } onChange={(e) => setPassword(e.target.value)} />
@@ -48,4 +48,4 @@ const Signup = () => {
     );
 }
 
-export default Signup;
+export default IndSignup;
