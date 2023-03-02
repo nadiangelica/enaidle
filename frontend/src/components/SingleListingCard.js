@@ -23,11 +23,11 @@ const SingleListingCard = ({ listing, isLoggedIn }) => {
   const commentsWithData = displayedComments.filter((comment) => {
     return comment !== null;
   });
-  const comments = commentsWithData.map((comment) => {
+  const comments = commentsWithData.map((comment, i) => {
     const commentCreatedDate = moment(comment.createdAt).fromNow();
     return (
       <>
-        <p>
+        <p key={i+"com"}>
           {comment.userName}: {comment.content}
         </p>
         <p>{commentCreatedDate}</p>
