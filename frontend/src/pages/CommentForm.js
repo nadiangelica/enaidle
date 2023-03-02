@@ -22,7 +22,7 @@ const CommentForm = (props) => {
     const response = await fetch(`/api/org-users/${id}`);
     const json = await response.json();
     if (response.ok) {
-      if (json.organisationName) {
+      if (json && json.organisationName) {
         setUserName(json.organisationName);
       } else {
         const response = await fetch(`/api/ind-users/${id}`);
