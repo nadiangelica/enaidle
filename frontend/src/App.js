@@ -27,7 +27,7 @@ const App = () => {
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/listings" /> } />
                 <Route path="/listings" element={<Listings />} />
                 <Route path="/listings/:listing_id" element={<SingleListing />} />
-        <Route path="/profile" element={user ? <AccountProfile /> : <Navigate to="/login" />} />
+        <Route path="/profile" element={user ? (user.type === "org" ? <AccountProfile /> : <Navigate to="/login" /> ) : <Navigate to="/login" />} />
                 <Route path="/profile/update" element={user ? <UpdateProfile /> : <Navigate to="/login" />} />
                 <Route path="/organisations/" element={<OrgList />} />
                 <Route path="/organisations/:org_user_id" element={<OrgProfile />} />
