@@ -8,7 +8,7 @@ const SingleListing = () => {
   const { listing_id } = useParams();
   const { listing, dispatch } = useListingsContext();
 
-  const isLoggedIn = localStorage.getItem("orgUser");
+  const isLoggedIn = localStorage.getItem("user");
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -29,7 +29,7 @@ const SingleListing = () => {
     <div className="listings">
       {listing ? (
         <div>
-          <h2>{listing.organisationName}</h2>
+          {/* <h2>{listing.organisationName}</h2> */}
           <SingleListingCard listing={listing} isLoggedIn={isLoggedIn} />
         </div>
       ) : (

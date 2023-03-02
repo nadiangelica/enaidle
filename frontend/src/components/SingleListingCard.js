@@ -20,11 +20,14 @@ const SingleListingCard = ({ listing, isLoggedIn }) => {
     }
   };
 
-  const comments = displayedComments.map((comment, i) => {
+  const commentsWithData = displayedComments.filter((comment) => {
+    return comment !== null;
+  });
+  const comments = commentsWithData.map((comment) => {
     const commentCreatedDate = moment(comment.createdAt).fromNow();
     return (
       <>
-        <p key={i}>
+        <p>
           {comment.userName}: {comment.content}
         </p>
         <p>{commentCreatedDate}</p>
@@ -40,7 +43,7 @@ const SingleListingCard = ({ listing, isLoggedIn }) => {
       <p>Needed by: {listing.neededByDate.slice(0, 10)}</p>
       <p>Description: {listing.description}</p>
       <p>Area: {listing.address.city}</p>
-      <p>Created {createdDate}</p>
+      <p>Created: {createdDate}</p>
 
       <hr />
 
