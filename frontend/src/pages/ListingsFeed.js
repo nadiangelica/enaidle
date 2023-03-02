@@ -33,7 +33,8 @@ const Listings = () => {
         const fetchListings = async () => {
             const response = await fetch('/api/listings');
             const json = await response.json();
-            // commented code below is for getting the profile pic url
+
+            // code below is for getting the profile pic url
             // const orgIds = json.map(e => e.organisationId).filter(e => e);
             // const uniqueOrgIds = [...new Set(orgIds)];
             // if (uniqueOrgIds) {
@@ -85,7 +86,7 @@ const Listings = () => {
 
                     {!listings
                         ? <p>Nothing to see here, yet.</p>
-                        : listingsToShow.length = 0
+                        : listingsToShow.length === 0
                             ? <p>No listings matching your choice, please select another option.</p>
                             : listingsToShow.map(listing => <ListingsFeed key={listing._id} listing={listing}/>)
                     } 
