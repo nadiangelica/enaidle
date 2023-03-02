@@ -14,6 +14,7 @@ const Listings = () => {
 
     const { listings, dispatch } = useListingsContext();
     const [listingRequirement, setListingRequirement] = useState("all");
+    const [isUpdated, setIsUpdated] = useState(false);
 
     const createListing = async (listing) => {
         const response = await fetch('/api/listings', {
@@ -29,6 +30,7 @@ const Listings = () => {
         } else {
             dispatch({ type: 'SET_ERROR', payload: json });
         }
+        setIsUpdated(false);
     }
  
     useEffect(() => {
@@ -73,7 +75,8 @@ const Listings = () => {
         }
 
         fetchListings();
-    }, [dispatch]);
+        setIsUpdated(true);
+    }, [dispatch, isUpdated]);
 
     let listingsToShow;
     switch (listingRequirement) {
