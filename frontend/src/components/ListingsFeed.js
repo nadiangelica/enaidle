@@ -21,14 +21,10 @@ const ListingsFeed = ({ listing }) => {
       {/* <p>Needed by: {listing.neededByDate.slice(0, 10)}</p> */}
       <p>Description: {listing.description}</p>
       <p>Area: {listing.address.city}</p>
-      {listing.comments.length > 0 && (
-        <div>
-          <span>{listing.comments.length} Comments</span>
-        </div>
-      )}
             <p>{formattedDate}</p>
             <p>{formatDistanceToNow(new Date(listing.createdAt), { addSuffix: true})}</p>
-      <Link to={`/listings/${listing._id}`}>View Listing</Link>
+      <Link to={`/listings/${listing._id}`}>View Listing</Link> 
+      {listing.comments.length > 0 && (<span>{listing.comments.length} Comments</span>)}
     </article>
   );
 };
