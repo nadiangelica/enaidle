@@ -6,13 +6,102 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: lightcyan;
+  /* background-color: rgb(241, 246, 246); */
+  background-color: rgb(255, 210, 0);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+p {
+  color:black;
+}
+
+.organisation-button{
+  background-color: #027A79;
+  border: none;
+  border-radius: 8px;
+  margin: 10px;
+  color: white;
+  padding: 32px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.individual-button{
+  background-color: #02047a;
+  border: none;
+  border-radius: 6px;
+  margin: 10px;
+  color: white;
+  padding: 32px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+/* form input boxes */
+
+.container {
+  background-color: #027A79;
+  border-radius: 6px;
+  padding: 10px 10px
+
+}
+#submit {
+  background-color: #02047a;
+  border: none;
+  border-radius: 6px;
+  margin: auto;
+  color: white;
+  padding: 10px 10px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  width: 10vw;
+}
+.form_field {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+main {
+    height:100%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.signUpLoginForm {
+    overflow: hidden;
+    transition: height 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+.signUpLoginForm input {
+    width: 30vw;
+    background: #fff;
+    border-radius: 10px;
+    flex-grow: 1;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* .post-btn:active {
+    background-color: #2E6FBD;
+}
+.post-btn:hover {
+    background-color: #1C84FF;
+} */
+
+
+
 
 
 /* #efddfd - Foam (light background)
