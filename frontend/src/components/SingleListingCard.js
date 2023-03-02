@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import CommentForm from "../pages/CommentForm";
 
-const SingleListingCard = ({ listing, isLoggedIn}) => {
+const SingleListingCard = ({ listing, isLoggedIn }) => {
   let date = { listing }.listing.neededByDate;
   let year = date.slice(0, 4);
   let month = date.slice(5, 7);
