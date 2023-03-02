@@ -6,6 +6,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 const CreateForm = (props) => {
     const { dispatch } = useListingsContext();
     const { user } = useAuthContext();
+    const [isSubmitted, setShowSubmittedMessage] = useState(false);
     // const id = localStorage.getItem('id');
     let id;
     if (user) {
@@ -57,6 +58,7 @@ const CreateForm = (props) => {
         }
         // props is passed in from ListingsFeed.js
         props.createListing(listing);
+        setShowSubmittedMessage(true);
     }
 
     return (
@@ -79,6 +81,7 @@ const CreateForm = (props) => {
             <label htmlFor="neededByDate">Needed By Date</label>
             <input type="date" name="neededByDate" id="neededByDate" />
             <button type="submit">{props.buttonTitle}</button>
+            {isSubmitted && <div className="info">Listing Submitted!</div>}
         </form>
     )
 }
