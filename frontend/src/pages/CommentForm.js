@@ -6,6 +6,8 @@ import { useAuthContext } from "../hooks/useAuthContext";
 const CommentForm = (props) => {
   const { dispatch } = useComment();
   const { user } = useAuthContext();
+  const [isSubmitted, setShowSubmittedMessage] = useState(false);
+
 
   const id = user.id;
 
@@ -39,6 +41,7 @@ const CommentForm = (props) => {
     const { content } = e.target.elements;
 
     await addComment(userName, content.value);
+    setShowSubmittedMessage(true)
   };
 
   return (
@@ -53,6 +56,7 @@ const CommentForm = (props) => {
           <input id="submit" type="submit" value="Post" disabled={loading} />
         </form>
         {error && <div className="error">{error}</div>}
+        {isSubmitted && <div className="info">Comment Submitted!</div>}
       </div>
     </main>
   );

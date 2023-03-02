@@ -68,15 +68,14 @@ const addCommentToAListing = async (req, res) => {
   const listing = await Listing.findById({ _id: req.params.id });
 
   try {
-    let comment;
     if (req.body.userName) {
-      comment = new Comment({
+      const comment = new Comment({
         userName: req.body.userName,
         content: req.body.content,
       });
+      listing.comments.push(comment);
     }
 
-    listing.comments.push(comment);
 
     const updatedListing = await listing.save();
 
