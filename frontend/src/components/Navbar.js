@@ -22,7 +22,7 @@ const Navbar = () => {
                     {user && (
                     <div>
                         <Link to="/listings">Listings</Link>
-                        <Link to="/profile">Profile</Link>
+                        {user.type === "org" && <Link to="/profile">Profile</Link>}
                         <Link to="/organisations">Organisations List</Link>
                         <button onClick={handleClick}>Log Out</button>
                     </div>
