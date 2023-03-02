@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useListingsContext } from "../hooks/useListingsContext";
 import SingleListingCard from "../components/SingleListingCard";
@@ -29,7 +29,7 @@ const SingleListing = () => {
     <div className="listings">
       {listing ? (
         <div>
-          <SingleListingCard listing={listing} isLoggedIn={isLoggedIn} />
+          <SingleListingCard listing={listing} isLoggedIn={isLoggedIn}/>
         </div>
       ) : (
         <p>Loading...</p>

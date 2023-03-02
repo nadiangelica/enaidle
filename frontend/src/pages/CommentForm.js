@@ -4,62 +4,55 @@ import { useComment } from "../hooks/useComment";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const CommentForm = (props) => {
-  const { dispatch } = useComment();
-  const { user } = useAuthContext();
-  const [isSubmitted, setShowSubmittedMessage] = useState(false);
+    const { dispatch } = useComment();
+    const { user } = useAuthContext();
+    const { addComment, error, loading } = useComment();
 
+    const [isSubmitted, setShowSubmittedMessage] = useState(false);
+    const [userName, setUserName] = useState("");
 
-  const id = user.id;
+    const id = user.id;
+    const userType = user.type;
 
-  const [userName, setUserName] = useState("");
-  const { addComment, error, loading } = useComment();
+    useEffect(() => {
+        const getUserName = async () => {
+            const response = await fetch(`/api/${userType}-users/${id}`);
+            const json = await response.json();
+            if (response.ok) {
+                if (userType === 'org') setUserName(json.organisationName);
+                if (userType === 'ind') setUserName(json.firstName + " " + json.lastName);
+            } else {
+                dispatch({ type: "SET_ERROR", payload: json });
+            }
+        };
 
-  useEffect(() => {
-    getUserName();
-  }, []);
+        getUserName();
+    }, [userName]);
 
-  const getUserName = async () => {
-    const response = await fetch(`/api/org-users/${id}`);
-    const json = await response.json();
-    if (response.ok) {
-      if (json.organisationName) {
-        setUserName(json.organisationName);
-      } else {
-        const response = await fetch(`/api/ind-users/${id}`);
-        const json = await response.json();
-        if (response.ok) {
-          setUserName(json.firstName);
-        }
-      }
-    } else {
-      dispatch({ type: "SET_ERROR", payload: json });
-    }
-  };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const { content } = e.target.elements;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { content } = e.target.elements;
+        await addComment(userName, content.value);
+        setShowSubmittedMessage(true);
+    };
 
-    await addComment(userName, content.value);
-    setShowSubmittedMessage(true)
-  };
+    return (
+        <main>
+            <div className="container">
+                <form className="addCommentForm" onSubmit={handleSubmit}>
+                    <div className="input-box">
+                        <input className="form_field" placeholder="Add a comment..." id="content" type="text"/>
+                        <i></i>
+                    </div>
 
-  return (
-    <main>
-      <div className="container">
-        <form className="addCommentForm" onSubmit={handleSubmit}>
-          <div className="input-box">
-            <input className="form_field" placeholder="Add a comment..." id="content" type="text"/>
-            <i></i>
-          </div>
-
-          <input id="submit" type="submit" value="Post" disabled={loading} />
-        </form>
-        {error && <div className="error">{error}</div>}
-        {isSubmitted && <div className="info">Comment Submitted!</div>}
-      </div>
-    </main>
-  );
+                    <input id="submit" type="submit" value="Post" disabled={loading} />
+                </form>
+                {error && <div className="error">{error}</div>}
+                {isSubmitted && <div className="info">Comment Submitted!</div>}
+            </div>
+        </main>
+    );
 };
 
 export default CommentForm;
