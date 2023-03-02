@@ -78,7 +78,7 @@ const CreateForm = (props) => {
             </select>
             <label htmlFor="firstLine">Address</label>
             <input type="text" name="firstLine" id="firstLine" />
-            <label htmlFor="city">City</label>
+            <label htmlFor="city">Town</label>
             <input type="text" name="city" id="city" />
             <label htmlFor="postcode">Postcode</label>
             <input type="text" name="postcode" id="postcode" />

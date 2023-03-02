@@ -4,6 +4,8 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import ListingsFeed from '../components/ListingsFeed';
 import CreateForm from '../components/CreateForm';
 import "./ListingsFeed.css";
+import charityLogo from '../assets/images/charity_logo.png';
+import orgLogo from '../assets/images/organisation_logo.png';
 
 // post request to create a new listing
     
@@ -45,7 +47,11 @@ const Listings = () => {
             }
 
             const placeholderLogo = (obj) => {
-
+                if (obj.charityNumber) {
+                    return charityLogo;
+                } else {
+                    return orgLogo;
+                }
             }
             
             json.map(async obj => {
@@ -54,17 +60,13 @@ const Listings = () => {
                     const data = await res.json();
                     const info = data.info.reverse()[0];
 
-                    let profilePic;
-                    if (data.charityNumber) profilePic = "charity";
-                    else profilePic = "org";
+                    let profilePic = placeholderLogo(data);
 
                     if (info && info.logoUrl !== "") profilePic = info.logoUrl;
                     listingsWithLogos.push({...obj, logo: profilePic});
                     reloadListings();
                 } else {
-                    let profilePic;
-                    if (obj.charityNumber) profilePic = "charity";
-                    else profilePic = "org";
+                    let profilePic = placeholderLogo(obj);
                     listingsWithLogos.push({...obj, logo: profilePic});
                     reloadListings();
                 }
