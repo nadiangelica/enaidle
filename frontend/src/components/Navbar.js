@@ -14,7 +14,7 @@ const Navbar = () => {
     return (
         <header>
             <div className="container">
-                <img src={logo} alt="enaidle" height="200"/>
+                <a href="/"><img src={logo} alt="enaidle" height="200"/></a>
                 {/* <h1>en<span style={{ color: '#e32945' }}>aid</span>le</h1> */}
                 <nav>
                     {user && (
