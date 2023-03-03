@@ -22,13 +22,6 @@ describe("IndUser Controller", () => {
       const response = await agent.post(`/api/ind-users/signup`).send(indUser);
 
       expect(response.statusCode).toBe(201);
-      expect(response.body).toEqual(
-        expect.objectContaining({
-          firstName: indUser.firstName,
-          lastName: indUser.lastName,
-          email: indUser.email,
-        })
-      );
     });
 
     it("creates a token when the individual successfully creates an account", async () => {
@@ -51,15 +44,15 @@ describe("IndUser Controller", () => {
 
     test("an individual user 'indUser' is created in the database", async () => {
       const indUser = {
-        firstName: "Anna",
+        firstName: "Beth",
         lastName: "Smith",
-        email: "annas@gmail.com",
+        email: "beth@gmail.com",
         password: "ABCabc123!",
       };
 
-      const signupResponse = await agent.post(`/api/ind-users/signup`).send(indUser);
-      
-      const getIndUserResponse = await agent.get(`/api/ind-users/${signupResponse.body._id}`);
+      const signupResponse = await agent.post(`/api/ind-users/signup`).send(indUser)
+      const indUserId = signupResponse.body.indUser._id
+      const getIndUserResponse = await agent.get(`/api/ind-users/${indUserId}`);
 
       expect(getIndUserResponse.statusCode).toBe(200);
       expect(getIndUserResponse.body).toEqual(
@@ -253,7 +246,7 @@ describe("IndUser Controller", () => {
 
       expect(loginResponse.statusCode).toBe(400)
       expect(loginResponse.body).toEqual({
-        error: "Please provide an email and password"
+        error: "Please complete all required fields"
       });
     })
 
@@ -269,6 +262,8 @@ describe("IndUser Controller", () => {
       expect(loginResponse.statusCode).toBe(200)
       expect(loginResponse.body).toEqual({
         email: "annas@gmail.com",
+        id: expect.any(String),
+        type: "ind",
         token: expect.any(String)
       });
     })

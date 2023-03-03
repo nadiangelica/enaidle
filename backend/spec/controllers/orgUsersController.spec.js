@@ -243,6 +243,7 @@ describe("OrgUser Controller", () => {
 
             expect(loginResponse.statusCode).toBe(200)
             expect(loginResponse.body).toEqual({
+                type: "org",
                 email: "puppy@gmail.com",
                 id: expect.any(String),
                 token: expect.any(String)
