@@ -21,7 +21,13 @@ p {
 
 a:link {
   color: #02047a;
+  text-decoration: none;
 }
+
+a:hover {
+  font-weight: 700;
+}
+
 a:visited {
   color: #027A79;
 }
