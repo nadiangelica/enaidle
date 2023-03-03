@@ -45,7 +45,7 @@ const SingleListingCard = ({ listing, isLoggedIn }) => {
   return (
     <article className="listing" data-cy="listing" key={listing._id}>
       <hr />
-      <p>Listinged by: {listing.organisationName}</p>
+      <p>Listed by: {listing.organisationName}</p>
       <p>What's needed: {listing.requirement}</p>
       <p>Needed by: {formattedDate}</p>
       <p>Description: {listing.description}</p>
