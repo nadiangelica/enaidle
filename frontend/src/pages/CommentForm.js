@@ -46,7 +46,7 @@ const CommentForm = (props) => {
                     </div>
                 </form>
                 {error && <div className="error">{error}</div>}
-                {isSubmitted && <div className="info">Comment Submitted!</div>}
+                {isSubmitted && <div className="info">Comment Submitted! Please refresh the page.</div>}
             </div>
         </main>
     );

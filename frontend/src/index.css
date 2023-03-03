@@ -6,9 +6,142 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(241, 246, 246);
+  /* background-color: rgb(255, 210, 0); */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+p {
+  color:black;
+}
+
+a:link {
+  color: #02047a;
+  text-decoration: none;
+}
+
+a:hover {
+  font-weight: 700;
+}
+
+a:visited {
+  color: #027A79;
+}
+
+.small-paragraph {
+  font-size: 13px;
+}
+
+.user-type-redirect-button{
+  background-color: #027A79;
+  border: none;
+  border-radius: 8px;
+  margin: 10px;
+  color: white;
+  padding: 32px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 10vw;
+}
+.login-redirect-button{
+  background-color: #02047a;
+  border: none;
+  border-radius: 6px;
+  margin: auto;
+  margin-top: 10px;
+  color: white;
+  padding: 10px 10px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  width: auto;
+}
+
+/* form input boxes */
+
+/* wider div */
+.container {
+  background-color: rgb(255, 210, 0);
+  border-radius: 6px;
+  padding: 10px 10px
+
+}
+
+button {
+  background-color: #02047a;
+  border: none;
+  border-radius: 6px;
+  margin: auto;
+  margin-top: 10px;
+  color: white;
+  padding: 3px 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  width: auto;
+}
+
+/* submit button */
+#submit {
+  background-color: #02047a;
+  border: none;
+  border-radius: 6px;
+  margin: auto;
+  margin-top: 10px;
+  color: white;
+  padding: 10px 10px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  width: 5vw;
+}
+
+/* forms */
+.form_field {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  width: 20vw;
+  background: #fff;
+  border-radius: 10px;
+  flex-grow: 1;
+  text-align: center;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+main {
+    height:100%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* .post-btn:active {
+    background-color: #2E6FBD;
+}
+.post-btn:hover {
+    background-color: #1C84FF;
+} */
+
+/* .signUpLoginForm {
+    overflow: hidden;
+    transition: height 0.2s ease;
+    display: flex;
+    flex-direction: column;
+} */
+
+
+
+/* #efddfd - Foam (light background)
+#fdd142 - Sunshine yellow
+#027a79  - Pine/teal
+#e5015c / #e65f59 - Raspberry
+#374e86 / #1a3685 / #12296c - Navy */

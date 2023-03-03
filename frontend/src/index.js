@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ListingsContextProvider } from "./context/ListingsContext";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import './custom.scss';
+
 
 // import reportWebVitals from './reportWebVitals';
 
