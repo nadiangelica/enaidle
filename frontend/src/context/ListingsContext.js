@@ -10,10 +10,10 @@ export const listingsReducer = (state, action) => {
             return { listings: action.payload };
         case 'CREATE_LISTING':
             return { listings: [...state.listings, action.payload] };
-        // case 'DELETE_LISTING':
-        //     return { listings: state.listings.filter(listing => listing._id !== action.payload._id) };
-        case 'UPDATE_LISTING':
-            return { listings: state.listings.map(listing => listing._id === action.payload._id ? action.payload : listing) };
+        case 'DELETE_LISTING':
+            return { listings: state.listings.filter(listing => listing._id !== action.payload._id) };
+        case "SET_LISTING":
+            return { listing: action.payload };
         case 'SET_ERROR':
             return { error: action.payload };
         default:

@@ -6,8 +6,9 @@ const OrgUser = require("../models/orgUserModel");
 
 const CommentSchema = new mongoose.Schema(
   {
-    orgUser_id: { type: String, ref: "OrgUser" },
-    indUser_id: { type: String, ref: "IndUser" },
+    // orgUser_id: { type: String, ref: "OrgUser" },
+    // indUser_id: { type: String, ref: "IndUser" },
+    userName: {type: String},
     content: { type: String, required: true },
   },
   { timestamps: true }

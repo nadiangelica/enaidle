@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import IndSignup from "./pages/IndSignup";
 import Listings from "./pages/ListingsFeed";
+import SingleListing from "./pages/SingleListing";
 import AccountProfile from "./pages/AccountProfile";
 import OrgProfile from "./pages/OrgProfile";
 import UpdateProfile from "./pages/UpdateProfile";
@@ -25,7 +26,8 @@ const App = () => {
                 <Route path="/individual-signup" element={!user ? <IndSignup /> : <Navigate to="/listings" />} />
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/listings" /> } />
                 <Route path="/listings" element={<Listings />} />
-                <Route path="/profile" element={user ? (user.type === "org" ? <AccountProfile /> : <Navigate to="/login" /> ) : <Navigate to="/login" />} />
+                <Route path="/listings/:listing_id" element={<SingleListing />} />
+        <Route path="/profile" element={user ? (user.type === "org" ? <AccountProfile /> : <Navigate to="/login" /> ) : <Navigate to="/login" />} />
                 <Route path="/profile/update" element={user ? <UpdateProfile /> : <Navigate to="/login" />} />
                 <Route path="/organisations/" element={<OrgList />} />
                 <Route path="/organisations/:org_user_id" element={<OrgProfile />} />

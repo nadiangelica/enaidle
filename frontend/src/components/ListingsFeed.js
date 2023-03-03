@@ -15,16 +15,22 @@ const ListingsFeed = ({ listing }) => {
     return (
         <article className="listing" data-cy="listing" key={ listing._id }>
             <hr />
-            
+            <a href={`/organisations/${listing.organisationId}`}>
+                <img src={listing.logo} alt="organisation logo" height="100"/>
+            </a>
             <h4>{listing.title}</h4>
-            <p>listed by: {listing.organisationName}</p>
+            <p><a href={`/organisations/${listing.organisationId}`}>{listing.organisationName}</a></p>
             <p>What's needed: {listing.requirement}</p>
-            {/* <p>Needed by: {listing.neededByDate.slice(0, 10)}</p> */}
             <p>Description: {listing.description}</p>
             <p>Area: {listing.address.city}</p>
-            <p>{formattedDate}</p>
+            <p>Date required: {formattedDate}</p>
             <p>{formatDistanceToNow(new Date(listing.createdAt), { addSuffix: true})}</p>
             <Link to={`/listings/${listing._id}`}>View Listing</Link>
+            {listing.comments.length > 0 && (
+                <div>
+                    <span>{listing.comments.length} Comments</span>
+                </div>
+            )}
         </article>
     );
 };
