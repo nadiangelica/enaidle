@@ -31,12 +31,13 @@ const SingleListingCard = ({ listing, isLoggedIn }) => {
   });
   const comments = commentsWithData.map((comment, i) => {
     const commentCreatedDate = moment(comment.createdAt).fromNow();
+    const timeCommentCreatedAt = moment(comment.createdAt).format("h:mma");
     return (
       <>
-        <p key={i+"com"}>
-          {comment.userName}: {comment.content}
-        </p>
-        <p>{commentCreatedDate}</p>
+        <div className="comment-container" key={i+"com"}>
+        <p>{comment.userName}: {comment.content}</p>
+        <p>{commentCreatedDate} at {timeCommentCreatedAt}</p>
+        </div>
       </>
     );
   });

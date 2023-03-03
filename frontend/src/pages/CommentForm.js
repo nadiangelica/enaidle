@@ -42,11 +42,8 @@ const CommentForm = (props) => {
             <div className="container">
                 <form className="addCommentForm" onSubmit={handleSubmit}>
                     <div className="input-box">
-                        <input className="form_field" placeholder="Add a comment..." id="content" type="text"/>
-                        <i></i>
+                        <input className="form_field" placeholder="Add a comment..." id="content" type="text"/><input id="submit" type="submit" value="Post" disabled={loading} />
                     </div>
-
-                    <input id="submit" type="submit" value="Post" disabled={loading} />
                 </form>
                 {error && <div className="error">{error}</div>}
                 {isSubmitted && <div className="info">Comment Submitted!</div>}

@@ -98,7 +98,7 @@ const Listings = () => {
                 <select onChange={e => setListingRequirement(e.target.value)}>
                     <option value="all">All</option>
                     <option value="volunteering">Volunteering</option>
-                    <option value="donation">Donation of Goods</option>
+                    <option value="donation">Donation of goods</option>
                 </select>
                 <div className="listings">
                     <h2>LISTINGS</h2>

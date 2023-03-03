@@ -21,9 +21,9 @@ const Navbar = () => {
                 <nav>
                     {user && (
                     <div>
-                        <Link to="/listings">Listings</Link>
+                        <Link to="/listings">Opportunities</Link>
                         {user.type === "org" && <Link to="/profile">Profile</Link>}
-                        <Link to="/organisations">Organisations List</Link>
+                        <Link to="/organisations">Charity Directory</Link>
                         <button onClick={handleClick}>Log Out</button>
                     </div>
                     )}
@@ -32,8 +32,8 @@ const Navbar = () => {
                         <Link to="/login">Login</Link>
                         <Link to="/organisation-signup">Organisation Signup</Link>
                         <Link to="/individual-signup">Individual Signup</Link>
-                        <Link to="/listings">Listings</Link>
-                        <Link to="/organisations">Organisations List</Link>
+                        <Link to="/listings">Opportunities</Link>
+                        <Link to="/organisations">Charity Directory</Link>
                     </div>
                     )}
                 </nav>
