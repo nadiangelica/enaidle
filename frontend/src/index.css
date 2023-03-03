@@ -124,6 +124,11 @@ main {
     flex-direction: column;
 }
 
+.home {
+  max-width: 800px;
+  margin: auto;
+}
+
 /* .post-btn:active {
     background-color: #2E6FBD;
 }
