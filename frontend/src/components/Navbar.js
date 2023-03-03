@@ -11,7 +11,7 @@ const Navbar = () => {
     return (
         <header>
             <div className="container">
-                    <h1>enaidle</h1>
+                    <h1>en<span style={{ color: '#e32945' }}>aid</span>le</h1>
                 <nav>
                     {user && (
                     <div>
