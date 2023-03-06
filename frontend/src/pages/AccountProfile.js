@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 // import Button from "react-bootstrap/Button";
 import {Card, Col, Row, Form, Image, Button} from "react-bootstrap";
 // import { Image } from "react-bootstrap";
@@ -9,9 +10,15 @@ import {Card, Col, Row, Form, Image, Button} from "react-bootstrap";
 
 const AccountProfile = () => {
   const navigate = useNavigate();
-  const userId = JSON.parse(localStorage.getItem("user")).id;
-  if (!userId) {
-    userId = JSON.parse(localStorage.getItem("user")).orgUser._id;
+  // const userId = JSON.parse(localStorage.getItem("user")).id;
+  // if (!userId) {
+  //   userId = JSON.parse(localStorage.getItem("user")).orgUser._id;
+  // }
+
+  const { user } = useAuthContext();
+  let userId;
+  if (user) {
+    userId = user.id;
   }
 
   const [profile, setProfile] = useState({

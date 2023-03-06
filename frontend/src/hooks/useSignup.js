@@ -24,7 +24,7 @@ export const useSignup = () => {
       setError(json.error);
     }
     if (response.ok) {
-      localStorage.setItem("orgUser", JSON.stringify(json));
+      localStorage.setItem("user", JSON.stringify(json));
       dispatch({ type: "LOGIN", payload: json });
       setLoading(false);
       navigate('/login');

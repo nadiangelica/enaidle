@@ -29,7 +29,7 @@ export const useIndSignup = () => {
       setError(json.error);
     }
     if (response.ok) {
-      localStorage.setItem("indUser", JSON.stringify(json));
+      localStorage.setItem("user", JSON.stringify(json));
       dispatch({ type: "LOGIN", payload: json });
       setLoading(false);
       navigate('/login');
