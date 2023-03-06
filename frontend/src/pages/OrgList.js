@@ -58,10 +58,10 @@ const OrgList = () => {
       </div>
 
       <div className="portfolio-container 2">
+        <div className="sub-heading-title">
+          <h3>Other Organisations</h3>
+        </div>
         <div className="row row-cols-1 row-cols-md-4 g-4">
-          <div className="sub-heading-title">
-            <h3>Other Organisations</h3>
-          </div>
           {orgs
             .filter((org) => !org.charityNumber)
             .map((org) => (
