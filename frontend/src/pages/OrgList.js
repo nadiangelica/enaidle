@@ -13,7 +13,7 @@ const OrgList = () => {
         const res = await fetch(`/api/org-users/${org._id}`);
         const data = await res.json();
         const info = data.info.reverse()[0];
-        const logoUrl = info ? info.logoUrl : placeholderLogo(data);
+        const logoUrl = info && info.logoUrl ? info.logoUrl : placeholderLogo(data);
         return { ...org, logoUrl };
       });
       const orgsWithLogos = await Promise.all(requests);
