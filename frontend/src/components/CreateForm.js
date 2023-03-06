@@ -11,7 +11,7 @@ import Row from "react-bootstrap/Row";
 const CreateForm = (props) => {
   const { dispatch } = useListingsContext();
   const { user } = useAuthContext();
-  
+
   // const id = localStorage.getItem('id');
   let id;
   if (user) {
@@ -24,10 +24,10 @@ const CreateForm = (props) => {
 
   // get request to get the org user's organisation name
   useEffect(() => {
-    getOrgName();
+    getOrgName(id);
   }, []);
 
-  const getOrgName = async () => {
+  const getOrgName = async (id) => {
     const response = await fetch(`/api/org-users/${id}`);
     const json = await response.json();
     if (response.ok) {
@@ -79,7 +79,7 @@ const CreateForm = (props) => {
       neededByDate: neededByDate.value,
     };
     // props is passed in from ListingsFeed.js
-    props.createListing(listing);
+    createListing(listing);
     setShowSubmittedMessage(true);
   };
 
@@ -109,66 +109,109 @@ const CreateForm = (props) => {
     // {isSubmitted && <div className="info">Comment Submitted! Please refresh the page.</div>}
     // </div>
     <>
-    <div className="title">
+      <div className="title">
         <h2>What do you need help with?</h2>
       </div>
 
-        <div className="new-listing-container">
-    <Form className="add-new-listing">
-      <Row className="mb-4">
-        <Form.Group as={Col} md="8">
-          <Form.Label>Title</Form.Label>
-          <Form.Control type="text" placeholder="e.g. 2 volunteers needed" required />
-        </Form.Group>
-        <Form.Group as={Col} md="4" >
-          <Form.Label>Date Needed By</Form.Label>
-          <Form.Control type="Date" placeholder="28/02/2023" required />
-        </Form.Group>
-      </Row>
+      <div className="new-listing-container">
+        <Form className="add-new-listing" onSubmit={handleSubmit}>
+          <Row className="mb-4">
+            <Form.Group as={Col} md="8">
+              <Form.Label>Title</Form.Label>
+              <Form.Control
+                name="title"
+                id="title"
+                type="text"
+                placeholder="e.g. 2 volunteers needed"
+                required
+              />
+            </Form.Group>
+            <Form.Group as={Col} md="4">
+              <Form.Label>Date Needed By</Form.Label>
+              <Form.Control
+                name="neededByDate"
+                id="neededByDate"
+                type="Date"
+                placeholder="28/02/2023"
+                required
+              />
+            </Form.Group>
+          </Row>
 
-      <Row className="mb-4">
-        <Form.Group as={Col} md="8">
-          <Form.Label>Description</Form.Label>
-          <Form.Control type="text" placeholder="e.g. We are looking for..." required />
-        </Form.Group>
-        <Form.Group as={Col} md="4">
-        <Form.Label>Requirement</Form.Label>
-          <Form.Select
-            aria-label="Requirement"
-            required
-            onChange={(e) => setListingRequirement(e.target.value)}
-          >
-            <option defaultValue="">Select an option...</option>
-            <option value="volunteering">Volunteering</option>
-            <option value="donation">Donation of goods</option>
-          </Form.Select>
-        </Form.Group>
-      </Row>
+          <Row className="mb-4">
+            <Form.Group as={Col} md="8">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                name="description"
+                id="description"
+                type="text"
+                placeholder="e.g. We are looking for..."
+                required
+              />
+            </Form.Group>
+            <Form.Group as={Col} md="4">
+              <Form.Label>Requirement</Form.Label>
+              <Form.Select
+                name="requirement"
+                id="requirement"
+                aria-label="Requirement"
+                required
+                onChange={(e) => setListingRequirement(e.target.value)}
+              >
+                <option defaultValue="">Select an option...</option>
+                <option value="volunteering">Volunteering</option>
+                <option value="donation">Donation of goods</option>
+              </Form.Select>
+            </Form.Group>
+          </Row>
 
-      <Row className="mb-4">
-        <Form.Group as={Col} md="5" controlId="validationCustom03">
-          <Form.Label>First Line of Address</Form.Label>
-          <Form.Control type="text" placeholder="First Line" required />
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationCustom04">
-          <Form.Label>City</Form.Label>
-          <Form.Control type="text" placeholder="City" required />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid city.
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="3" controlId="validationCustom05">
-          <Form.Label>Postcode</Form.Label>
-          <Form.Control type="text" placeholder="W1 5BX" required />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid postcode.
-          </Form.Control.Feedback>
-        </Form.Group>
-      </Row>
+          <Row className="mb-4">
+            <Form.Group as={Col} md="5">
+              <Form.Label>First Line of Address</Form.Label>
+              <Form.Control
+                name="firstLine"
+                id="firstLine"
+                type="text"
+                placeholder="First Line"
+                required
+              />
+            </Form.Group>
+            <Form.Group as={Col} md="4">
+              <Form.Label>City</Form.Label>
+              <Form.Control
+                name="city"
+                id="city"
+                type="text"
+                placeholder="City"
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                Please provide a valid city.
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="3">
+              <Form.Label>Postcode</Form.Label>
+              <Form.Control
+                name="postcode"
+                id="postcode"
+                type="text"
+                placeholder="W1 5BX"
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                Please provide a valid postcode.
+              </Form.Control.Feedback>
+            </Form.Group>
+          </Row>
 
-      <Button variant="custom" type="submit" onSubmit={handleSubmit}>Submit form</Button>
-    </Form>
-    </div>
+          <Button variant="custom" type="submit">
+            Submit form
+          </Button>
+        </Form>
+      {isSubmitted && (
+        <div className="info">New listing created! Please go back to feed to see your listing.</div>
+      )}
+      </div>
     </>
   );
 };
