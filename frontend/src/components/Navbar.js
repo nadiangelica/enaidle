@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 // import './Navbar.css';
-// import logo from '../assets/images/enaidle_logo.png'
+import logo from '../assets/images/enaidle.png'
 // import logo from '../assets/images/Hand.png'
-import logo from "../assets/images/Hand_Logo_2.png";
+// import logo from "../assets/images/Hand_Logo_2.png";
 // import logo from '../assets/images/Hand_Logo_2.png'
 // import Container from 'react-bootstrap/Container';
 
