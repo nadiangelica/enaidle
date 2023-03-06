@@ -48,7 +48,7 @@ const OrgList = () => {
           together to create a positive impact.{" "}
         </h7>
         <br></br>
-        <h7>Here you can find out more! </h7>
+        <h7>Find out more here! </h7>
       </div>
       <div className="sub-heading-title">
         <h3>Charities</h3>

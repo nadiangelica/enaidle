@@ -83,7 +83,7 @@ const Listings = () => {
   return (
     <div className="listings-page">
       <div className="title">
-        <h2>Volunteer or donation, you choose!</h2>
+        <h2>Volunteer or donate, you choose!</h2>
       </div>
 
       <div className="listing-bar-add-a-new-listing">

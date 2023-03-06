@@ -76,7 +76,7 @@ const Login = () => {
         <Form.Label>Email Address</Form.Label>
         <Form.Control
           type="email"
-          placeholder="6283652"
+          placeholder="name@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -106,7 +106,7 @@ const Login = () => {
           <Form.Check
             type="radio"
             id="org"
-            label="Charity"
+            label="Organisation"
             value="org"
             checked={userType === 'org'}
             onChange={(e) => setUserType(e.target.value)}

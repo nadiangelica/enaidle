@@ -41,7 +41,7 @@ const Home = () => {
         />
 
         <Carousel.Caption>
-          <h3>Connenting organisations and individuals to create a positive impact.  </h3>
+          <h3>Connecting organisations and individuals to create a positive impact  </h3>
           {/* <h6>Join us now and be a part of the change you want to see!</h6> */}
         </Carousel.Caption>
         </Carousel.Item>
@@ -52,8 +52,8 @@ const Home = () => {
           alt="Second slide"
         />
         <Carousel.Caption>
-          <h3>Together, we can build a stronger community.</h3>
-          <h6>Join us now and be a part of the change you want to see!</h6>
+          <h3>Together, we can build a stronger community</h3>
+          <h6>Join us now and be a part of the change you want to see</h6>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>

@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Image } from "react-bootstrap";
 import '../Styling/home.css'
-import HandLogo from "../assets/images/Hand.png";
+import HandLogo from "../assets/images/hand1.png";
 
 const SingleListingCard = ({ listing, isLoggedIn }) => {
   let date = { listing }.listing.neededByDate;
