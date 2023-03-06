@@ -54,8 +54,7 @@ const UpdateProfile = () => {
   return (
     <div className="update-account-container">
       <h2 className="title">Update your Information</h2>
-      <br></br>
-      <div className="container">
+      <div className="profile-update-container">
         <form className="updateInfoForm" onSubmit={handleSubmit}>
           <div className="input-box">
             <label id="form_label" htmlFor="mission-statement">
