@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,26 +6,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(241, 246, 246);
+  background-color: rgb(241, 246, 246); */
   /* background-color: rgb(255, 210, 0); */
-}
+/* } */
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
 
 p {
   color:black;
 }
 
-a:link {
-  color: #02047a;
+/* a:link {
+  color: #0306b6;
   text-decoration: none;
-}
+} */
 
 a:hover {
   font-weight: 700;
+  color: #fade06;
 }
 
 a:visited {
@@ -36,8 +37,8 @@ a:visited {
   font-size: 13px;
 }
 
-.user-type-redirect-button{
-  background-color: #027A79;
+/* .user-type-redirect-button{
+  background-color: #f1f511;
   border: none;
   border-radius: 8px;
   margin: 10px;
@@ -48,9 +49,9 @@ a:visited {
   display: inline-block;
   font-size: 16px;
   width: 10vw;
-}
-.login-redirect-button{
-  background-color: #02047a;
+} */
+/* .login-redirect-button{
+  background-color: #fade06;
   border: none;
   border-radius: 6px;
   margin: auto;
@@ -61,19 +62,19 @@ a:visited {
   display: inline-block;
   font-size: 12px;
   width: auto;
-}
+} */
 
 /* form input boxes */
 
 /* wider div */
-.container {
-  background-color: rgb(255, 210, 0);
-  border-radius: 6px;
-  padding: 10px 10px
+/* .container { */
+  /* background-color: rgb(255, 210, 0); */
+  /* border-radius: 6px; */
+  /* padding: 10px 10px */
 
-}
+/* } */
 
-button {
+/* button {
   background-color: #02047a;
   border: none;
   border-radius: 6px;
@@ -85,11 +86,11 @@ button {
   display: inline-block;
   font-size: 12px;
   width: auto;
-}
+} */
 
 /* submit button */
-#submit {
-  background-color: #02047a;
+/* #submit {
+  background-color: #f2e317;
   border: none;
   border-radius: 6px;
   margin: auto;
@@ -100,10 +101,10 @@ button {
   display: inline-block;
   font-size: 12px;
   width: 5vw;
-}
+} */
 
 /* forms */
-.form_field {
+/* .form_field {
   display: flex;
   flex-direction: column;
   margin: 5px;
@@ -113,8 +114,8 @@ button {
   flex-grow: 1;
   text-align: center;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-}
-
+} */
+/* 
 main {
     height:100%;
     width:100%;
@@ -122,7 +123,7 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
+} */
 
 /* .post-btn:active {
     background-color: #2E6FBD;

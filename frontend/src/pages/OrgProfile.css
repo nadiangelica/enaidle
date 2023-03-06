@@ -1,4 +1,4 @@
-.profileContainer {
+/* .profileContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,3 +8,11 @@
 .orgInfo {
     width: 50%;
 }
+
+.title {
+    font-family: Georgia, serif;
+    text-align: center;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 30px;
+  } */
