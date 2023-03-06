@@ -115,7 +115,7 @@ const Login = () => {
       </Form.Group>
   
       <Button
-        variant="primary"
+        variant="custom"
         type="submit"
         value="Sign Up"
         disabled={loading}

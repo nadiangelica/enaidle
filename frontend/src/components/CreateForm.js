@@ -11,7 +11,7 @@ import Row from "react-bootstrap/Row";
 const CreateForm = (props) => {
   const { dispatch } = useListingsContext();
   const { user } = useAuthContext();
-  const [isSubmitted, setShowSubmittedMessage] = useState(false);
+  
   // const id = localStorage.getItem('id');
   let id;
   if (user) {
@@ -20,6 +20,7 @@ const CreateForm = (props) => {
 
   const [orgName, setOrgName] = useState("");
   const [listingRequirement, setListingRequirement] = useState("all");
+  const [isSubmitted, setShowSubmittedMessage] = useState(false);
 
   // get request to get the org user's organisation name
   useEffect(() => {
@@ -113,7 +114,7 @@ const CreateForm = (props) => {
       </div>
 
         <div className="new-listing-container">
-    <Form className="add-new-listing" onSubmit={handleSubmit}>
+    <Form className="add-new-listing">
       <Row className="mb-4">
         <Form.Group as={Col} md="8">
           <Form.Label>Title</Form.Label>
@@ -165,7 +166,7 @@ const CreateForm = (props) => {
         </Form.Group>
       </Row>
 
-      <Button className="btn" type="submit">Submit form</Button>
+      <Button variant="custom" type="submit" onSubmit={handleSubmit}>Submit form</Button>
     </Form>
     </div>
     </>

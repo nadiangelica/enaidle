@@ -88,10 +88,10 @@ const Navibar = () => {
             
             {!user && <Nav.Link href="/login">Login</Nav.Link>}
 
-            <Nav.Link href="/listings">Opportunities</Nav.Link>
+            <Nav.Link href="/listings">Feed</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <Nav.Link href="/organisations">Charity Directory</Nav.Link>
+        <Nav.Link href="/organisations">Partners Directory</Nav.Link>
 
         {user && (
           <div>

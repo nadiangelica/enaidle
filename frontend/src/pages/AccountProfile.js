@@ -85,7 +85,7 @@ const AccountProfile = () => {
               <Form.Group as={Col} md="6">
                 <Form.Label>Website</Form.Label>
                 <Form.Control
-                  value={profile.websiteUrl}
+                  value={newestInfo.websiteUrl}
                   type="text"
                   placeholder="Add a website"
                   disabled
@@ -99,7 +99,7 @@ const AccountProfile = () => {
                 <Form.Label>Mission Statement</Form.Label>
                 <Form.Control
                   type="text"
-                  value={profile.missionStatement}
+                  value={newestInfo.missionStatement}
                   placeholder="Add a mission statement"
                   disabled
                   readOnly
@@ -108,7 +108,7 @@ const AccountProfile = () => {
               <Form.Group as={Col} md="4">
                 <Form.Label>Profile Picture</Form.Label>
                 <Form.Control
-                  value={profile.websiteUrl}
+                  value={newestInfo.logoUrl}
                   type="text"
                   placeholder="Link to your logo"
                   disabled

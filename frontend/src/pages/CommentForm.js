@@ -55,11 +55,11 @@ const CommentForm = (props) => {
     <div className="container">
       <Form className="addCommentForm" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Add a comment:</Form.Label>
+          <Form.Label>Reply:</Form.Label>
           <Form.Control as="textarea" rows={3} />
         </Form.Group>
         <Button
-          variant="primary"
+          variant="custom"
           className="float-right ml-auto w-100"
           type="submit"
           disabled={loading}
@@ -69,7 +69,7 @@ const CommentForm = (props) => {
       </Form>
       {error && <div className="error">{error}</div>}
       {isSubmitted && (
-        <div className="info">Comment Submitted! Please refresh the page.</div>
+        <div className="info">Comment submitted! Please refresh the page.</div>
       )}
     </div>
   );

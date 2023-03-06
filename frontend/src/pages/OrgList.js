@@ -30,7 +30,7 @@ const OrgList = () => {
   return (
     <div className="container">
       <div className="title">
-        <h2>Organisations we work with</h2>
+        <h2>Our Partners</h2>
         <h7>
           Welcome to our community, where organisations and individuals come
           together to create a positive impact.{" "}

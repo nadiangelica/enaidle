@@ -47,6 +47,7 @@ const SingleListingCard = ({ listing, isLoggedIn }) => {
   });
 
   return (
+    <div className="single-listing-card">
     <Card>
       <Card.Header>{listing.requirement}</Card.Header>
       <Card.Body>
@@ -56,8 +57,7 @@ const SingleListingCard = ({ listing, isLoggedIn }) => {
           <Card.Text>Dated Needed By: {formattedDate}</Card.Text>
           <div>
             <Card.Text>Location</Card.Text>
-            <Card.Text>{listing.address.firstLine}</Card.Text>
-            <Card.Text>{listing.address.city}</Card.Text>
+            <Card.Text>{listing.address.firstLine}, {listing.address.city}, {listing.address.postcode}</Card.Text>
             <Card.Text>{createdDate}</Card.Text>
           </div>
           <hr />
@@ -66,6 +66,7 @@ const SingleListingCard = ({ listing, isLoggedIn }) => {
         </article>
       </Card.Body>
     </Card>
+    </div>
   );
 };
 

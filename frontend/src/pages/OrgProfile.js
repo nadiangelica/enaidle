@@ -25,12 +25,12 @@ const OrgProfile = () => {
   }, [org, newestInfo]);
 
   // return (
-  //     <div className="profileContainer">
-  //         {newestInfo !== "" && <img src={newestInfo.logoUrl} alt="organisation logo" height="200"/>}
+      // <div className="profileContainer">
+          {/* {newestInfo !== "" && <img src={newestInfo.logoUrl} alt="organisation logo" height="200"/>} */}
 
-  //         <p>Organisation Name: {org.organisationName}</p>
-  //         {org.charityNumber && <p>Charity Number: {org.charityNumber}</p>}
-  //         <p>Email Address: {org.email}</p>
+          {/* <p>Organisation Name: {org.organisationName}</p> */}
+          {/* {org.charityNumber && <p>Charity Number: {org.charityNumber}</p>} */}
+          {/* <p>Email Address: {org.email}</p> */}
 
   //         {newestInfo !== "" && (
   //             <div className="orgInfo">
@@ -83,10 +83,11 @@ const OrgProfile = () => {
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control type="text" value={org.email} disabled readOnly />
               </Form.Group>
+
               <Form.Group as={Col} md="6">
                 <Form.Label>Website</Form.Label>
                 <Form.Control
-                  value={org.websiteUrl}
+                   value={org.websiteUrl}
                   type="text"
                   placeholder="Website"
                   disabled
@@ -99,8 +100,9 @@ const OrgProfile = () => {
               <Form.Group as={Col} md="12">
                 <Form.Label>Mission Statement</Form.Label>
                 <Form.Control
+                  as="textarea" rows={10} 
                   type="text"
-                  value={org.missionStatement}
+                  value={newestInfo.missionStatement}
                   placeholder="Mission statement"
                   disabled
                   readOnly

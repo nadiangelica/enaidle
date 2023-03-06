@@ -77,7 +77,7 @@ const Signup = () => {
       </Form.Text>
       </Form.Group>
 
-      <Button variant="primary" type="submit" value="Sign Up" disabled={loading}>
+      <Button variant="custom" type="submit" value="Sign Up" disabled={loading}>
         Submit
       </Button>
       

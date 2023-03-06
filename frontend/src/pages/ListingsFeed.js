@@ -90,12 +90,12 @@ const Listings = () => {
         <ButtonGroup>
           {user && user.type === "org" && (
             <Link to="/listings/new-listing">
-              <Button variant="primary">Add</Button>
+              <Button variant="custom">Add a listing</Button>
             </Link>
           )}
 
           <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown.Toggle variant="custom" id="dropdown-basic">
               What are you interested in?
             </Dropdown.Toggle>
             <Dropdown.Menu>

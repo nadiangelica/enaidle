@@ -41,7 +41,7 @@ const Home = () => {
         />
 
         <Carousel.Caption>
-          <h3>Connent organisations and individuals to create a positive impact.  </h3>
+          <h3>Connenting organisations and individuals to create a positive impact.  </h3>
           {/* <h6>Join us now and be a part of the change you want to see!</h6> */}
         </Carousel.Caption>
         </Carousel.Item>
@@ -50,7 +50,6 @@ const Home = () => {
           className="d-block "
           src="https://d13kjxnqnhcmn2.cloudfront.net/AcuCustom/Sitename/DAM/067/Legacy_for_large_charities_-_Main.jpg"
           alt="Second slide"
-          alt="First slide"
         />
         <Carousel.Caption>
           <h3>Together, we can build a stronger community.</h3>
@@ -64,7 +63,7 @@ const Home = () => {
           alt="Third slide"
         />
          <Carousel.Caption>
-          <h3>Search for opportunities now</h3>
+          <h3>Check out the opportunities on our feed</h3>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

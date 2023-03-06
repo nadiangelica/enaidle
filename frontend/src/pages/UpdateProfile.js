@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Card, Col, Row, Form, Image, Button } from "react-bootstrap";
+import '../Styling/home.css'
 
 const UpdateProfile = () => {
   const location = useLocation();
@@ -51,75 +52,88 @@ const UpdateProfile = () => {
   const handleLogoUrlChange = (event) => setLogoUrl(event.target.value);
 
   return (
-    // <main>
-    //     <h2 id="new-request-title">Update your Information</h2>
-    //     <div className="container">
-    //         <form className="updateInfoForm" onSubmit={handleSubmit}>
-    //             <div className="input-box">
-    //                 <label id="form_label" htmlFor="mission-statement">Mission Statement: </label>
-    //                 <textarea
-    //                     rows="20"
-    //                     cols="50"
-    //                     className="form_field"
-    //                     id="mission-statement"
-    //                     type="text"
-    //                     value={missionStatement}
-    //                     onChange={handleMissionStatementChange}
-    //                     placeholder="What would you like to tell the enaidle community about your organisation?"
-    //                 />
-    //             </div>
+    <div className="update-account-container">
+      <h2 className="title">Update your Information</h2>
+      <br></br>
+      <div className="container">
+        <form className="updateInfoForm" onSubmit={handleSubmit}>
+          <div className="input-box">
+            <label id="form_label" htmlFor="mission-statement">
+              Mission Statement:{" "}
+            </label>
+            <textarea
+              rows="20"
+              cols="50"
+              className="form_field"
+              id="mission-statement"
+              type="text"
+              value={missionStatement}
+              onChange={handleMissionStatementChange}
+              placeholder="What would you like to tell the enaidle community about your organisation?"
+            />
+          </div>
 
-    //             <div className="input-box">
-    //                 <label id="form_label" htmlFor="website-url">Website URL: </label>
-    //                 <input
-    //                     size="50"
-    //                     className="form_field"
-    //                     id="website-url"
-    //                     type="text"
-    //                     value={websiteUrl}
-    //                     onChange={handleWebsiteUrlChange}
-    //                     placeholder="Link to your organisation homepage"
-    //                 />
-    //             </div>
+          <div className="input-box">
+            <label id="form_label" htmlFor="website-url">
+              Website URL:{" "}
+            </label>
+            <input
+              size="50"
+              className="form_field"
+              id="website-url"
+              type="text"
+              value={websiteUrl}
+              onChange={handleWebsiteUrlChange}
+              placeholder="Link to your organisation homepage"
+            />
+          </div>
 
-    //             <div className="input-box">
-    //                 <label id="form_label" htmlFor="address">Address: </label>
-    //                 <input
-    //                     size="50"
-    //                     className="form_field"
-    //                     id="address"
-    //                     type="text"
-    //                     value={address}
-    //                     onChange={handleAddressChange}
-    //                     placeholder="Your organisation HQ address"
-    //                 />
-    //             </div>
+          <div className="input-box">
+            <label id="form_label" htmlFor="address">
+              Address:{" "}
+            </label>
+            <input
+              size="50"
+              className="form_field"
+              id="address"
+              type="text"
+              value={address}
+              onChange={handleAddressChange}
+              placeholder="Your organisation HQ address"
+            />
+          </div>
 
-    //             <div className="input-box">
-    //                 <label id="form_label" htmlFor="logo-url">Logo URL: </label>
-    //                 <input
-    //                     size="50"
-    //                     className="form_field"
-    //                     id="logo-url"
-    //                     type="text"
-    //                     value={logoUrl}
-    //                     onChange={handleLogoUrlChange}
-    //                     placeholder="Link to your logo"
-    //                 />
-    //             </div>
+          <div className="input-box">
+            <label id="form_label" htmlFor="logo-url">
+              Logo URL:{" "}
+            </label>
+            <input
+              size="50"
+              className="form_field"
+              id="logo-url"
+              type="text"
+              value={logoUrl}
+              onChange={handleLogoUrlChange}
+              placeholder="Link to your logo"
+            />
+          </div>
 
-    //             <input id="submit" type="submit" value="Submit" />
-    //         </form>
-    //         {error && <div className="error">{error}</div>}
-    //     </div>
-    // </main>
-    <div className="account-container">
-      <Card>
-        <Card.Header>Update your Information</Card.Header>
-        <Card.Body>
-          {/* <Card.Title>Update your Information</Card.Title> */}
-          <Form className="add-new-listing">
-            <Form.Group
+          <input id="submit" type="submit" value="Submit" />
+        </form>
+        {error && <div className="error">{error}</div>}
+      </div>
+    </div>
+  );
+};
+
+{
+  /* <div className="account-container">
+<Card>
+<Card.Header>Update your Information</Card.Header>
+<Card.Body>
+<Card.Title>Update your Information</Card.Title> 
+<Form className="add-new-listing">
+<Form.Group
               as={Col}
               md="8"
               className="mb-3"
@@ -130,7 +144,7 @@ const UpdateProfile = () => {
                 controlId="exampleForm.ControlTextarea1"
               >
                 <Form.Label>Mission Statement</Form.Label>
-                <Form.Control as="textarea" rows={5} type="text"
+                <Form.Control as="textarea" rows={10} type="text"
                 value={missionStatement}
                 onChange={handleMissionStatementChange}
                 placeholder="What would you like to tell the enaidle community about your organisation?"/>
@@ -176,8 +190,7 @@ const UpdateProfile = () => {
         </Button>
       </Card>
       {error && <div className="error">{error}</div>}
-    </div>
-  );
-};
+    </div> */
+}
 
 export default UpdateProfile;
