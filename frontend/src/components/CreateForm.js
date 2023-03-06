@@ -159,8 +159,8 @@ const CreateForm = (props) => {
                 onChange={(e) => setListingRequirement(e.target.value)}
               >
                 <option defaultValue="">Select an option...</option>
-                <option value="volunteering">Volunteering</option>
-                <option value="donation">Donation of goods</option>
+                <option value="Volunteering">Volunteering</option>
+                <option value="Donation of goods">Donation of goods</option>
               </Form.Select>
             </Form.Group>
           </Row>
@@ -207,10 +207,11 @@ const CreateForm = (props) => {
           <Button variant="custom" type="submit">
             Submit form
           </Button>
-        </Form>
+          <br></br>
       {isSubmitted && (
         <div className="info">New listing created! Please go back to feed to see your listing.</div>
       )}
+        </Form>
       </div>
     </>
   );
