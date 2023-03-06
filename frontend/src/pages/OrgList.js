@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 
 const OrgList = () => {
+  const placeholderUrl = "https://via.placeholder.com/150x150?text=";
   const [orgs, setOrgs] = useState([]);
 
   useEffect(() => {
@@ -17,14 +18,25 @@ const OrgList = () => {
         return { ...org, logoUrl };
       });
       const orgsWithLogos = await Promise.all(requests);
-      setOrgs(orgsWithLogos);
+
+      const sortOrgsByPhoto = (a, b) => {
+        if (!a.logoUrl.includes(placeholderUrl) && (b.logoUrl.includes(placeholderUrl))) {
+          return -1;
+        }
+        if (a.logoUrl.includes(placeholderUrl) && (!b.logoUrl.includes(placeholderUrl))) {
+          return 1;
+        }
+        return 0;
+      }
+
+      setOrgs(orgsWithLogos.sort(sortOrgsByPhoto));
     };
     if (orgs.length === 0) fetchOrgs();
   }, [orgs]);
 
   const placeholderLogo = (org) => {
     // return a placeholder logo if the organization has no logo
-    return "https://via.placeholder.com/150x150?text=" + org.organisationName;
+    return placeholderUrl + org.organisationName;
   };
 
   return (
