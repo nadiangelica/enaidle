@@ -54,9 +54,9 @@ const CommentForm = (props) => {
     // </main>
     <div className="container">
       <Form className="addCommentForm" onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+        <Form.Group className="mb-3">
           <Form.Label>Reply:</Form.Label>
-          <Form.Control as="textarea" rows={3} />
+          <Form.Control as="textarea" rows={3} type="text" id="content"/>
         </Form.Group>
         <Button
           variant="custom"
