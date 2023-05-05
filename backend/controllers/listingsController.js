@@ -64,6 +64,17 @@ const findAListingById = async (req, res) => {
   }
 };
 
+const findListingsByOrg = async (req, res) => {
+  try {
+    const { organisationId } = req.params;
+    const listings = await Listing.find({ organisationId }); 
+    res.json(listings);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ error: error.message });
+  }
+};
+
 const addCommentToAListing = async (req, res) => {
   const listing = await Listing.findById({ _id: req.params.id });
 
@@ -90,5 +101,6 @@ module.exports = {
   createListing,
   deleteListing,
   findAListingById,
+  findListingsByOrg,
   addCommentToAListing,
 };
