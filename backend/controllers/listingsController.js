@@ -74,6 +74,7 @@ const findListingsByOrg = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+// REMEMBER TO TEST THIS
 
 const addCommentToAListing = async (req, res) => {
   const listing = await Listing.findById({ _id: req.params.id });
