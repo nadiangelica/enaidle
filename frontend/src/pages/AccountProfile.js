@@ -25,12 +25,17 @@ const AccountProfile = () => {
       const json = await response.json();
       setProfile(json);
 
-      const infoLength = json.info.length;
-      if (infoLength > 0) setNewestInfo(json.info[infoLength - 1]);
+      if (json.info) {
+        const infoLength = json.info.length;
+        if (infoLength > 0) setNewestInfo(json.info[infoLength - 1]);
+      };
+      
     };
 
-    if (!profile.organisationName) fetchProfile();
-  }, [profile, newestInfo]);
+    if (user) {
+      fetchProfile();
+    };
+  }, [profile, user]);
 
   const handleEditClick = () =>
     navigate("/profile/update", { state: { id: userId, info: newestInfo } });
