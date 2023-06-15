@@ -21,7 +21,12 @@ const AccountProfile = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const response = await fetch("/api/org-users/" + userId);
+      const response = await fetch("/api/org-profile/" + userId, {
+        headers: {
+          'Authorization': `Bearer ${user.token}`,
+          'User-Id': user.id
+        }
+      });
       const json = await response.json();
       setProfile(json);
 
@@ -29,13 +34,10 @@ const AccountProfile = () => {
         const infoLength = json.info.length;
         if (infoLength > 0) setNewestInfo(json.info[infoLength - 1]);
       };
-      
     };
 
-    if (user) {
-      fetchProfile();
-    };
-  }, [profile, user]);
+    if (user) fetchProfile();
+  }, [user]);
 
   const handleEditClick = () =>
     navigate("/profile/update", { state: { id: userId, info: newestInfo } });
@@ -61,7 +63,7 @@ const AccountProfile = () => {
                 <Form.Label>Name</Form.Label>
                 <Form.Control
                   type="text"
-                  value={profile.organisationName}
+                  value={profile.organisationName || ""}
                   disabled
                   readOnly
                 />
@@ -70,7 +72,7 @@ const AccountProfile = () => {
                 <Form.Label>Charity Number</Form.Label>
                 <Form.Control
                   type="text"
-                  value={profile.charityNumber}
+                  value={profile.charityNumber || ""}
                   disabled
                   readOnly
                 />
@@ -82,7 +84,7 @@ const AccountProfile = () => {
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control
                   type="text"
-                  value={profile.email}
+                  value={profile.email || ""}
                   disabled
                   readOnly
                 />
@@ -90,7 +92,7 @@ const AccountProfile = () => {
               <Form.Group as={Col} md="6">
                 <Form.Label>Website</Form.Label>
                 <Form.Control
-                  value={newestInfo.websiteUrl}
+                  value={newestInfo.websiteUrl || ""}
                   type="text"
                   placeholder="Add a website"
                   disabled
@@ -104,7 +106,7 @@ const AccountProfile = () => {
                 <Form.Label>Mission Statement</Form.Label>
                 <Form.Control
                   type="text"
-                  value={newestInfo.missionStatement}
+                  value={newestInfo.missionStatement || ""}
                   placeholder="Add a mission statement"
                   disabled
                   readOnly
@@ -113,7 +115,7 @@ const AccountProfile = () => {
               <Form.Group as={Col} md="4">
                 <Form.Label>Profile Picture</Form.Label>
                 <Form.Control
-                  value={newestInfo.logoUrl}
+                  value={newestInfo.logoUrl | ""}
                   type="text"
                   placeholder="Link to your logo"
                   disabled

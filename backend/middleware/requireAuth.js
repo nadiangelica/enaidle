@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/orgUserModel');
 
 const requireAuth = async (req, res, next) => {
-  const { authorization, user_id } = req.headers;
+  const { authorization } = req.headers;
+  const user_id = req.header('User-Id');
 
   if (!authorization) {
     return res.status(401).json({ error: 'Authorization token required' });

@@ -24,7 +24,7 @@ const UpdateProfile = () => {
     event.preventDefault();
 
     const updateProfile = async () => {
-      const response = await fetch("/api/org-users/update-info", {
+      const response = await fetch("/api/org-profile/update-info", {
         method: "post",
         body: JSON.stringify({
           orgUserId: location.state.id,
