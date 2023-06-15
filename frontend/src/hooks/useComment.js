@@ -6,7 +6,7 @@ export const useComment = () => {
   const { listing_id } = useParams();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { dispatch } = useAuthContext();
+  const { user } = useAuthContext();
 
   const addComment = async (userName, content) => {
     setLoading(true);
@@ -14,7 +14,11 @@ export const useComment = () => {
 
     const response = await fetch(`/api/listings/${listing_id}/add-comment`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${user.token}`,
+        'User-Id': user.id
+      },
       body: JSON.stringify({ userName, content }),
     });
     const json = await response.json();
@@ -24,10 +28,6 @@ export const useComment = () => {
       setError(json.error);
     }
     if (response.ok) {
-      // localStorage.setItem("comments", JSON.stringify(json));
-
-      // dispatch({ type: "LOGIN", payload: json });
-
       setLoading(false);
     }
   };
