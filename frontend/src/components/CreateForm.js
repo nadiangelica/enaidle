@@ -42,6 +42,8 @@ const CreateForm = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        'Authorization': `Bearer ${user.token}`,
+        'User-Id': user.id
       },
       body: JSON.stringify(listing),
     });

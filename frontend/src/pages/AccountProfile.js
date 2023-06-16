@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-// import Button from "react-bootstrap/Button";
 import {Card, Col, Row, Form, Image, Button} from "react-bootstrap";
-// import { Image } from "react-bootstrap";
-// import Col from "react-bootstrap/Col";
-// import Row from "react-bootstrap/Row";
-// import Form from "react-bootstrap/Form";
 
 const AccountProfile = () => {
   const navigate = useNavigate();
-  // const userId = JSON.parse(localStorage.getItem("user")).id;
-  // if (!userId) {
-  //   userId = JSON.parse(localStorage.getItem("user")).orgUser._id;
-  // }
 
   const { user } = useAuthContext();
+  
   let userId;
+
   if (user) {
     userId = user.id;
   }
@@ -28,16 +21,23 @@ const AccountProfile = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const response = await fetch("/api/org-users/" + userId);
+      const response = await fetch("/api/org-profile/" + userId, {
+        headers: {
+          'Authorization': `Bearer ${user.token}`,
+          'User-Id': user.id
+        }
+      });
       const json = await response.json();
       setProfile(json);
 
-      const infoLength = json.info.length;
-      if (infoLength > 0) setNewestInfo(json.info[infoLength - 1]);
+      if (json.info) {
+        const infoLength = json.info.length;
+        if (infoLength > 0) setNewestInfo(json.info[infoLength - 1]);
+      };
     };
 
-    if (!profile.organisationName) fetchProfile();
-  }, [profile, newestInfo]);
+    if (user) fetchProfile();
+  }, [user]);
 
   const handleEditClick = () =>
     navigate("/profile/update", { state: { id: userId, info: newestInfo } });
@@ -63,7 +63,7 @@ const AccountProfile = () => {
                 <Form.Label>Name</Form.Label>
                 <Form.Control
                   type="text"
-                  value={profile.organisationName}
+                  value={profile.organisationName || ""}
                   disabled
                   readOnly
                 />
@@ -72,7 +72,7 @@ const AccountProfile = () => {
                 <Form.Label>Charity Number</Form.Label>
                 <Form.Control
                   type="text"
-                  value={profile.charityNumber}
+                  value={profile.charityNumber || ""}
                   disabled
                   readOnly
                 />
@@ -84,7 +84,7 @@ const AccountProfile = () => {
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control
                   type="text"
-                  value={profile.email}
+                  value={profile.email || ""}
                   disabled
                   readOnly
                 />
@@ -92,7 +92,7 @@ const AccountProfile = () => {
               <Form.Group as={Col} md="6">
                 <Form.Label>Website</Form.Label>
                 <Form.Control
-                  value={newestInfo.websiteUrl}
+                  value={newestInfo.websiteUrl || ""}
                   type="text"
                   placeholder="Add a website"
                   disabled
@@ -106,7 +106,7 @@ const AccountProfile = () => {
                 <Form.Label>Mission Statement</Form.Label>
                 <Form.Control
                   type="text"
-                  value={newestInfo.missionStatement}
+                  value={newestInfo.missionStatement || ""}
                   placeholder="Add a mission statement"
                   disabled
                   readOnly
@@ -115,7 +115,7 @@ const AccountProfile = () => {
               <Form.Group as={Col} md="4">
                 <Form.Label>Profile Picture</Form.Label>
                 <Form.Control
-                  value={newestInfo.logoUrl}
+                  value={newestInfo.logoUrl | ""}
                   type="text"
                   placeholder="Link to your logo"
                   disabled

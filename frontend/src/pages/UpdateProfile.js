@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Card, Col, Row, Form, Image, Button } from "react-bootstrap";
+import { useAuthContext } from "../hooks/useAuthContext";
+
 import '../Styling/home.css'
 
 const UpdateProfile = () => {
@@ -8,6 +10,7 @@ const UpdateProfile = () => {
   const navigate = useNavigate();
   const currentInfo = location.state.info;
   const userId = location.state.id;
+  const { user } = useAuthContext();
 
   const [missionStatement, setMissionStatement] = useState(
     currentInfo.missionStatement
@@ -21,7 +24,7 @@ const UpdateProfile = () => {
     event.preventDefault();
 
     const updateProfile = async () => {
-      const response = await fetch("/api/org-users/update-info", {
+      const response = await fetch("/api/org-profile/update-info", {
         method: "post",
         body: JSON.stringify({
           orgUserId: location.state.id,
@@ -30,7 +33,11 @@ const UpdateProfile = () => {
           address: address,
           logoUrl: logoUrl,
         }),
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`,
+          'User-Id': user.id
+        }
       });
 
       const json = await response.json();
